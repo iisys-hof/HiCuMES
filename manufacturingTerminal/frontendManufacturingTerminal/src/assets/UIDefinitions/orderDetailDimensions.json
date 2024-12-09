@@ -1,0 +1,156 @@
+[
+  {
+    "key": "product",
+    "type": "datatable",
+    "props": {
+      "columns": [
+        {
+          "name": "Durchmesser",
+          "id": "ydurch1"
+        },
+        {
+          "name": "Toleranz",
+          "id": "ydtol"
+        },
+        {
+          "name": "Breite",
+          "id": "ybreit1"
+        },
+        {
+          "name": "Toleranz",
+          "id": "ybtol"
+        },
+        {
+          "name": "Bohrung/Höhe",
+          "id": "ybs"
+        },
+        {
+          "name": "Toleranz",
+          "id": "ystol"
+        },
+        {
+          "name": "Aussparung D1",
+          "id": "yausd1"
+        },
+        {
+          "name": "Aussparung B1",
+          "id": "yausb1"
+        },
+        {
+          "name": "Aussparung D2",
+          "id": "yausd2"
+        },
+        {
+          "name": "Aussparung B2",
+          "id": "yausb2"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "ydurch1",
+          "key": "ydurch1"
+        },
+        {
+          "type": "simple",
+          "id": "ydtol",
+          "key": "ydtol"
+        },
+        {
+          "type": "simple",
+          "id": "ybreit1",
+          "key": "ybreit1"
+        },
+        {
+          "type": "simple",
+          "id": "ybtol",
+          "key": "ybtol"
+        },
+        {
+          "type": "simple",
+          "id": "ybs",
+          "key": "ybs"
+        },
+        {
+          "type": "simple",
+          "id": "ystol",
+          "key": "ystol"
+        },
+        {
+          "type": "simple",
+          "id": "yausd1",
+          "key": "yausd1"
+        },
+        {
+          "type": "simple",
+          "id": "yausb1",
+          "key": "yausb1"
+        },
+        {
+          "type": "simple",
+          "id": "yausd2",
+          "key": "yausd2"
+        },
+        {
+          "type": "simple",
+          "id": "yausb2",
+          "key": "yausb2"
+        }
+      ]
+    }
+  },
+  {
+    "key": "product",
+    "type": "datatable",
+    "props": {
+      "columns": [
+        {
+          "name": "Drehzahl 1",
+          "id": "ykennz1"
+        },
+        {
+          "name": "Drehzahl 2",
+          "id": "ykennz2"
+        },
+        {
+          "name": "Drehzahl 3",
+          "id": "ykennz3"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "ybem"
+        },
+        {
+          "name": "V m/s",
+          "id": "yvms"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "ykennz1",
+          "key": "ykennz1"
+        },
+        {
+          "type": "simple",
+          "id": "ykennz2",
+          "key": "ykennz2"
+        },
+        {
+          "type": "simple",
+          "id": "ykennz3",
+          "key": "ykennz3"
+        },
+        {
+          "type": "simple",
+          "id": "yvms",
+          "key": "yvms"
+        }
+      ]
+    }
+  }
+]

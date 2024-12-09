@@ -1,0 +1,111 @@
+[
+  {
+    "key": "camundaMachineOccupations",
+    "type": "selectiontable-barcode-advanced",
+    "className": "table-modal",
+    "props": {
+      "multiple": true,
+      "columns": [
+        {
+          "name": "MGRF",
+          "id": "productionSteps[0].arbgangNr"
+        },
+        {
+          "name": "Position",
+          "id": "pos"
+        },
+        {
+          "name": "Artikel",
+          "id": "product"
+        },
+        {
+          "name": "Arbeitsgang",
+          "id": "productionSteps[0].name"
+        },
+        {
+          "name": "AG-Text",
+          "id": "machineOccupation.ptext"
+        },
+        {
+          "name": "Starttermin",
+          "id": "machineOccupation.plannedStartDateTime"
+        },
+        {
+          "name": "Endtermin",
+          "id": "machineOccupation.plannedEndDateTime"
+        },
+        {
+          "name": "Status",
+          "id": "machineOccupation.status"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "key": "machineOccupation.name"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionSteps[0].arbgangNr",
+          "key": "machineOccupation.productionSteps[0].arbgangNr"
+        },
+        {
+          "type": "simple",
+          "id": "pos",
+          "key": "machineOccupation",
+          "props": {
+            "concat": [
+              "productionOrder.name",
+              "name"
+            ],
+            "concatSpacer": "-"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "product",
+          "key": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionSteps[0].name",
+          "key": "machineOccupation.productionSteps[0].name"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.ptext",
+          "key": "machineOccupation.ptext"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedStartDateTime",
+          "key": "machineOccupation.plannedStartDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedEndDateTime",
+          "key": "machineOccupation.plannedEndDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "status-icon",
+          "id": "machineOccupation.status",
+          "key": "machineOccupation.status"
+        }
+      ]
+    }
+  }
+]

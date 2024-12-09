@@ -1,0 +1,40 @@
+<mat-sidenav-container class="app-drawer-container"  (backdropClick)="navBarShouldClose()" >
+  <mat-sidenav #sidenav mode="over" (keydown.escape)="navBarShouldClose()" (closed)="navBarClosed($event)" (opened)="navBarOpened($event)" (close)="navBarShouldClose()" >
+    <div class="sidenav-header">
+      <img src="assets/icons/icon-512x512.png" height="150px">
+      <!--<h1>{{selectedMachineName}}</h1>-->
+      <!--<h4>Auftrag: 123456789</h4>-->
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="sidenav-body">
+<!--      <mat-selection-list [multiple]="false">-->
+<!--        &lt;!&ndash;<div mat-subheader>Mitarbeiter</div>&ndash;&gt;-->
+<!--        <mat-list-option *ngFor="let entry of publicListEntries"-->
+<!--                         [routerLinkActiveOptions]="{exact:true}"-->
+<!--                         [routerLinkActive]="'mat-list-single-selected-option'" (click)="navBarNavigate(entry)" >-->
+<!--          <mat-icon class="material-icons-outlined" mat-list-icon>{{entry.icon}}</mat-icon>-->
+<!--          <div mat-line><a (click)="navBarNavigate(entry)">{{entry.name}}</a></div>-->
+<!--        </mat-list-option>-->
+
+<!--      </mat-selection-list>-->
+
+    </div>
+    <div style="position: absolute;
+  width: 100%;
+          bottom: 0px;
+    text-align: right;
+    padding-right: 5px;">
+      <p style="margin: 0 5px;
+    color: grey;
+    font-size: 10px;">Build: {{build.buildTimestamp}} - {{build.commitHash}}</p>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content (scroll)="emitScrollEvent($event)">
+    <ng-content></ng-content>
+    <!--<app-scroll-to-top [scrollEvent]="scrollEventSubject.asObservable()"></app-scroll-to-top>-->
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+

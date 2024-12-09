@@ -1,0 +1,75 @@
+[
+  {
+    "key": "camundaSubProductionSteps",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "",
+          "id": "formKey"
+        },
+        {
+          "name": "Name",
+          "id": "name"
+        },
+        {
+          "name": "Startzeit",
+          "id": "subProductionStep.timeRecords[0].startDateTime"
+        },
+        {
+          "name": "Endzeit",
+          "id": "subProductionStep.timeRecords[last()].endDateTime"
+        },
+        {
+          "name": "Bearbeitet",
+          "id": "subProductionStep.timeRecords[last()].responseUser.userName"
+        },
+        {
+          "name": "Eingaben",
+          "id": "input"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "subproductionstep-formkey",
+          "id": "formKey",
+          "key": "formKey"
+        },
+        {
+          "type": "simple",
+          "id": "name",
+          "key": "name"
+        },
+        {
+          "type": "simple",
+          "id": "subProductionStep.timeRecords[0].startDateTime",
+          "key": "subProductionStep.timeRecords[0].startDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "subProductionStep.timeRecords[last()].endDateTime",
+          "key": "subProductionStep.timeRecords[last()].endDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "subProductionStep.timeRecords[last()].responseUser.userName",
+          "key": "subProductionStep.timeRecords[last()].responseUser.userName"
+        },
+        {
+          "type": "camunda-formfield-overview",
+          "id": "input",
+          "key": ""
+        }
+      ]
+    }
+  }
+]

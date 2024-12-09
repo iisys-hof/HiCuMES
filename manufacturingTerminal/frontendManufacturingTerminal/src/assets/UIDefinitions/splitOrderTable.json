@@ -1,0 +1,57 @@
+[
+  {
+    "key": "camundaMachineOccupations",
+    "type": "select-datatable",
+    "props": {
+      "multiple": false,
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "machineOccupation.externalId"
+        },
+        {
+          "name": "Artikel",
+          "id": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "name": "Start-Termin",
+          "id": "machineOccupation.plannedStartDateTime"
+        },
+        {
+          "name": "End-Termin",
+          "id": "machineOccupation.plannedEndDateTime"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "machineOccupation.externalId",
+"key": "machineOccupation.externalId"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.productionOrder.product.name",
+"key": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedStartDateTime",
+"key": "machineOccupation.plannedStartDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedEndDateTime",
+"key": "machineOccupation.plannedEndDateTime",
+          "props": {
+            "type": "date"
+          }
+        }
+      ]
+    }
+  }
+]

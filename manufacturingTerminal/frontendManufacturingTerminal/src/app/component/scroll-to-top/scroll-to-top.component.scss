@@ -1,0 +1,20 @@
+.floating-menu {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #F7F7F7;
+  display: flex;
+  padding: 0.5rem!important;
+  justify-content: flex-end;
+  height: 4rem;
+
+  button{
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+}
+
+.mat-icon-btn {
+  margin: 5px;
+  height: 50px;
+}

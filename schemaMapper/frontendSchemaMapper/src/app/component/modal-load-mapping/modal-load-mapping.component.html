@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Zu ladende Zuordnung auswählen</h2>
+<hr>
+<mat-dialog-content class="mat-typography">
+
+  <table cellspacing="0" class="table mat-table  table-sm table-user-entity">
+    <thead class="mat-header-cell " class="table-header">
+    <tr class="mat-row">
+      <th class="mat-header-cell table-header-cell" scope="col">Name</th>
+      <th class="mat-header-cell table-header-cell" scope="col">Eingangsschema</th>
+      <th class="mat-header-cell table-header-cell" scope="col">Ausgangsschema</th>
+      <th class=" mat-header-cell table-header-cell" scope="col">Laden</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="mat-row" *ngFor="let mappingAndDataSource of mappingRequestService.getAvailableMappings() | async">
+      <ng-container *ngIf="mappingAndDataSource.dataReader?.readerID !== 'local-Camunda'">
+
+      <td class="mat-cell" style="width: 25%; vertical-align: middle">
+        {{mappingAndDataSource.name}}
+      </td>
+      <td class="mat-cell" style="width: 25%; vertical-align: middle">
+        {{mappingAndDataSource.dataReader?.readerID}}
+      </td>
+      <td class="mat-cell" style="width: 25%; vertical-align: middle">
+        {{mappingAndDataSource.dataWriter?.writerID}}
+      </td>
+      <td style="width: 25%" class="noWrapColumn mat-cell">
+
+        <button [mat-dialog-close]="mappingAndDataSource" mat-icon-button color="accent">
+          <mat-icon>east</mat-icon>
+        </button>
+      </td>
+      </ng-container>
+    </tr>
+    </tbody>
+  </table>
+
+</mat-dialog-content>
+
+<hr style="margin-top: 32px; margin-bottom: 0px;">
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
+
+
+</mat-dialog-actions>
+
+
+
+
+
+
+

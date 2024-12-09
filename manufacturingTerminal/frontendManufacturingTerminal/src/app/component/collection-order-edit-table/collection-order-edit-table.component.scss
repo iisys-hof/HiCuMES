@@ -1,0 +1,54 @@
+
+::ng-deep .dyn-form-collection {
+  margin-bottom: 15px;
+}
+
+::ng-deep .grid-collection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 100%;
+}
+
+::ng-deep .grid-item-collection {
+  display :  grid ;
+  margin: 5px;
+}
+
+
+::ng-deep .edit-error{
+  background: #dc354545;
+}
+
+.formly-table {
+  overflow-y: auto;
+  margin: 5px;
+
+  ::ng-deep .custom-header-row {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: white;
+    box-shadow: 0 -1px 5px lightgrey;
+  }
+
+  ::ng-deep .custom-header-cell {
+    font-size: 13px;
+    padding: 10px !important;
+  }
+
+  ::ng-deep .mat-cell {
+    padding: 2px 10px 2px 10px !important;
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding: 0;
+  }
+}
+
+
+.header-title{
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+}

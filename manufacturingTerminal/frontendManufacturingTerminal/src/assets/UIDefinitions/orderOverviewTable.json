@@ -1,0 +1,130 @@
+[
+  {
+"key": "camundaMachineOccupations",
+    "type": "expansiontable",
+    "className": "order-overview-table",
+    "props": {
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "machineOccupation.externalId"
+        },
+        {
+          "name": "Artikel",
+          "id": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "name": "Start-Termin",
+          "id": "machineOccupation.plannedStartDateTime"
+        },
+        {
+          "name": "End-Termin",
+          "id": "machineOccupation.plannedEndDateTime"
+        },
+        {
+          "name": "Letzte Buchung.",
+          "id": ""
+        },
+        {
+          "name": "Status",
+          "id": "machineOccupation.status"
+        },
+        {
+          "name": "Aktionen",
+          "id": "machineOccupation"
+        }
+      ],
+      "subTable": [
+        {
+"key": "camundaSubProductionSteps",
+          "type": "datatable",
+          "className": "order-overview-table-inner",
+          "props": {
+            "columns": [
+              {
+                "name": "Art der Eingabemaske",
+                "id": "formKey"
+              },
+              {
+                "name": "Name",
+                "id": "name"
+              },
+              {
+                "name": "Task Id.Nr.",
+                "id": "taskId"
+              },
+              {
+                "name": "Eingaben",
+                "id": "filledFormField"
+              }
+            ]
+          },
+          "fieldArray": {
+            "fieldGroup": [
+              {
+                "type": "subproductionstep-formkey",
+                "id": "formKey",
+"key": "formKey"
+              },
+              {
+                "type": "simple",
+                "id": "name",
+"key": "name"
+              },
+              {
+                "type": "simple",
+                "id": "taskId",
+"key": "taskId"
+              },
+              {
+                "type": "json-list",
+                "id": "filledFormField",
+"key": "filledFormField"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "machineOccupation.externalId",
+"key": "machineOccupation.externalId"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.productionOrder.product.name",
+"key": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedStartDateTime",,
+"key": "machineOccupation.plannedStartDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedEndDateTime",,
+"key": "machineOccupation.plannedEndDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "status-icon",
+          "id": "machineOccupation.status",
+"key": "machineOccupation.status"
+        },
+        {
+          "type": "machineoccupationaction",
+          "id": "machineOccupation",
+"key": "machineOccupation"
+        }
+      ]
+    }
+  }
+]

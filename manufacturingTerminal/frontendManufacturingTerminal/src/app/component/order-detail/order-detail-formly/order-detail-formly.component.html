@@ -1,0 +1,126 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card class="mat-elevation-z6 order-detail-header-card">
+      <mat-card-header style="justify-content: space-between;align-items: center;">
+        <mat-card-title>
+         Digitale Fertigungskarte
+        </mat-card-title>
+        <ng-container  *ngIf="this.machineOccupation">
+          <div [ngSwitch]="this.machineOccupation?.machineOccupation?.status" >
+            <small>Status:</small>
+            <img *ngSwitchCase="'READY_TO_START'" alt="Dashboard" height="32" src="../../../../assets/img/ready_to_start.svg" style="margin-right: 10px; margin-left: 2px" width="32"/>
+            <img *ngSwitchCase="'RUNNING'" alt="Dashboard" height="28" src="../../../../assets/img/running.svg" style="margin-right: 10px; margin-left: 2px" width="28"/>
+            <img *ngSwitchCase="'FINISHED'" alt="Dashboard" height="32" src="../../../../assets/img/finished.svg" style="margin-right: 10px; margin-left: 2px" width="32"/>
+            <img *ngSwitchCase="'SUSPENDED'" alt="Dashboard" height="32" src="../../../../assets/img/suspended.svg" style="margin-right: 10px; margin-left: 2px" width="32"/>
+            <img *ngSwitchCase="'ARCHIVED'" alt="Dashboard" height="32" src="../../../../assets/img/archived.svg" style="margin-right: 10px; margin-left: 2px" width="32"/>
+            <img *ngSwitchCase="'PLANNED'" alt="Dashboard" height="32" src="../../../../assets/img/planned.svg" style="margin-right: 10px; margin-left: 2px" width="32"/>
+            <img *ngSwitchDefault alt="Dashboard" height="32" src="../../../../assets/img/unkown_state.svg" style="margin-right: 10px; margin-left: 2px" width="32"/>
+
+          </div>
+        </ng-container>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutHeader" [form]="tableForm" [model]="model" ></formly-form>
+        </form>
+        <div class="order-detail-header-action-buttons" *ngIf="this.machineOccupation">
+          <button style="margin-right: 8px" class="order-detail-header-table-button"  color="primary" mat-button mat-raised-button routerLink="/order-overview">{{'Zur Übersicht' | uppercase}}</button>
+          <app-machine-occupation-action-buttons [data]="this.machineOccupation" [machines]="machines"></app-machine-occupation-action-buttons>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!--<mat-card class="mat-elevation-z6 order-detail-quality-card">
+      <div *ngIf="tableLayoutQuality !== undefined">
+        <mat-card-header>
+          <mat-card-title><h3>Qualität</h3></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+            <formly-form [fields]="tableLayoutQuality" [form]="tableForm" [model]="model" ></formly-form>
+          </form>
+        </mat-card-content>
+      </div>
+      <div *ngIf="tableLayoutDimensions !== undefined">
+        <mat-card-header>
+          <mat-card-title><h3>Abmessungen</h3></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+            <formly-form [fields]="tableLayoutDimensions" [form]="tableForm" [model]="model" ></formly-form>
+          </form>
+        </mat-card-content>
+      </div>
+    </mat-card>-->
+
+    <mat-card class="mat-elevation-z6 order-detail-auxiliary-materials-card" *ngIf="tableLayoutNotes !== undefined ">
+      <mat-card-header>
+        <mat-card-title><h3>Bemerkungen</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutNotes" [form]="tableForm" [model]="model"></formly-form>
+        </form>
+        <div class="order-detail-header-action-buttons" *ngIf="this.machineOccupation">
+          <button style="margin-right: 8px" class="order-detail-header-table-button"  color="primary" mat-button mat-raised-button (click)="openEditModal()">{{'Hinzufügen' | uppercase}}</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z6 order-detail-auxiliary-materials-card" *ngIf="tableLayoutProductQCFeatures !== undefined && model['qualityControlFeatures']?.length > 0">
+      <mat-card-header>
+        <mat-card-title><h3>Qualitätskontrolle</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutProductQCFeatures" [form]="tableForm" [model]="model"></formly-form>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z6 order-detail-auxiliary-materials-card" *ngIf="tableLayoutProductRelationships !== undefined && model?.productRelationships.length > 0">
+      <mat-card-header>
+        <mat-card-title><h3>Positionen</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutProductRelationships" [form]="tableForm" [model]="model"></formly-form>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="mat-elevation-z6 order-detail-sub-productionsteps-card" *ngIf="tableLayoutSubProductionSteps !== undefined">
+      <mat-card-header>
+        <mat-card-title><h3>Verlauf der Arbeitsschritte</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutSubProductionSteps" [form]="tableForm" [model]="model"></formly-form>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z6 order-detail-productionsteps-card" *ngIf="tableLayoutToolSettings !== undefined && model?.machineOccupation[0]?.activeToolSettings">
+      <mat-card-header>
+        <mat-card-title><h3>Einstellungen {{model?.machineOccupation[0]?.machine?.machineType?.name}}</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutToolSettings" [form]="tableForm" [model]="model"></formly-form>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="mat-elevation-z6 order-detail-productionsteps-card" *ngIf="tableLayoutProductionSteps !== undefined && machineOccupationsByProductionOrder !== undefined">
+      <mat-card-header>
+        <mat-card-title><h3>Alle Arbeitsgänge</h3></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="tableForm" class="order-detail-header-form order-detail-header-table-1">
+          <formly-form [fields]="tableLayoutProductionSteps" [form]="tableForm" [model]="modelProductionOrder"></formly-form>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-card-content>
+</mat-card>
+<app-scroll></app-scroll>

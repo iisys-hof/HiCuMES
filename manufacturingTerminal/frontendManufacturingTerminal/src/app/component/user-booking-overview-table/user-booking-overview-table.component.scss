@@ -1,0 +1,37 @@
+::ng-deep .table-short {
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: break-spaces;
+
+  .bold {
+    font-weight: bold;
+  }
+}
+
+::ng-deep .table-medium {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: break-spaces;
+}
+
+::ng-deep .table-large {
+  min-width: 130px;
+  max-width: 150px;
+  white-space: break-spaces;
+  display: block;
+}
+
+::ng-deep .table-text-right {
+  float: right;
+}
+::ng-deep .order-overview-table-inner{
+  .mat-header-cell
+  {
+    white-space: break-spaces !important;
+  }
+}
+

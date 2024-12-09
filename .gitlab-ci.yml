@@ -1,0 +1,130 @@
+stages:
+  - build
+#  - deployStaging
+
+variables:
+  VM_IP: "10.90.41.35"
+  VM_WEBAPPS_PATH: "/opt/wildfly/standalone/deployments"
+  VM_STATICAPPS_PATH: "/var/www/html"
+  NPM_BUILD_CONFIG: "build-local"
+buildJava:
+  image: maven:3.6.3-jdk-11
+  stage: build
+  script:
+    - echo $IISYS_NEXUS_PASSWORD
+    - 'mvn deploy -DskipTests -q -P \!hicumes-frontend -s ci_settings.xml'
+  after_script:
+    - mkdir schemaMapper/mapperPlugins/target
+    - cp schemaMapper/mapperPlugins/InputPlugins/InputFileReader/target/inputPlugin-FileReader.jar schemaMapper/mapperPlugins/target
+    - cp schemaMapper/mapperPlugins/InputPlugins/InputRestWebservice/target/inputPlugin-RestWebservice.jar schemaMapper/mapperPlugins/target
+    - cp schemaMapper/mapperPlugins/ParserPlugins/mapperPluginCSV/target/mapperPlugin-CSV.jar schemaMapper/mapperPlugins/target
+    - cp schemaMapper/mapperPlugins/ParserPlugins/mapperPluginJSON/target/mapperPlugin-JSON.jar schemaMapper/mapperPlugins/target
+    - cp schemaMapper/mapperPlugins/ParserPlugins/mapperPluginXML/target/mapperPlugin-XML.jar schemaMapper/mapperPlugins/target
+    - cp schemaMapper/mapperPlugins/OutputPlugins/OutputDatabaseWriter/target/outputPlugin-DatabaseWriter.jar schemaMapper/mapperPlugins/target
+  artifacts:
+    name: "hicumes-backend-java"
+    paths:
+      - schemaMapper/backend/target/*.war
+      - manufacturingTerminal/backend/target/*.war
+      - schemaMapper/mapperPlugins/target/*.jar
+
+#buildAdminFrame:
+#  image: trion/ng-cli
+#  stage: build
+#  cache:
+#    key: $CI_COMMIT_REF_SLUG
+#    paths:
+#      - .npm/
+#  before_script:
+#    - node -v
+#    - npm ci --cache .npm --prefer-offline --prefix frame
+#  script:
+#    - npm run build-staging --prefix frame
+#  artifacts:
+#    name: "hicumes-frontend-admin-frame"
+#    paths:
+#      - frame/dist
+
+buildDatabaseEditor:
+  image: trion/ng-cli
+  stage: build
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - .npm/
+  before_script:
+    - node -v
+    - npm ci --cache .npm --prefer-offline --prefix schemaMapper/frontendDatabaseEditor
+  script:
+    - npm run $NPM_BUILD_CONFIG --prefix schemaMapper/frontendDatabaseEditor
+  artifacts:
+    name: "hicumes-frontend-database-editor"
+    paths:
+      - schemaMapper/frontendDatabaseEditor/dist
+
+buildFrontendSchemaMapper:
+  image: trion/ng-cli
+  stage: build
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - .npm/
+  before_script:
+    - node -v
+    - npm ci --cache .npm --prefer-offline --prefix schemaMapper/frontendSchemaMapper
+  script:
+    - npm run $NPM_BUILD_CONFIG --prefix schemaMapper/frontendSchemaMapper
+  artifacts:
+    name: "hicumes-frontend-schema-mapper"
+    paths:
+      - schemaMapper/frontendSchemaMapper/dist
+
+buildFrontendManufacturingTerminal:
+  image: trion/ng-cli
+  stage: build
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - .npm/
+  before_script:
+    - node -v
+    - npm ci --cache .npm --prefer-offline --prefix manufacturingTerminal/frontendManufacturingTerminal
+  script:
+    - npm run $NPM_BUILD_CONFIG --prefix manufacturingTerminal/frontendManufacturingTerminal
+  artifacts:
+    name: "hicumes-frontend-manufacturing-terminal"
+    paths:
+      - manufacturingTerminal/frontendManufacturingTerminal/dist
+
+#deployToVM:
+#  variables:
+#    GIT_STRATEGY: clone
+#  image: ubuntu:latest
+#  stage: deployStaging
+#
+#  before_script:
+#    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#    - eval $(ssh-agent -s)
+#    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+#    - mkdir -p ~/.ssh
+#    - chmod 700 ~/.ssh
+#    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+#    - apt-get --allow-releaseinfo-change update && apt-get install curl rsync zip unzip -y
+#
+#  script:
+#    - ssh -p22 root@$VM_IP "sudo service wildfly stop"
+##    - ssh -p22 root@$VM_IP "sudo mysql -e 'DROP DATABASE IF EXISTS hicumes'"
+##    - ssh -p22 root@$VM_IP "sudo mysql -e 'CREATE DATABASE hicumes'"
+#
+#    - ssh -p22 root@$VM_IP "sudo rm -rf $VM_WEBAPPS_PATH/*"
+#    - ssh -p22 root@$VM_IP "sudo rm -rf $VM_STATICAPPS_PATH/*"
+#
+#    - rsync -rav -e ssh schemaMapper/backend/target/*.war root@$VM_IP:$VM_WEBAPPS_PATH
+#    - rsync -rav -e ssh manufacturingTerminal/backend/target/*.war root@$VM_IP:$VM_WEBAPPS_PATH
+#
+#    - ssh -p22 root@$VM_IP "sudo service wildfly start"
+#
+#    - rsync -rav -e ssh frame/dist/ root@$VM_IP:$VM_STATICAPPS_PATH
+#    - rsync -rav -e ssh schemaMapper/frontendDatabaseEditor/dist/ root@$VM_IP:$VM_STATICAPPS_PATH
+#    - rsync -rav -e ssh schemaMapper/frontendSchemaMapper/dist/ root@$VM_IP:$VM_STATICAPPS_PATH
+#    - rsync -rav -e ssh manufacturingTerminal/frontendManufacturingTerminal/dist/ root@$VM_IP:$VM_STATICAPPS_PATH

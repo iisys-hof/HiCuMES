@@ -1,0 +1,300 @@
+
+
+.mat-card {
+  padding: 12px;
+  min-height: 15vh;
+}
+
+::ng-deep table.dataTable tbody th, table.dataTable tbody td {
+  padding: 8px 5px !important;
+}
+
+::ng-deep .no-padding{
+  border-top-width: 0px !important;
+  padding: 0px !important;
+}
+
+::ng-deep .table-buttons{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+::ng-deep .table-filter{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 5px;
+}
+
+::ng-deep .table-footer-outer{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+::ng-deep .table-footer-inner {
+  display: flex;
+  width: auto;
+  height: fit-content;
+  padding: 15px;
+
+  * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.dataTable {
+  ::ng-deep .name-field {
+    min-width: 130px;
+    max-width: 150px;
+    white-space: normal;
+  }
+
+  ::ng-deep .type {
+    max-width: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ::ng-deep .amount {
+    max-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ::ng-deep .truncate {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ::ng-deep .truncate-small {
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ::ng-deep .truncate-ellipsis {
+    max-width: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ::ng-deep .status {
+    min-width: 40px;
+    max-width: 60px;
+  }
+
+  ::ng-deep .action-btns {
+    min-width: 110px;
+    max-width: 185px;
+    white-space: normal;
+  }
+}
+
+//Definition of layout via classes defined in layout.json file
+.order-overview{
+  ::ng-deep .order-overview-table td:first-child {
+    padding-left: 42px;
+    font-size: 99rem !important;
+  }
+  ::ng-deep .order-overview-table-inner {
+
+    .mat-table {
+      border-top: 1px solid rgba(0, 0, 0, 0.17);
+      //background: #F1F1F1 !important;
+
+      td {
+        border-bottom: none;
+      }
+
+      tr {
+        height: 46px;
+      }
+
+      tr.mat-header-row {
+        height: 42px !important;
+      }
+    }
+
+    td:first-child {
+      padding-left: 24px !important;
+    }
+
+    .mat-row:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+    .mat-row:nth-child(odd) {
+      background-color: #f8f8f8;
+    }
+
+    ng::ng-deep.Table_row {
+
+      mat-icon {
+        vertical-align: middle;
+        font-size: 24px;
+      }
+
+      span {
+        vertical-align: middle;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+    }
+
+
+    ::ng-deep.Table_row_SelectOrderTask {
+      //background-color: lighten(var(--spd-blue), 35%) !important;
+
+      mat-icon {
+        color: var(--spd-blue) !important;
+      }
+
+      td:first-child {
+        box-shadow: inset 10px 0 0px 0px var(--spd-blue);
+      }
+
+    }
+
+    ::ng-deep.Table_row_AddSuppliesTask {
+      //background-color: lighten(var(--spd-violett), 35%) !important;
+
+      mat-icon {
+        color: var(--spd-violett) !important;
+      }
+
+      td:first-child {
+        box-shadow: inset 10px 0 0px 0px var(--spd-violett);
+      }
+    }
+
+    ::ng-deep.Table_row_SetParameterTask {
+      //background-color: lighten(var(--spd-yellow), 40%) !important;
+
+      mat-icon {
+        color: var(--spd-yellow) !important;
+      }
+
+      td:first-child {
+        box-shadow: inset 10px 0 0px 0px var(--spd-yellow);
+
+      }
+    }
+
+    ::ng-deep.Table_row_ConfirmProductionTask {
+      //background-color: lighten(var(--spd-green), 40%) !important;
+
+      mat-icon {
+        color: var(--spd-green) !important;
+      }
+
+      td:first-child {
+        box-shadow: inset 10px 0 0px 0px var(--spd-green);
+      }
+    }
+
+    ::ng-deep.Table_row_CheckQualityTask {
+      //background-color: lighten(var(--spd-orange), 35%) !important;
+
+      mat-icon {
+        color: var(--spd-orange) !important;
+      }
+
+      td:first-child {
+        box-shadow: inset 10px 0 0px 0px var(--spd-orange);
+      }
+    }
+
+    ::ng-deep.Table_row_ReworkTask {
+      //background-color: lighten(var(--spd-red), 35%) !important;
+
+      mat-icon {
+        color: var(--spd-red) !important;
+      }
+
+      td:first-child {
+        box-shadow: inset 10px 0 0px 0px var(--spd-red);
+      }
+    }
+  }
+}
+
+
+::ng-deep div.dt-button-collection {
+  padding: 15px 15px 0 15px;
+}
+
+::ng-deep .dt-button.active {
+  background: var(--hc-blue-lighter-color) !important;
+}
+::ng-deep button.dt-button.active:focus:not(.disabled) {
+  background: var(--hc-blue-lighter-color) !important;
+}
+
+::ng-deep .dt-button:active:not(.disabled) {
+  background: var(--hc-blue-lighter-color) !important;
+}
+
+::ng-deep button.buttons-columnVisibility{
+  margin-bottom: 15px!important;
+}
+
+::ng-deep .dt-button {
+  -webkit-text-size-adjust: 100% !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+  display: inline-block !important;
+  vertical-align: baseline !important;
+  text-align: center !important;
+  margin-right: 5px !important;
+  min-width: 64px !important;
+  border-radius: 4px !important;
+  overflow: visible !important;
+  padding: 0 15px !important;
+  line-height: 34px !important;
+  color: var(--hc-blue-dark-color) !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 0 0 0 rgb(0 0 0 / 20%), 0 0 0 0 rgb(0 0 0 / 14%), 0 0 0 0 rgb(0 0 0 / 12%) !important;
+}
+
+::ng-deep table.dataTable tr.dt-hasChild td.dt-control:before {
+  font-family: "Material Icons";
+  content: "\e5cf";
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::ng-deep table.dataTable td.dt-control:before {
+  font-family: "Material Icons";
+  content: "\e5cc";
+  height: 0;
+  width: 0;
+  margin-top: 0;
+  display: flex;
+  color: rgba(0, 0, 0, 0.87);
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 0 0 0;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  line-height: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+::ng-deep .hide-button{
+  display: none;
+}

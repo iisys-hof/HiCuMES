@@ -1,0 +1,61 @@
+[
+  {
+    "key": "camundaSubProductionSteps",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        {
+          "name": "Arbeitsgang",
+          "id": "name"
+        },
+        {
+          "name": "Start-Termin",
+          "id": "subProductionStep.timeRecords[0].startDateTime"
+        },
+        {
+          "name": "End-Termin",
+          "id": "subProductionStep.timeRecords[0].endDateTime"
+        },
+        {
+          "name": "Bearbeitet",
+          "id": "subProductionStep.timeRecords[0].responseUser.userName"
+        },
+        {
+          "name": "Status",
+          "id": ""
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "name",
+          "key": "name"
+        },
+        {
+          "type": "simple",
+          "id": "subProductionStep.timeRecords[0].startDateTime",
+          "key": "subProductionStep.timeRecords[0].startDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "subProductionStep.timeRecords[0].endDateTime",
+          "key": "subProductionStep.timeRecords[0].endDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "subProductionStep.timeRecords[0].responseUser.userName",
+          "key": "subProductionStep.timeRecords[0].responseUser.userName"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BPMN Editor</title>
+
+  <link rel="stylesheet" href="styles/bpmn-js-embedded-comments/comments.css">
+  <link rel="stylesheet" href="styles/bpmn-js/diagram-js.css" />
+  <link rel="stylesheet" href="styles/bpmn-embedded-viewer/bpmn-embedded-viewer.css">
+  <link rel="stylesheet" href="styles/bpmn-js/bpmn-font/css/bpmn-embedded.css" />
+  <link rel="stylesheet" href="styles/app/app.css" />
+
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-shared.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-drd.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-decision-table.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-decision-table-controls.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-literal-expression.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-font/css/dmn.css">
+
+  <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="styles/app/hint.min.css"/>
+
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <meta charset="utf-8">
+
+</head>
+<body>
+  <div class="content with-diagram" id="js-drop-zone">
+
+
+    <div class="message intro ">
+      <div class="note">
+        <p class="note-head mdc-typography--headline6" >Start using BPMN</p>
+        <div class="note-inner mdc-typography--body1">
+
+          <p><a id="js-create-diagram" href><i class="fa fa-plus"></i> Create a NEW diagram</a></p>
+          <p><i class="fa fa-hand-grab-o"></i> Drop BPMN from your desktop</p>
+          <p><a id="js-open-file-dir" href><i class="fa fa-file"></i> Open BPMN from local file system</a></p>
+          <p><a id="js-bpmn-from-camunda" href><i class="fa fa-mixcloud"></i> Load BPMN from Camunda</a>.</p>
+          <p class="note-img"><img src="images/bpmn-js.gif" alt="Example by bpmn.io" style="width: 320px" /></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="message error">
+      <div class="note">
+        <p>Ooops, we could not display the BPMN 2.0 diagram.</p>
+
+        <div class="details">
+          <span>Import Error Details</span>
+          <pre></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="canvas" id="js-canvas"></div>
+    <div class="properties-panel-parent" id="js-properties-panel"></div>
+
+    <div id="camunda-bpmns" class="overlay-box" style="display:none;"></div>
+    <input id="file-dir-input" type="file" name="openFileDir" style="display:none;" accept=".bpmn,.BPMN" />
+    <form id="camunda-deploy-form" action="" enctype="multipart/form-data" method="POST" style="display:none;">
+    </form>
+    <div id="overlay" style="display:none;"></div>
+
+    <div id="overlay-box" class="overlay-box" style="display:none;">
+      <div id="overlay-box-close" class="close"><span class="fa fa-times-circle"></span></div>
+      <div id="overlay-box-background">
+        <div id="overlay-box-heading"></div>
+        <div id="overlay-box-content"></div>
+      </div>
+    </div>
+
+    <div id="viewer-overlay-anchor"></div>
+
+  </div>
+
+  <div class="buttons io-import-export" id="bottom-buttons" style="visibility:hidden">
+
+
+
+    <ul class="buttons">
+      <li>
+
+        <button  id="comment-mode-btn" class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <span class="fa fa-comment"></span>
+          <span class="mdc-button__label"> Comment Mode On/Off</span>
+        </button>
+      </li>
+      <li>
+        <button  id="js-create-diagram-btn" class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <span class="fa fa-plus"></span>
+          <span class="mdc-button__label"> New Diagram</span>
+        </button>
+      </li>
+      <li class="vr" style="margin-left: 2px"></li>
+      <li>
+        <button disabled onclick="document.getElementById('js-download-diagram-hidden').click()"  id="js-download-diagram" class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">crop_free</i>
+          <span class="mdc-button__label"> Save BPMN</span>
+        </button>
+      </li>
+      <li>
+        <button disabled onclick="document.getElementById('js-download-svg-hidden').click()" id="js-download-svg"  class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">photo</i>
+          <span class="mdc-button__label"> Save SVG</span>
+        </button>
+      </li>
+      <li>
+        <button  id="js-bpmn-to-camunda-btn"  class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">cloud_upload</i>
+          <span class="mdc-button__label"> Upload to Camunda</span>
+        </button>
+      </li>
+      <li>
+        <button id="js-bpmn-from-camunda-btn"  class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">cloud_queue</i>
+          <span class="mdc-button__label"> Load from Camunda</span>
+        </button>
+      </li>
+      <li>
+        <button id="js-open-file-dir-btn"  class="mdc-button mdc-button--outlined">
+          <span class="mdc-button__ripple"></span>
+          <i class="material-icons mdc-button__icon" aria-hidden="true">insert_drive_file</i>
+          <span class="mdc-button__label"> Load from File</span>
+        </button>
+      </li>
+
+    </ul>
+
+  </div>
+  <a id="js-download-diagram-hidden" style="display: none"></a>
+  <a id="js-download-svg-hidden" style="display: none"></a>
+  <script src="config.js"></script>
+  <script src="index.js"></script>
+</html>

@@ -1,0 +1,24 @@
+<mat-card class="mat-elevation-z9">
+  <mat-card-header>
+    <mat-card-title>Auswahl der Entität</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-nav-list [style.height]="entitymasterHeight">
+      <ng-container *ngFor="let class of fieldExtension?.classes" >
+        <a>
+          <mat-list-item
+            (click)="onClick(class)"
+
+          >
+
+            {{class.name}}
+          </mat-list-item>
+        </a>
+
+      </ng-container>
+    </mat-nav-list>
+  </mat-card-content>
+
+
+
+</mat-card>

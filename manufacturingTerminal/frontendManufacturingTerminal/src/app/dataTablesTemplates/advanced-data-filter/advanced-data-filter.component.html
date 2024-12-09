@@ -1,0 +1,24 @@
+<mat-accordion class="filter-accordion">
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filter
+      </mat-panel-title>
+      <mat-panel-description>
+        Aufträge filtern
+        <mat-icon>filter_list</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form (change)="updateModel($event)" [formGroup]="filterForm">
+      <mat-form-field appearance="fill" *ngFor="let filter of getFormFields(); index as indexOfElement">
+        <mat-label>{{getFilterLabel(filter)}}</mat-label><!--fields[0].props?.columns[indexOfElement]?.name-->
+        <mat-select multiple (selectionChange)="updateModel($event)" [id]="getFilterKey(filter)" [formControlName]="getFilterKey(filter)">
+          <mat-option *ngFor="let value of groupBy(model, filter) | sort" [value]="value">{{value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
+
+

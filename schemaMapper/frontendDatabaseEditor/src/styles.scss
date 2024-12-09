@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+@import "google-fonts.css";
+
+$md-hicumes: (
+  50 : #e1ebf3,
+  100 : #b3cde1,
+  200 : #80abcd,
+  300 : #4d89b9,
+  400 : #2770aa,
+  500 : #01579b,
+  600 : #014f93,
+  700 : #014689,
+  800 : #013c7f,
+  900 : #002c6d,
+  A100 : #9cbbff,
+  A200 : #6998ff,
+  A400 : #3674ff,
+  A700 : #1d63ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+
+@import '@angular/material/theming';
+@include mat-core();
+
+$my-app-primary:  mat-palette($md-hicumes);
+$my-app-accent:   mat-palette($md-hicumes);
+$my-app-warn:     mat-palette($mat-red);
+$my-app-theme:    mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+.hc-snackbar button span {
+  color: #80abcd !important;
+}
+
+
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #fffefe;
+  max-height: calc(100% - 60px);
+}
+
+
+
+//CSS ntries for component things that are not working in component.scss
+app-entity-detail > mat-card > mat-card-content > mat-card > mat-card-content > form > formly-form > formly-field > formly-repeat-section > div.row {
+  margin-top: -5px;
+  label {
+    display: none;
+  }
+  &:first-child {
+    margin-top: 20px;
+
+    label {
+      display: inline-block;
+    }
+
+    button {
+      margin-top: 27px;
+    }
+  }
+}
+.cdk-overlay-backdrop {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+code {
+  color: #4d89b9 !important;
+}

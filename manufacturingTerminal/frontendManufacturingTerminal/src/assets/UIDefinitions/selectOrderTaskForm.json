@@ -1,0 +1,40 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+        "key": "startDateTime",
+        "props": {
+          "label": "Start-Zeit",
+          "addonLeft": {
+            "icon": "history"
+          }
+        }
+    },
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+        "key": "endDateTime",
+        "props": {
+          "label": "End-Zeit",
+          "addonLeft": {
+            "icon": "update"
+          }
+        }
+      },
+      {
+        "className": "col-6",
+        "type": "input",
+        "key": "note",
+        "props": {
+          "label": "Bemerkungen",
+          "addonLeft": {
+            "icon": "edit_note"
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,172 @@
+::ng-deep .mat-tab-header {
+  top: 0 !important;
+  z-index: 1000!important;
+  position: sticky!important;
+  position: -webkit-sticky !important; /* macOS/iOS Safari */
+  background: white;
+}
+
+table {
+  width: 100%;
+}
+
+mat-card {
+  margin-bottom: 16px;
+  padding-bottom: 24px;
+}
+
+.order-detail-header-table-button {
+  width: 134px;
+}
+
+.order-detail-header-action-buttons
+{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.order-detail-header-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.order-detail-header-card {
+  ::ng-deep table {
+    tr.mat-header-row {
+      height: 20px;
+    }
+
+    tr.mat-row {
+      height: 20px;
+
+      td {
+        img {
+          padding-top: 4px;
+        }
+      }
+    }
+
+    ::ng-deep tr:last-child td {
+      border-bottom: none !important;
+      font-weight: 500;
+    }
+  }
+  ::ng-deep .order-detail-header-table-1 {
+    margin-top: -6px !important;
+    margin-bottom: 42px !important;
+    display: inline-table !important;
+    ::ng-deep td {
+      border: none !important;
+    }
+  }
+  ::ng-deep .detailBtnRight{
+    //width: calc(100% - 150px) !important;
+  }
+  ::ng-deep .big-letter {
+    font-size: 32px;
+  }
+  .order-detail-header-table-2 {
+    ::ng-deep tr:last-child td {
+      vertical-align: top;
+
+      &:first-child {
+        font-size: 32px;
+        padding-top: 7px
+      }
+    }
+  }
+}
+
+
+.order-detail-quality-card {
+  mat-card-header {
+    margin-bottom: 12px;
+
+    mat-card-title {
+      margin-bottom: 0px;
+
+      h4 {
+        margin-bottom: 0px !important;
+        font-weight: 500;
+      }
+    }
+  }
+
+  table {
+    margin-bottom: 12px;
+
+    tr.mat-header-row {
+      height: 20px;
+    }
+
+    tr.mat-row {
+      height: 20px;
+    }
+
+    ::ng-deep tr:last-child td {
+      border-bottom: none !important;
+    }
+  }
+
+  .order-detail-quality-table {
+    tr.mat-header-row {
+      height: 20px;
+    }
+
+    tr.mat-row {
+      height: 20px;
+    }
+  }
+
+  .order-detail-quality-table-1 {
+    margin-bottom: 24px;
+  }
+}
+
+
+.order-detail-auxiliary-materials-card {
+  mat-card-header {
+    margin-bottom: 12px;
+
+    mat-card-title {
+      margin-bottom: 0px;
+
+      h4 {
+        margin-bottom: 0px !important;
+        font-weight: 500;
+      }
+    }
+  }
+
+  table {
+    margin-bottom: 12px;
+
+    tr.mat-header-row {
+      height: 32px;
+    }
+
+    tr.mat-row {
+      height: 32px;
+    }
+
+    ::ng-deep tr:last-child td {
+      border-bottom: none !important;
+    }
+  }
+
+  .order-detail-quality-table {
+    tr.mat-header-row {
+      height: 20px;
+    }
+
+    tr.mat-row {
+      height: 20px;
+    }
+  }
+
+  .order-detail-quality-table-1 {
+    margin-bottom: 24px;
+  }
+}

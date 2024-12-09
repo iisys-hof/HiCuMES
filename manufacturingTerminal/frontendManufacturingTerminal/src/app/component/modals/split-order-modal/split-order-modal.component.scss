@@ -1,0 +1,17 @@
+::ng-deep .mat-horizontal-stepper-content {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-vertical-content {
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .stepper-buttons {
+  margin-top: 10px;
+  button
+  {
+    margin-right: 10px;
+  }
+}

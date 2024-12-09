@@ -1,0 +1,130 @@
+@import '~@angular/material/theming';
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+:root {
+  --mdc-theme-primary: #01579b;
+  --mdc-theme-secondary: #9dbdd7;
+  --avatar-size: 5rem;
+}
+
+.mat-toolbar {
+  background-color: var(--navbar);
+  color: white;
+}
+
+::ng-deep mat-list-option {
+  color: #333 !important;
+}
+
+::ng-deep
+.mat-menu-content:not(:empty) {
+  box-shadow: 1px 1px 25px 0 rgba(178, 207, 252, 0.6) inset !important;
+
+}
+
+::ng-deep .hicumes-frame {
+
+  .mat-option.mat-selected {
+    background-color: #EAF6FE !important;
+    color: var(--hc-blue-dark-color) !important;
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-form-field-type-mat-native-select .mat-form-field-infix::after {
+    border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+    border-top: 10px solid !important;
+    color: white !important;
+    top: 23% !important;
+  }
+
+  .toolbar-btn {
+    padding-left: 19px;
+    padding-right: 19px;
+    height: 100%;
+    border-radius: 0px;
+    background: linear-gradient(333deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0) 79%);
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: 16px;
+    font-weight: normal;
+
+    .mat-select-arrow {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid;
+      margin: 0 4px;
+    }
+  }
+
+  .toolbar-label {
+    padding-left: 19px;
+    padding-right: 19px;
+    height: 100%;
+    border-radius: 0px;
+    background: linear-gradient(333deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0) 79%);
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: 16px;
+    font-weight: normal;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+    .mat-select-arrow {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid;
+      margin: 0 4px;
+    }
+
+    .toolbar-desc
+    {
+      font-size: 12px;
+      padding: 0px;
+      margin: 0px;
+      align-content: center;
+      height: 20%;
+    }
+
+    .toolbar-value
+    {
+      height: 59%;
+      align-content: center;
+    }
+  }
+
+  .mat-form-field-flex {
+    background: none !important;
+  }
+
+  .mat-toolbar-row {
+    padding-right: 0px !important;
+  }
+
+  .toolbar-selection-info, .toolbar-selection {
+    font-size: 16px;
+
+    input {
+      font-size: 16px;
+    }
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: 0.95em .75em 0 .75em;
+  }
+
+}

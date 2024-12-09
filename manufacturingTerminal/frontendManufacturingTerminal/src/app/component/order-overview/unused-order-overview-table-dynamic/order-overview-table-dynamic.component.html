@@ -1,0 +1,56 @@
+<!--this.model.camundaMachineOccupations
+<ng-container matColumnDef="toInputMask">
+  <th mat-header-cell *matHeaderCellDef>Status</th>
+  <td mat-cell *matCellDef="let element">
+    <button mat-stroked-button color="primary" (click)="toInputMask(element)">ToFormFields</button>
+  </td>
+</ng-container>
+-->
+<mat-card class="mat-elevation-z8 order-overview">
+  <mat-card-header>
+    <mat-card-title>
+      Laufende Aufträge
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- <form [formGroup]="tableForm" class="order-overview">
+      <formly-form [fields]="tableLayout" [form]="tableForm" [model]="model"></formly-form>
+    </form>-->
+    <app-order-overview-data-table [machineOccupationsFilterByMachineType]="machineOccupationsFilterByMachineType" [machines]="machines"></app-order-overview-data-table>
+  </mat-card-content>
+
+  <!--<mat-card-content>
+    &lt;!&ndash; <form [formGroup]="tableForm" class="order-overview">
+      <formly-form [fields]="tableLayout" [form]="tableForm" [model]="model"></formly-form>
+    </form>&ndash;&gt;
+    <app-order-overview-data-table [machineOccupationsFilterByMachine]="machineOccupationsFilterByRunning"></app-order-overview-data-table>
+  </mat-card-content>
+
+  <mat-card-header>
+    <mat-card-title>
+      Offene Aufträge
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+   &lt;!&ndash; <form (ngSubmit)="onSubmit(model)" [formGroup]="tableForm" class="order-overview">
+      <formly-form [fields]="tableLayout" [form]="tableForm" [model]="model"></formly-form>
+    </form>&ndash;&gt;
+    <app-order-overview-data-table [machineOccupationsFilterByMachine]="machineOccupationsFilterByReady"></app-order-overview-data-table>
+  </mat-card-content>
+
+  <mat-card-header>
+    <mat-card-title>
+      Abgeschlossene Aufträge
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+   &lt;!&ndash; <form (ngSubmit)="onSubmit(model)" [formGroup]="tableForm" class="order-overview">
+      <formly-form [fields]="tableLayout" [form]="tableForm" [model]="model"></formly-form>
+    </form>&ndash;&gt;
+    <app-order-overview-data-table [machineOccupationsFilterByMachine]="machineOccupationsFilterByFinished"></app-order-overview-data-table>
+  </mat-card-content>
+-->
+</mat-card>

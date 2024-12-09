@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Eintrag hinzufügen</h1>
+<div class="dialog-container" mat-dialog-content>
+
+
+  <div class="container">
+    <ng-container *ngFor="let item of data.elements">
+      <div *ngIf="data.elementNames[item] !== undefined"
+           style="text-align: right; font-weight: 600;  white-space: nowrap;">{{data.elementNames[item]}}:
+      </div>
+      <div *ngIf="data.elementNames[item] !== undefined"> {{item.value }}</div>
+    </ng-container>
+
+  </div>
+
+
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Abbrechen</button>
+  <button [mat-dialog-close]="data" cdkFocusInitial mat-button>Ok</button>
+</div>

@@ -1,0 +1,41 @@
+:host {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+
+
+  button {
+    //margin: 20px;
+    display: block;
+  }
+}
+.mdc-button__label {
+  font-size: 14px;
+  font-stretch: 100%;
+  font-style: normal;
+  font-variant-caps: normal;
+  font-variant-east-asian: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-weight: 500;
+  height: 16px;
+  letter-spacing: 1.25px;
+  line-height: normal;
+  text-shadow: none;
+  text-transform: uppercase;
+}
+.mat-fab-extended {
+  width: auto;
+  border-radius: 57px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  background-color: #01579bad;
+}
+div > button {
+  float: right;
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,92 @@
+<div mat-dialog-content  style="width: 100%; height: 100%">
+  <mat-vertical-stepper (animationDone)="setFocus()" (selectionChange)="setTargetId($event)" #stepper linear>
+    <mat-step>
+      <ng-template matStepLabel>
+        <div>
+          <span>Personalnummer eingeben/einscannen</span>
+          <ng-container *ngIf="user">
+            <h5 style="margin: 0">Benutzer: {{user.personalNumber}} - {{user.shortName}}</h5>
+          </ng-container>
+        </div>
+      </ng-template>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>barcode_scanner</mat-icon>
+        <mat-label>Personalnummer</mat-label>
+        <input id="input0" matInput (keyup.enter)="onEnterPersonalNumber(stepper)" (ngModelChange)="resetInputError()" [(ngModel)]="personalNumberInput">
+      </mat-form-field>
+      <div *ngIf="userError">
+        Fehler: Benutzer {{personalNumberInput}} nicht gefunden! Bitte Eingaben überprüfen.
+      </div>
+      <div class="stepper-buttons">
+        <button color="primary" mat-raised-button (click)="onEnterPersonalNumber(stepper)" [disabled]="userError">Weiter</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>
+        <div>
+          <span>Arbeitsgangnummer eingeben/einscannen</span>
+          <ng-container *ngIf="productionStepInput">
+            <h5 style="margin: 0">AG: {{productionStepInput}}</h5>
+          </ng-container>
+        </div>
+      </ng-template>
+      <formly-form *ngIf="openBookingEntriesUser" [fields]="tableLayoutOpenAll" [model]="modelOpenAll" [form]="formOpen"></formly-form>
+      <mat-form-field appearance="outline">
+        <mat-icon matPrefix>barcode_scanner</mat-icon>
+        <mat-label>Arbeitsgangnummer</mat-label>
+        <input id="input1" matInput (keyup.enter)="onEnterProductionStepNumber(stepper)" (ngModelChange)="resetInputError()" [(ngModel)]="productionStepInput">
+      </mat-form-field>
+
+      <div *ngIf="agError">
+        Fehler: Arbeitsgangnummer zu kurz/lang! Die Nummer sollte 9 Zeichen haben. Bitte Eingaben überprüfen.
+      </div>
+      <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious (click)="resetProductionStep(stepper)">Zurück</button>
+        <button color="primary" mat-raised-button (click)="onEnterProductionStepNumber(stepper)" [disabled]="agError" style="margin-left: 10px;">Weiter</button>
+      </div>
+    </mat-step>
+    <mat-step >
+      <ng-template matStepLabel>Letzte Buchungen für AG {{productionStepInput}}</ng-template>
+      <ng-container *ngIf="!isloading else progressSpinner">
+      <formly-form *ngIf="tableModel && tableModel?.bookingEntries?.length > 0; else noEntries" [fields]="tableLayout" [model]="tableModel"></formly-form>
+        <ng-template #noEntries>
+          <div>
+            <span>Es sind noch keine Buchungen für AG {{productionStepInput}} vorhanden!</span>
+          </div>
+        </ng-template>
+        <ng-container *ngIf="formModel && openModel">
+        <formly-form  [fields]="tableLayoutOpen" [model]="openModel" [form]="formOpen"></formly-form>
+        </ng-container>
+        <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious (click)="resetProductionStep(stepper)">Zurück</button>
+        <button color="primary" id="input2" mat-raised-button (click)="createNewBookingEntry(stepper)" (keyup.enter)="nextStep(stepper)"  style="margin-left: 10px;">
+          <ng-container *ngIf="!formModel" >Neue Buchung</ng-container>
+          <ng-container *ngIf="formModel" >Buchung abschließen</ng-container>
+        </button>
+        </div>
+      </ng-container>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Neue Buchung anlegen</ng-template>
+      <formly-form *ngIf="formModel" [fields]="formLayout" [model]="formModel" [form]="form"></formly-form>
+      <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious>Zurück</button>
+        <button id="input3" color="primary" mat-raised-button mat-dialog-close="" (click)="sendEntry(stepper)" style="margin-left: 10px;">Bestätigen</button>
+      </div>
+    </mat-step>
+    <mat-step>
+    <ng-template matStepLabel>Übersicht</ng-template>
+    <formly-form *ngIf="tableModel"  [fields]="tableLayout" [model]="tableModel"></formly-form>
+    <div *ngIf="secondFormGroup.errors">
+      Fehler: Maschine nicht gefunden!
+    </div>
+    <div class="stepper-buttons">
+      <button id="input4" color="primary" mat-raised-button (click)="reset(stepper)">Fertig</button>
+    </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>
+
+<ng-template #progressSpinner>
+  <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+</ng-template>

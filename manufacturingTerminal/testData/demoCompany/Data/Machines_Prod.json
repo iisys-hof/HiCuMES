@@ -1,0 +1,119 @@
+[
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Spritzgießen A",
+        "externalId": "10",
+        "machineType": {
+          "externalId": "001"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Spritzgießen B",
+        "externalId": "11",
+        "machineType": {
+          "externalId": "001"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Wickeln",
+        "externalId": "12",
+        "machineType": {
+          "externalId": "002"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Tiefziehen",
+        "externalId": "9",
+        "machineType": {
+          "externalId": "003"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Handmontage",
+        "externalId": "14",
+        "machineType": {
+          "externalId": "004"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Endmontage",
+        "externalId": "15",
+        "machineType": {
+          "externalId": "005"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "QS Prüfung",
+        "externalId": "20",
+        "machineType": {
+          "externalId": "006"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Verpackung",
+        "externalId": "18",
+        "machineType": {
+          "externalId": "007"
+        }
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Machine",
+      "classContent": {
+        "name": "Versand",
+        "externalId": "19",
+        "machineType": {
+          "externalId": "008"
+        }
+      }
+    }
+  }
+]

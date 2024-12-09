@@ -1,0 +1,12 @@
+[
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_Department",
+      "classContent": {
+        "name": "Institut für Informationssysteme der Hochschule Hof - iisys",
+        "externalId": "2"
+      }
+    }
+  }
+]

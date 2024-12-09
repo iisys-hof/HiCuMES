@@ -1,0 +1,88 @@
+<div mat-dialog-content style="max-height: initial;">
+  <mat-stepper orientation="horizontal">
+    <mat-step>
+      <ng-template matStepLabel>Auftrag auswählen</ng-template>
+      <ng-template matStepContent>
+
+        <div class="card">
+          <p  class="card-header" style="margin: 0px">Geben sie die Auftragsnummer ein:</p>
+          <div class="card-body">
+            <mat-form-field appearance="outline" cdkFocusInitial>
+              <mat-icon matPrefix>barcode_scanner</mat-icon>
+              <mat-label >Auftragsnummer</mat-label>
+              <input id="input0" matInput appFocusOnShow (keyup.enter)="onEnterProductionOrder()" [(ngModel)]="productionOrderNr">
+            </mat-form-field>
+          </div>
+          <ng-container *ngIf="waitForOccupations">
+            <mat-spinner></mat-spinner>
+          </ng-container>
+        </div>
+        <div class="stepper-buttons">
+          <button color="primary" mat-raised-button matStepperNext [disabled]="this.machineOccupations == undefined" >Weiter</button>
+        </div>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Auftrag auswählen</ng-template>
+      <ng-template matStepContent>
+
+        <div class="card">
+          <p  class="card-header" style="margin: 0px">Wählen Sie den Auftrag aus, den Sie ändern möchten:</p>
+          <div class="card-body">
+            <span class="example-spacer"></span>
+            <formly-form [fields]="tableLayout" [form]="tableForm" [model]="filteredModel"></formly-form>
+          </div>
+        </div>
+        <div class="stepper-buttons">
+          <button color="primary" mat-raised-button matStepperNext [disabled]="!getSelected()" (click)="nextStep(this.getSelected())">Weiter</button>
+        </div>
+      </ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondStepperFormGroup">
+      <form [formGroup]="secondStepperFormGroup">
+        <ng-template matStepLabel>Status wählen</ng-template>
+        <ng-template matStepContent>
+          <ng-container *ngFor="let selectedMo of this.getSelected()">
+            <p>BA-Nr.: {{selectedMo?.machineOccupation?.productionOrder?.name}}-{{selectedMo?.machineOccupation?.name}}, Artikel: {{selectedMo?.machineOccupation?.productionOrder?.product?.name}}, Status: {{selectedMo?.oldStatus}}</p>
+            <!-- TODO Get this working with formly table-->
+            <!--<formly-form [fields]="detailLayout" [form]="detailForm" [model]="getModelClone(selected)"></formly-form>-->
+
+            <mat-form-field>
+              <mat-label>Neuer Status</mat-label>
+              <mat-select [(value)]="selectedMo.machineOccupation.status">
+                <mat-option *ngFor="let status of selectedMo.availableStates" [value]="status.value">
+                  {{status.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <ng-container *ngIf="selectedMo.oldStatus == 'RUNNING' || selectedMo.oldStatus == 'PAUSED'">
+              <br>
+              <h3>ACHTUNG! Laufende Prozesse werden auch in Camunda abgebrochen und der bisherige Fertigungsfortschritt geht verloren!</h3>
+            </ng-container>
+            <hr>
+          </ng-container>
+
+          <div class="stepper-buttons">
+            <button mat-stroked-button matStepperPrevious>Zurück</button>
+            <button color="primary" mat-raised-button matStepperNext >Weiter</button>
+          </div>
+        </ng-template>
+      </form>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Bestätigung</ng-template>
+      <p>Soll der Auftrag wie folgt geändert werden?</p>
+      <div>
+        <mat-list>
+          <mat-list-item *ngFor="let selectedMo of this.getSelected()">{{ selectedMo?.machineOccupation?.productionOrder?.name}}-{{selectedMo?.machineOccupation?.name}} {{selectedMo["oldStatus"]}} -> {{selectedMo?.machineOccupation?.status}}</mat-list-item>
+        </mat-list>
+      </div>
+      <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious>Zurück</button>
+        <button color="primary" mat-raised-button mat-dialog-close="" (click)="submit()">Abschicken</button>
+      </div>
+    </mat-step>
+
+  </mat-stepper>
+</div>

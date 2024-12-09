@@ -1,0 +1,145 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+        "key": "startDateTime",
+        "props": {
+          "label": "Start-Zeit",
+          "addonLeft": {
+            "icon": "history"
+          }
+        }
+      },
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+        "key": "endDateTime",
+        "props": {
+          "label": "End-Zeit",
+          "addonLeft": {
+            "icon": "update"
+          }
+        }
+      },
+      {
+        "className": "col-6",
+        "type": "input",
+        "key": "note",
+        "props": {
+          "label": "Bemerkungen",
+          "addonLeft": {
+            "icon": "edit_note"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "acceptedValue",
+        "props": {
+          "label": "Gut-Menge",
+          "type": "number",
+          "addonLeft": {
+            "icon": "check"
+          }
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "select",
+        "key": "acceptedMeasurement",
+        "props": {
+          "label": "Einheit",
+          "required": "true",
+          "options": [
+            {
+              "value": "stk",
+              "label": "Stück"
+            },
+            {
+              "value": "kg",
+              "label": "Kilogramm"
+            },
+            {
+              "value": "m",
+              "label": "Meter"
+            },
+            {
+              "value": "qm",
+              "label": "Quadratmeter"
+            }
+          ]
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "rejectedValue",
+        "props": {
+          "label": "Ausschuss-Menge",
+          "type": "number",
+          "addonLeft": {
+            "icon": "close"
+          }
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "select",
+        "key": "rejectedMeasurement",
+        "props": {
+          "label": "Einheit",
+          "required": "true",
+          "options": [
+            {
+              "value": "stk",
+              "label": "Stück"
+            },
+            {
+              "value": "kg",
+              "label": "Kilogramm"
+            },
+            {
+              "value": "m",
+              "label": "Meter"
+            },
+            {
+              "value": "qm",
+              "label": "Quadratmeter"
+            }
+          ]
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "valueNOKReason",
+        "props": {
+          "label": "Ausschuss-Grund",
+          "addonLeft": {
+            "icon": "rule"
+          }
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "missedTimeReason",
+        "props": {
+          "label": "Fehlzeit-Grund",
+          "addonLeft": {
+            "icon": "running_with_errors"
+          }
+        }
+      }
+    ]
+  }
+]

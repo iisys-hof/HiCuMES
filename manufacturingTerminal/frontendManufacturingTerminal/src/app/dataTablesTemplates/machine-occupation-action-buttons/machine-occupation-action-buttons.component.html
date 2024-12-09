@@ -1,0 +1,43 @@
+<div class="action-btns">
+  <button *ngIf="this.data?.machineOccupation?.machine !== null && this.data?.machineOccupation?.machine !== undefined && this.data?.machineOccupation?.status==='READY_TO_START'" (touchstart)="handleTouchStart($event)" (touchend)="stopTimer()" (touchcancel)="stopTimer()" (mousedown)="handleMouseDown($event)" (mouseup)="stopTimer()" (mouseleave)="stopTimer()" class="start_button" color="primary" [disabled]="disabledStart" mat-stroked-button>
+    <mat-icon>start</mat-icon>
+    START
+    <mat-progress-bar mode="indeterminate" *ngIf="disabledStart"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" color="accent"  *ngIf="!disabledStart" [value]="progressValue"></mat-progress-bar>
+  </button>
+
+  <button *ngIf="(this.data?.machineOccupation?.machine === null || this.data?.machineOccupation?.machine === undefined) && this.data?.machineOccupation?.status==='READY_TO_START'" mat-button [matMenuTriggerFor]="menu"  class="start_button" color="secundary" [disabled]="disabledStart" mat-stroked-button><mat-icon>start</mat-icon>
+    START</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let machine of availableMachines" (click)="startMachineOccupationWithMachineSelectedEvent(this.data, machine)">{{machine.externalId}} - {{machine.name}}</button>
+  </mat-menu>
+
+<!--  <button mat-button [matMenuTriggerFor]="menu1"  class="state_button" color="secundary" mat-stroked-button><mat-icon>start</mat-icon>-->
+<!--    asdf</button>-->
+<!--  <mat-menu #menu1="matMenu">-->
+<!--    <button mat-menu-item *ngFor="let setting of this.data?.machineOccupation.toolSettings" (click)="test(this.data, setting)">{{setting.externalId}}</button>-->
+<!--  </mat-menu>-->
+<!--  <button *ngIf="this.data?.machineOccupation?.status==='RUNNING'" class="state_button" color="primary" disabled mat-stroked-button>-->
+<!--    LÄUFT-->
+<!--  </button>-->
+  <button *ngIf="this.data?.machineOccupation?.status==='FINISHED'" class="state_button" color="primary" disabled mat-stroked-button>
+    BEENDET
+  </button>
+
+  <button (click)="toInputMask(this.data)" *ngIf="this.data?.machineOccupation?.status==='RUNNING' || this.data?.machineOccupation?.status==='PAUSED'" class="action-icon-btn" color="accent" [disabled]="disableResponseButtonsSet?.has(this.data?.currentSubProductionStep?.taskId)" mat-stroked-button>
+
+    <!--<mat-icon>open_in_new</mat-icon>-->
+
+    <mat-icon *ngIf="this.data?.camundaSubProductionSteps?.slice(-1)[0]?.formKey" class="task-icon" [style.color]="getColorForTaskFormKey(this.data?.camundaSubProductionSteps?.slice(-1)[0]?.formKey)">{{getIconForTaskFormKey(this.data?.camundaSubProductionSteps?.slice(-1)[0]?.formKey)}}</mat-icon>
+    <mat-icon *ngIf="!this.data?.camundaSubProductionSteps?.slice(-1)[0]?.formKey" class="task-icon">open_in_new</mat-icon>
+    <span>WEITER</span>
+
+    <!--<span *ngIf="!this.data?.camundaSubProductionSteps?.slice(-1)[0]?.name">RÜCKMELDUNG</span>
+    <span>{{this.data?.camundaSubProductionSteps?.slice(-1)[0]?.name}}</span>-->
+
+    <mat-progress-bar mode="indeterminate" *ngIf="disableResponseButtonsSet?.has(this.data?.currentSubProductionStep?.taskId)"></mat-progress-bar>
+  </button>
+<!--  <button *ngIf="this.data?.machineOccupation?.status==='RUNNING'" (click)="pauseMachineOccupationEvent(this.data)" class="pause_button" color="primary" mat-stroked-button>-->
+<!--    <mat-icon>pause</mat-icon>-->
+<!--  </button>-->
+</div>

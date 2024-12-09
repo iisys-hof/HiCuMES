@@ -1,0 +1,24 @@
+<div style="height: 100%; display: flex; flex-direction: column;">
+<h1 mat-dialog-title>Bemerkung bearbeiten</h1>
+<div mat-dialog-content style="height: 100%">
+  <div class="card" style="margin: 5px;">
+    <p class="card-header">Bitte fügen Sie eine Bemerkung hinzu:</p>
+    <div class="card-body">
+      <mat-form-field>
+        <mat-label>Bemerkung hinzufügen</mat-label>
+        <textarea matInput style="height: 30vh" [(ngModel)]="noteText"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button color="primary" mat-raised-button (click)="onSubmit()">Speichern</button>
+  <button color="secondary" mat-stroked-button (click)="onClose()">Abbrechen</button>
+</div>
+</div>
+<ng-template #progressSpinner>
+  <div class="spinner" style="position: relative; height: 65vh;">
+    <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+  </div>
+</ng-template>

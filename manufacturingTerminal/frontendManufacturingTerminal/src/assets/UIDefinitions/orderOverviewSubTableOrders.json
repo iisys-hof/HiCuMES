@@ -1,0 +1,69 @@
+[
+  {
+"key": "subMachineOccupations",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "Unterauftrag BA-Nr.",
+          "id": "productionOrder.name"
+        },
+        {
+          "name": "Artikel",
+          "id": "productionOrder.product.name"
+        },
+        {
+          "name": "Menge",
+          "id": "productionOrder.measurement.amount"
+        },
+        {
+          "name": "B-Menge",
+          "id": "productionOrder.orderAmount"
+        },
+        { "name": "Starttermin", "id": "plannedStartDateTime"},
+        { "name": "Endtermin", "id": "plannedEndDateTime"}
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "productionOrder.name",
+"key": "productionOrder.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.product.name",
+"key": "productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.measurement.amount",
+"key": "productionOrder.measurement.amount"
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.orderAmount",
+"key": "productionOrder.orderAmount"
+        },
+        {
+          "type": "simple",
+          "id": "plannedStartDateTime",
+"key": "plannedStartDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "plannedEndDateTime",
+"key": "plannedEndDateTime",
+          "props": {
+            "type": "date"
+          }
+        }
+      ]
+    }
+  }
+]

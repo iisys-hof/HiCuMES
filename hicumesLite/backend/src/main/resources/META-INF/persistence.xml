@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="HicumesLiteMySQLDatasource" transaction-type="JTA">
+
+<!--                <non-jta-data-source>java:/HicumesMFTMySQLDatasource</non-jta-data-source>-->
+
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:/HicumesLiteMySQLDatasource</jta-data-source>
+        <!-- <jar-file>hicumes-entities.jar</jar-file>-->
+
+         <class>de.iisys.sysint.hicumes.hicumeslite.entities.BookingEntry</class>
+         <class>de.iisys.sysint.hicumes.hicumeslite.entities.User</class>
+        <!-- <exclude-unlisted-classes>false</exclude-unlisted-classes>-->
+
+         <properties>
+             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
+ <!--            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/hicumes?serverTimezone=UTC"/>
+             <property name="hibernate.connection.username" value="hicumes"/>
+             <property name="hibernate.connection.password" value="pwd"/> -->
+            <property name="hibernate.archive.autodetection" value="class"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+             <property name="hibernate.generate_statistics" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.connection.pool_size" value="100"/>
+            <property name="hibernate.cache.use_query_cache" value="true"/>
+             <property name="hibernate.cache.use_second_level_cache" value="true"/>
+             <property name="hibernate.cache.region.factory_class" value="jcache"/>
+             <property name="hibernate.javax.cache.provider" value="org.ehcache.jsr107.EhcacheCachingProvider"/>
+             <!-- placed on the classpath (note: "classpath:ehcache.xml" does not work! -->
+        </properties>
+    </persistence-unit>
+</persistence>
+

@@ -1,0 +1,53 @@
+<mat-card class="mat-elevation-z6 order-detail-sub-productionsteps-card">
+  <mat-card-header>
+    <mat-card-title> Arbeitsgänge</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table [dataSource]="dataSourceSubProductionSteps" mat-table>
+      <mat-text-column headerText="MGRF" name="extMGRF"></mat-text-column>
+      <mat-text-column headerText="Arbeitsgang" name="extArbeitsgang"></mat-text-column>
+      <mat-text-column headerText="Beschreibung" name="extBeschreibung"></mat-text-column>
+
+      <ng-container matColumnDef="extStartTermin">
+        <th *matHeaderCellDef mat-header-cell> Start-Termin</th>
+        <td *matCellDef="let element" mat-cell> {{element.extStartTermin}} </td>
+      </ng-container>
+      <ng-container matColumnDef="extEndTermin">
+        <th *matHeaderCellDef mat-header-cell> End-Termin</th>
+        <td *matCellDef="let element" [innerHTML]="element.extEndTermin | replaceLineBreaks" mat-cell></td>
+      </ng-container>
+
+      <mat-text-column headerText="Ldf.Nr" name="extLdfNr"></mat-text-column>
+      <ng-container matColumnDef="status">
+        <th *matHeaderCellDef mat-header-cell> Status</th>
+        <td *matCellDef="let element" mat-cell>
+          <ng-container *ngIf="element.status==='READY_TO_START'">
+            <img alt="Dashboard" height="32" src="assets/img/ready_to_start.svg" width="32"/>
+          </ng-container>
+          <ng-container *ngIf="element.status==='RUNNING'">
+            <img alt="Dashboard" height="28" src="assets/img/running.svg" style="margin-right: 2px; margin-left: 2px"
+                 width="28"/>
+          </ng-container>
+          <ng-container *ngIf="element.status==='FINISHED'">
+            <img alt="Dashboard" height="32" src="assets/img/finished.svg" width="32"/>
+          </ng-container>
+          <ng-container *ngIf="element.status==='ARCHIVED'">
+            <img alt="Dashboard" height="32" src="assets/img/archived.svg" width="32"/>
+          </ng-container>
+          <ng-container *ngIf="element.status==='PLANNED'">
+            <img alt="Dashboard" height="32" src="assets/img/planned.svg" width="32"/>
+          </ng-container>
+          <ng-container *ngIf="element.status==='SUSPENDED'">
+            <img alt="Dashboard" height="32" src="assets/img/suspended.svg" width="32"/>
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumnsSubProductionSteps" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumnsSubProductionSteps;" mat-row></tr>
+
+    </table>
+  </mat-card-content>
+</mat-card>
+
+

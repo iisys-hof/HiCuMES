@@ -1,0 +1,5 @@
+<!--<app-order-overview-table (startMachineOccupation)="startMachineOccupation($event)"></app-order-overview-table>-->
+<app-user-booking-overview-table class="overview-table" *ngIf="(bookingEntriesOverheadCosts$ | async) && (bookingEntriesOrders$ | async) && (bookingEntriesAll$ | async); else progressSpinner" [bookingEntries]="bookingEntriesAll$ | async " [overViewName]="'Meine Buchungen'"></app-user-booking-overview-table>
+<ng-template #progressSpinner>
+  <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+</ng-template>

@@ -1,0 +1,41 @@
+::ng-deep .stepper-buttons {
+  margin-top: 10px;
+  button
+  {
+    margin-right: 10px;
+  }
+}
+
+.filter-form{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+::ng-deep .mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
+
+
+::ng-deep .spinner{
+  .ngx-spinner-overlay{
+    position: relative !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .la-square-jelly-box{
+      position: relative !important;
+      top: unset !important;
+      left: unset !important;
+      margin: 20px !important;
+      transform: unset !important;
+    }
+    .loading-text{
+      position: relative !important;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+  }
+}

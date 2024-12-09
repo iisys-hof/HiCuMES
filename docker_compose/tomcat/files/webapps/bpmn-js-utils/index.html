@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="tab_js_browserified.js"></script>
+    <script>
+      function showDebugBpmn()
+      {
+        var response = new Object();
+        response.bpmn20Xml = document.getElementById('debugBpmnField').value;
+        
+        var bpmnUtil = window.tabjs;
+        bpmnUtil.showBpmnCallback(response);
+      }
+    </script>
+  </head>
+  
+  <body>
+    <div id="xmlDiv">
+      <button type="button" onclick="showDebugBpmn()">show Debug BPMN</button>
+      <textarea id="debugBpmnField"></textarea>
+    </div>
+    <div class="canvas">
+      <h3>diagram</h3>
+      <div id="js-canvas"></div>
+    </div>
+  </body>
+</html>

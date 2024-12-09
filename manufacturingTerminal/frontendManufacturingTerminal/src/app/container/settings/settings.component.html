@@ -1,0 +1,95 @@
+
+<!--<mat-card class="mat-elevation-z6">-->
+<!--  <mat-card-header>-->
+<!--    <mat-card-title><h3>Lokale Geräteeinstellungen</h3></mat-card-title>-->
+<!--  </mat-card-header>-->
+<!--  <mat-card-content>-->
+<!--   <mat-form-field appearance="outline"-->
+<!--                    class="toolbar-btn toolbar-selection" style="min-width: 200px; width: fit-content">-->
+<!--      <mat-label>Maschinengruppe</mat-label>-->
+<!--      <mat-select (selectionChange)="changeMachineSelection()" [(value)]="selectedMachineType" [compareWith]="compareMachineTypeSelection">-->
+<!--        <mat-option [value]="undefined">Alle Maschinen</mat-option>-->
+<!--        <mat-optgroup [label]="'Maschinen'">-->
+<!--          <mat-option *ngFor="let machineType of sort(allMachineTypes)" [value]="machineType">-->
+<!--            &lt;!&ndash;TODO make this configurable from outside?&ndash;&gt;-->
+<!--            {{machineType.externalId}} - {{machineType.name}}-->
+<!--          </mat-option>-->
+<!--        </mat-optgroup>-->
+
+<!--      </mat-select>-->
+
+<!--    </mat-form-field>-->
+<!--  </mat-card-content>-->
+<!--  <mat-card-actions>-->
+<!--    <button class="order-detail-header-table-button" color="primary" mat-button mat-raised-button (click)="save()">Speichern</button>-->
+<!--  </mat-card-actions>-->
+<!--</mat-card>-->
+
+<mat-card class="mat-elevation-z6"  *ngIf="userData" >
+  <mat-card-header>
+    <mat-card-title><h3>Benutzereinstellungen</h3></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form" #form="ngForm">
+    <ng-template #progressSpinner>
+      <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+    </ng-template>
+    <mat-form-field *ngIf="(allDepartments$ | async); else progressSpinner" appearance="fill"
+                    class="toolbar-btn toolbar-selection" style="width: 300px">
+      <mat-label>Abteilung</mat-label>
+      <mat-select #selectDepartmentSetting (selectionChange)="changeDepartmentSelection()" [(value)]="selectedDepartments" [compareWith]="compareSelection" multiple>
+        <div class="select-all">
+          <mat-checkbox [(ngModel)]="allSelectedDepartment"
+                        [ngModelOptions]="{standalone: true}"
+                        (change)="toggleAllDepartments()">Alle Abteilungen</mat-checkbox>
+        </div>
+        <mat-optgroup [label]="'Abteilungen'">
+          <mat-option *ngFor="let department of sort(allDepartments)" [value]="department">
+            {{department.externalId}} - {{department.name}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="(allMachineTypes$ | async); else progressSpinner" appearance="fill"
+                    class="toolbar-btn toolbar-selection" style="width: 300px">
+      <mat-label>Maschinengruppe</mat-label>
+      <mat-select #selectMachineTypeSetting (selectionChange)="changeMachineTypeSelection()" [(value)]="selectedMachineTypes" [compareWith]="compareSelection" multiple>
+        <div class="select-all">
+          <mat-checkbox [(ngModel)]="allSelectedMachineType"
+                        [ngModelOptions]="{standalone: true}"
+                        (change)="toggleAllMachineTypes()">Alle Maschinen</mat-checkbox>
+        </div>
+        <mat-optgroup [label]="'Maschinen'">
+          <mat-option *ngFor="let machineType of sort(allMachineTypes)" [value]="machineType">
+            <!--TODO make this configurable from outside?-->
+            {{machineType.externalId}} - {{machineType.name}}
+          </mat-option>
+        </mat-optgroup>
+
+      </mat-select>
+    </mat-form-field>
+      <mat-slide-toggle [(ngModel)]="userData.attributes.JumpToMain" name="jumpToMainPageSetting">Auf Startseite zurückspringen</mat-slide-toggle>
+
+      <mat-slide-toggle [(ngModel)]="userData.attributes.JumpToMask" name="jumpToMaskPageSetting">Direkt zu Rückmeldemaske nach "START" springen</mat-slide-toggle>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="primary" mat-button mat-raised-button (click)="changeUserData(form.form)">Einstellungen speichern</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<mat-card class="mat-elevation-z6"  *ngIf="isDev()" >
+  <mat-card-header>
+    <mat-card-title><h3>DEVELOPMENT</h3></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <button color="primary" mat-button mat-raised-button (click)="updateFP()" style="margin: 10px">Sync Feinplanung</button>
+      <button color="primary" mat-button mat-raised-button (click)="updateHC()">Sync HiCuMES</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

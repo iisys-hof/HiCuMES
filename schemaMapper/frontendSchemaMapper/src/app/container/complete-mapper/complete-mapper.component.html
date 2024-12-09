@@ -1,0 +1,67 @@
+<mat-progress-bar mode="indeterminate"  *ngIf="isLoading$ | async as loading"></mat-progress-bar>
+<main>
+  <ng-container *ngIf="(windowHeight$ | async) as height">
+    <ng-container *ngIf="(mappingEngine$ | async) as mappingEngine">
+      <ng-container *ngIf="(mappingRequest$ | async) as mappingRequest">
+        <ng-container *ngIf="(mappingRules$ | async) as mappingRules">
+
+          <app-save-load (loadMappingEvent)="loadMapping()" (newMappingEvent)="newMapping($event)" (saveMappingEvent)="saveMapping()" (exportMappingEvent)="exportMapping()" (loadFromFileEvent)="loadMappingFromFile()" (openCamundaOverviewEvent)="openCamundaOverview()"></app-save-load>
+
+          <mat-grid-list cols="5" [rowHeight]="height / 3">
+
+            <mat-grid-tile
+              [colspan]=1
+              [rowspan]=3>
+              <app-file-tree [treeNode]="mappingEngine.inputTree"
+                             (changedSelection)="changedInputSelection($event)"
+                             [componentTitle]="'Eingangsschema'"
+                             [smallerThanWindowSize]="190"
+                             [targetLevel]="1"
+              ></app-file-tree>
+            </mat-grid-tile>
+
+            <mat-grid-tile
+              [colspan]=3
+              [rowspan]=2>
+              <app-all-mapping-rules *ngIf="!mappingRequest.mappingAndDataSource.mappingConfiguration?.xsltRules" [mappingRules]="mappingRules"
+                                     (deleteMapping)="deleteMapping($event)"
+                                     (editMapping)="editMapping($event)"
+                                     [componentTitle]="mappingRequest.mappingAndDataSource.name"
+              ></app-all-mapping-rules>
+              <app-all-mapping-rules-xslt *ngIf="mappingRequest.mappingAndDataSource.mappingConfiguration?.xsltRules"
+                                          [mappingRules]="mappingRequest.mappingAndDataSource.mappingConfiguration?.xsltRules"
+                                     (updateMapping)="updateMapping($event)"  (saveToDB)="updateMappingAndSaveToDB($event)"
+                                     [componentTitle]="mappingRequest.mappingAndDataSource.name"
+              ></app-all-mapping-rules-xslt>
+            </mat-grid-tile>
+
+            <mat-grid-tile
+              [colspan]=1
+              [rowspan]=3>
+              <app-file-tree
+                [treeNode]="mappingEngine.outputTree"
+                (changedSelection)="changedOutputSelection($event)"
+                [componentTitle]="'Ausgangsschema'"
+                [smallerThanWindowSize]="190"
+                [targetLevel]="1"
+              ></app-file-tree>
+            </mat-grid-tile>
+            <mat-grid-tile
+              [colspan]=3
+              [rowspan]=1>
+              <app-new-mapping-rule
+                [selectedInputNode]="selectedInput"
+                [selectedOutputNode]="selectedOutput"
+                (newMappingRule)="newMappingRule($event)"
+              ></app-new-mapping-rule>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+
+          <button mat-raised-button class="show-advanced-mode" (click)="openBottomSheet(mappingEngine)"> <mat-icon >expand_less </mat-icon><br><span >Zusatzinformationen</span></button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</main>
+

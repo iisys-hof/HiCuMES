@@ -1,0 +1,102 @@
+[
+  {
+    "key": "bookingEntries",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "label": "Letze 5 Buchungen für AG:",
+      "columns": [
+        {
+          "name": "Menge",
+          "id": "measurement"
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime"
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime",
+          "sortable": true,
+          "defaultSort": "asc"
+        },
+        {
+          "name": "Dauer (min)",
+          "id": "duration"
+        },
+        {
+          "name": "Pers. Nr.",
+          "id": "userExternalId"
+        },
+        {
+          "name": "Benutzern.",
+          "id": "userName"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "bem"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "externalId",
+          "id": "arg"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "amount",
+          "id": "measurement"
+        },
+        {
+          "type": "simple",
+          "key": "startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "duration",
+          "id": "duration",
+          "props": {
+            "type": "duration",
+            "durationUnit": "min"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "user.personalNumber",
+          "id": "userExternalId"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "user.shortName",
+          "id": "userName"
+        },
+        {
+          "type": "simple",
+          "key": "note",
+          "id": "bem"
+        }
+      ]
+    }
+  }
+]

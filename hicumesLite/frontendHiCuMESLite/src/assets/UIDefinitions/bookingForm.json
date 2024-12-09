@@ -1,0 +1,93 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-4",
+        "type": "readonly-formfield",
+        "key": "externalId",
+        "id": "externalId",
+        "props": {
+          "label": "Arbeitsgang-Nr."
+        }
+      },
+      {
+        "className": "col-4",
+        "type": "readonly-formfield",
+        "key": "startDateTime",
+        "id": "startDateTime",
+        "props": {
+          "label": "Startzeit",
+          "type": "date",
+          "dateFormat": "DD.MM.YY HH:mm"
+        }
+      },
+      {
+        "className": "col-4",
+        "type": "readonly-formfield",
+        "key": "endDateTime",
+        "id": "endDateTime",
+        "props": {
+          "label": "Endzeit",
+          "type": "date",
+          "dateFormat": "DD.MM.YY HH:mm"
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-4 adjusted",
+        "type": "input",
+        "key": "amount",
+        "id": "input3",
+        "props": {
+          "label": "Gut-Menge",
+          "type": "number",
+          "addonLeft": {
+            "icon": "check"
+          }
+        },
+        "expressions": {
+          "hide": "model.duration == null && model.endDateTime == undefined"
+        }
+      },
+      {
+        "className": "col-8",
+        "type": "customDuration",
+        "key": "duration"
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-4",
+        "type": "breakToggle",
+        "key": "breakDuration",
+        "expressions": {
+          "hide": "model.duration != null || model.endDateTime == undefined"
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-12",
+        "type": "input",
+        "key": "note",
+        "props": {
+          "label": "Bemerkungen",
+          "addonLeft": {
+            "icon": "edit_note"
+          }
+        }
+      }
+    ]
+  }
+]

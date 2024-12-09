@@ -1,0 +1,5 @@
+<!--<app-order-overview-table (startMachineOccupation)="startMachineOccupation($event)"></app-order-overview-table>-->
+<app-overhead-costs class="overview-table" *ngIf="(overheadCostCenters$ | async) && (overheadCosts$ | async); else progressSpinner" [overHeadCostCenters]="(overheadCostCenters$ | async)" [topOverheadCostCenters]="(topOverheadCostCenters$ | async)" [overHeadCosts]="(overheadCosts$ | async)" [overViewName]="'Gemeinkosten'"></app-overhead-costs>
+<ng-template #progressSpinner>
+  <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+</ng-template>

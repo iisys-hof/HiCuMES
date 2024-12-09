@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CMMN Editor</title>
+
+  <link rel="stylesheet" href="styles/bpmn-js-embedded-comments/comments.css">
+  <link rel="stylesheet" href="styles/cmmn-js/diagram-js.css">
+  <link rel="stylesheet" href="styles/cmmn-embedded-viewer/cmmn-embedded-viewer.css">
+  <link rel="stylesheet" href="styles/cmmn-js/cmmn-font/css/cmmn-embedded.css" />
+  <link rel="stylesheet" href="styles/app/app.css" />
+
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-shared.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-drd.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-decision-table.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-decision-table-controls.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-js-literal-expression.css">
+  <link rel="stylesheet" href="styles/dmn-js/dmn-font/css/dmn.css">
+
+  <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="styles/app/hint.min.css"/>
+
+
+  <meta charset="utf-8">
+
+</head>
+<body>
+<div class="content with-diagram" id="js-drop-zone">
+
+  <div class="message intro">
+    <div class="note">
+      <p><a id="js-create-diagram" href><span class="fa fa-plus-circle"></span> <strong>Create a NEW diagram</strong></a></p>
+      <p><em>or</em>&nbsp;&nbsp;<span class="fa fa-hand-grab-o"></span> <strong>drop CMMN from your desktop</strong></p>
+      <p><em>or</em>&nbsp;&nbsp;<a id="js-open-file-dir" href><span class="fa fa-folder-open"></span> <strong>open CMMN from local file system</strong></a></p>
+      <p><em>or</em>&nbsp;&nbsp;<a id="js-cmmn-from-camunda" href><span class="fa fa-cloud-download"></span> <strong>load CMMN from Camunda</strong></a>.</p>
+      <p><img src="images/cmmn-js.bmp" alt="Example by bpmn.io" style="width: 350px;" /></p>
+    </div>
+  </div>
+
+  <div class="message error">
+    <div class="note">
+      <p>Ooops, we could not display the CMMN 1.1 diagram.</p>
+
+      <div class="details">
+        <span>Import Error Details</span>
+        <pre></pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="canvas" id="js-canvas"></div>
+  <div class="properties-panel-parent" id="js-properties-panel"></div>
+
+  <div id="camunda-cmmns" class="overlay-box" style="display:none;"></div>
+  <input id="file-dir-input" type="file" name="openFileDir" style="display:none;" accept=".cmmn,.CMMN" />
+  <form id="camunda-deploy-form" action="" enctype="multipart/form-data" method="POST" style="display:none;">
+  </form>
+  <div id="overlay" style="display:none;"></div>
+
+  <div id="overlay-box" class="overlay-box" style="display:none;">
+    <div id="overlay-box-close" class="close"><span class="fa fa-times-circle"></span></div>
+    <div id="overlay-box-background">
+      <div id="overlay-box-heading"></div>
+      <div id="overlay-box-content"></div>
+    </div>
+  </div>
+
+  <div id="viewer-overlay-anchor"></div>
+
+</div>
+
+<div class="buttons io-import-export" id="bottom-buttons" style="visibility:hidden">
+  <ul class="io-comments io-control io-control-list io-horizontal">
+    <li>
+      <button id="comment-mode-btn" class="hint--top buttons-active" aria-label="Comment Mode On/Off">
+        <span class="fa fa-comment"></span>
+      </button>
+    </li>
+  </ul>
+
+  <ul class="io-import io-control io-control-list io-horizontal">
+    <li>
+      <button id="js-create-diagram-btn" class="hint--top" aria-label="New CMMN diagram">
+        <span class="fa fa-plus-circle"></span>
+      </button>
+    </li>
+    <li class="vr" style="margin-left: 2px"></li>
+    <li>
+      <button id="js-open-file-dir-btn" class="hint--top" aria-label="Open CMMN diagram from local file system">
+        <span class="fa fa-folder-open"></span>
+      </button>
+    </li>
+    <li class="vr" style="margin-left: 2px"></li>
+    <li>
+      <button id="js-cmmn-from-camunda-btn" class="hint--top" aria-label="Load CMMN from Camunda">
+        <span class="fa fa-cloud-download"></span>
+      </button>
+    </li>
+  </ul>
+
+  <ul class="io-export io-control io-control-list io-horizontal">
+    <li>
+      <a id="js-download-diagram-btn" target="_blank" href="" class="download hint--top" aria-label="Download CMMN diagram" jswidget="downloadCMMN" data-track="diagram:download-cmmn" download="diagram.cmmn">
+        <span class="fa fa-download"></span>
+      </a>
+    </li>
+    <li>
+      <a id="js-download-svg-btn" target="_blank" href="" class="download hint--top" aria-label="Download as SVG image" jswidget="downloadSVG" data-track="diagram:download-svg" download="diagram.svg">
+        <span class="fa fa-file-image-o"></span>
+      </a>
+    </li>
+    <li>
+      <button id="js-cmmn-to-camunda-btn" class="hint--top" aria-label="Deploy As CMMN in Camunda">
+              <span class="fa fa-stack" style="height: 1em; line-height: 1em; width: 1.5em;">
+                <i class="fa fa-save fa-stack-1x" style="margin-top: -0.1em; margin-left: -0.2em;"></i>
+                <i class="fa fa-pencil fa-stack-1x" style="font-size: 0.8em; margin-top: 0.2em; margin-left: 0.4em;"></i>
+              </span>
+      </button>
+    </li>
+  </ul>
+</div>
+
+<script src="config.js"></script>
+<script src="index.js"></script>
+</html>

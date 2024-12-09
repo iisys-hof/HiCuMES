@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+@import "google-fonts.css";
+
+$md-hicumes: (
+  50 : #e1ebf3,
+  100 : #b3cde1,
+  200 : #80abcd,
+  300 : #4d89b9,
+  400 : #2770aa,
+  500 : #01579b,
+  600 : #014f93,
+  700 : #014689,
+  800 : #013c7f,
+  900 : #002c6d,
+  A100 : #9cbbff,
+  A200 : #6998ff,
+  A400 : #3674ff,
+  A700 : #1d63ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+
+@import '@angular/material/theming';
+@include mat-core();
+
+$my-app-primary:  mat-palette($md-hicumes);
+$my-app-accent:   mat-palette($md-hicumes);
+$my-app-warn:     mat-palette($mat-red);
+$my-app-theme:    mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+.hc-snackbar button span {
+  color: #80abcd !important;
+}
+
+.hc-snackbar {
+  white-space: pre-wrap
+}
+
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
+}
+.mat-grid-tile-content{
+  overflow-y: scroll;
+  justify-content: flex-start !important ;
+  align-items: flex-start !important;
+}
+mat-card-header {
+  margin-bottom: 10px;
+}
+code {
+  font-family: 'Roboto Mono', monospace !important;
+}
+.mat-bottom-sheet-container {
+  min-width: calc(100vw - 140px) !important;
+  min-height: calc(100vh - 140px) !important;
+}
+.ngx-json-viewer {
+  overflow: scroll !important;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 14px !important;
+
+}
+
+.cdk-overlay-backdrop {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+* {
+  -ms-overflow-style: none !important;  /* Internet Explorer 10+ */
+  scrollbar-width: none !important;  /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: none !important;  /* Safari and Chrome */
+}
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+  //background-color: #345eb3;
+  //background-color: #01579b;
+}
+.mat-bottom-sheet-container {
+  background: none !important;
+  padding: 100px 35px !important;
+  padding-bottom: 0 !important;
+  box-shadow: none !important;
+}
+.mat-dialog-container  {
+  max-height: calc(100vh - 100px) !important;
+}
+
+code {
+  color: #4d89b9 !important;
+}
+
+.jstree-default .jstree-search {
+  color: #4d89b9 !important;
+  font-weight: 500 !important;
+}
+

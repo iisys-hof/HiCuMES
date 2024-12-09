@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.12.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:collaboration id="Demo_Company">
+    <bpmn2:participant id="Participant_0icsvjm" name="Generische MGR Produktion" processRef="Process_Basis" />
+    <bpmn2:participant id="Participant_19o6r28" name="Generische MGR Montage" processRef="Process_Montage" />
+    <bpmn2:participant id="Participant_13ou7jz" name="Generische MGR Verpackung" processRef="Process_Verpackung" />
+    <bpmn2:participant id="Participant_19o6r84" name="QS" processRef="Process_Check" />
+    <bpmn2:participant id="Participant_17v4uvn" name="Versand" processRef="Process_Versand" />
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_Basis" isExecutable="true">
+    <bpmn2:startEvent id="Event_1ezucd4">
+      <bpmn2:outgoing>Flow_15dvgqw</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:subProcess id="Subprocess_Basis" name="Basis AG Rückmelden">
+      <bpmn2:incoming>Flow_15dvgqw</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1hnq0zz</bpmn2:outgoing>
+      <bpmn2:endEvent id="Event_09th77g">
+        <bpmn2:incoming>Flow_0o0u3rs</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:userTask id="Activity_WZB_Rueckmeldung_Basis" name="Einfache Rückmeldung" camunda:formKey="ConfirmProductionTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="info_TotalOK" label="Bisherige i.O." type="string" defaultValue="${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="9" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_TotalNOK" label="Bisherige n.i.O." type="string" defaultValue="${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="11" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_RemainingParts" label="Verbleibende i.O." type="string" defaultValue="${machineOccupation.productionOrder.measurement.amount - machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Note" label="Bemerkung" type="string">
+              <camunda:properties>
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="5" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsOK" label="Teile i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="3" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="2" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsNOK" label="Teile n.i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="10" />
+                <camunda:property id="col-width" value="3" />
+                <camunda:property id="row-start" value="2" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_ContinueWithLess" label="Arbeitsgang mit reduzierter Fertigungsstückzahl abschließen" type="boolean" defaultValue="${false}">
+              <camunda:properties>
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-start" value="4" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="ff_ManufacturingProblem" label="Fertigungsproblem" type="enum">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="6" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:value id="Maschinenstoerung" name="Maschinenstörung" />
+              <camunda:value id="Werkzeugstoerung" name="Werkzeugstörung" />
+              <camunda:value id="Mitarbeitereinarbeitung" name="Ungenügende Einarbeitung von Mitarbeitern" />
+              <camunda:value id="AenderungArtikelArbeitsprozess" name="Änderung von Artikel / Arbeitsprozess" />
+            </camunda:formField>
+            <camunda:formField id="info_Drawing" label="Zeichnung" type="string">
+              <camunda:properties>
+                <camunda:property id="type" value="pdf" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="7" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+          </camunda:formData>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varSubProductionStepId">
+              <camunda:script scriptFormat="groovy">return machineOccupation.subProductionSteps.last().id;</camunda:script>
+            </camunda:outputParameter>
+            <camunda:outputParameter name="varTotalOK">${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}</camunda:outputParameter>
+            <camunda:outputParameter name="varTotalNOK">${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0k9fie9</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_01z4ldi</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:startEvent id="Event_1uavfxv">
+        <bpmn2:outgoing>Flow_02239fx</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:sequenceFlow id="Flow_02239fx" sourceRef="Event_1uavfxv" targetRef="Activity_08iqcto" />
+      <bpmn2:sequenceFlow id="Flow_01z4ldi" sourceRef="Activity_WZB_Rueckmeldung_Basis" targetRef="Activity_0dnicqa" />
+      <bpmn2:task id="Activity_08iqcto" name="Variablen initialisieren">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varTotalOK" />
+            <camunda:outputParameter name="varTotalNOK" />
+            <camunda:outputParameter name="varProdAmount">${machineOccupation.productionOrder.measurement.amount}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_02239fx</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1077ave</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_1077ave" sourceRef="Activity_08iqcto" targetRef="Activity_0279ebn" />
+      <bpmn2:exclusiveGateway id="Gateway_1fbuyi2">
+        <bpmn2:incoming>Flow_1qm0xae</bpmn2:incoming>
+        <bpmn2:incoming>Flow_01wxuji</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1yiqlpo</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:sequenceFlow id="Flow_1yiqlpo" sourceRef="Gateway_1fbuyi2" targetRef="Activity_1utaoet" />
+      <bpmn2:exclusiveGateway id="Gateway_1kyn167">
+        <bpmn2:incoming>Flow_1ge4woc</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1y3yga0</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_02j5rae</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:sequenceFlow id="Flow_1y3yga0" sourceRef="Gateway_1kyn167" targetRef="Activity_05o9niv">
+        <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${varTotalOK &gt;= varProdAmount || ff_ContinueWithLess}</bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_02j5rae" sourceRef="Gateway_1kyn167" targetRef="Activity_1mxtpz5">
+        <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${varTotalOK &lt; varProdAmount  &amp;&amp; !ff_ContinueWithLess}</bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:task id="Activity_1utaoet" name="Rückmeldefelder leeren">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="ff_Note_2_1" />
+            <camunda:outputParameter name="ff_PartsNOK" />
+            <camunda:outputParameter name="ff_PartsOK" />
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1yiqlpo</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0k9fie9</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0k9fie9" sourceRef="Activity_1utaoet" targetRef="Activity_WZB_Rueckmeldung_Basis" />
+      <bpmn2:serviceTask id="Activity_1mxtpz5" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_02j5rae</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1qm0xae</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1qm0xae" sourceRef="Activity_1mxtpz5" targetRef="Gateway_1fbuyi2" />
+      <bpmn2:serviceTask id="Activity_05o9niv" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_1y3yga0</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0o0u3rs</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_0o0u3rs" sourceRef="Activity_05o9niv" targetRef="Event_09th77g" />
+      <bpmn2:serviceTask id="Activity_0dnicqa" name="Buchung anlegen" camunda:class="de.iisys.sysint.hicumes.RunMappingDelegate">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="isSimulate">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="useSavedData">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="mappingName">${"GenerateReport_Partial"}</camunda:inputParameter>
+            <camunda:inputParameter name="readerConfig">${"[{\"configKey\":\"CLASSNAME\",\"configValue\":\"MachineOccupation\"},{\"configKey\":\"SEARCH_COLUMN\",\"configValue\":\"externalId\"},{\"configKey\":\"ADDITIONAL\",\"configValue\":\"".concat(varSubProductionStepId).concat("\"},{\"configKey\":\"SEARCH_VALUE\",\"configValue\":\"").concat(machineOccupation.externalId).concat("\"}]")}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_01z4ldi</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1ge4woc</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1ge4woc" sourceRef="Activity_0dnicqa" targetRef="Gateway_1kyn167" />
+      <bpmn2:userTask id="Activity_0279ebn" name="Maschine Rüsten" camunda:formKey="SetParameterTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="info_WorkorderText" label="Einstellparameter" type="string" defaultValue="x:120, y:10, ...">
+              <camunda:properties>
+                <camunda:property id="type" value="data" />
+                <camunda:property id="col-width" value="12" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Checked" label="Maschine eingerüstet" type="boolean">
+              <camunda:properties>
+                <camunda:property id="col-width" value="4" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="row-start" value="2" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Note_1_1" label="Bemerkung" type="string">
+              <camunda:properties>
+                <camunda:property id="col-width" value="8" />
+                <camunda:property id="col-start" value="5" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="2" />
+              </camunda:properties>
+            </camunda:formField>
+          </camunda:formData>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varSubProdStepId">
+              <camunda:script scriptFormat="groovy">return machineOccupation.subProductionSteps.last().id;</camunda:script>
+            </camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1077ave</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_04sbeh6</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:sequenceFlow id="Flow_04sbeh6" sourceRef="Activity_0279ebn" targetRef="Activity_1bdtrfa" />
+      <bpmn2:serviceTask id="Activity_1bdtrfa" name="Buchung anlegen" camunda:class="de.iisys.sysint.hicumes.RunMappingDelegate">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="isSimulate">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="useSavedData">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="mappingName">${"GenerateReport_Partial"}</camunda:inputParameter>
+            <camunda:inputParameter name="readerConfig">${"[{\"configKey\":\"CLASSNAME\",\"configValue\":\"MachineOccupation\"},{\"configKey\":\"SEARCH_COLUMN\",\"configValue\":\"externalId\"},{\"configKey\":\"ADDITIONAL\",\"configValue\":\"".concat(varSubProdStepId).concat("\"},{\"configKey\":\"SEARCH_VALUE\",\"configValue\":\"").concat(machineOccupation.externalId).concat("\"}]")}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_04sbeh6</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_01wxuji</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_01wxuji" sourceRef="Activity_1bdtrfa" targetRef="Gateway_1fbuyi2" />
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="Flow_1hnq0zz" sourceRef="Subprocess_Basis" targetRef="Event_1iv5oxg" />
+    <bpmn2:sequenceFlow id="Flow_15dvgqw" sourceRef="Event_1ezucd4" targetRef="Subprocess_Basis" />
+    <bpmn2:endEvent id="Event_1iv5oxg">
+      <bpmn2:incoming>Flow_1hnq0zz</bpmn2:incoming>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmn2:process id="Process_Montage" isExecutable="true">
+    <bpmn2:startEvent id="Event_0ypayox">
+      <bpmn2:outgoing>Flow_104iu6t</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:subProcess id="Subprocess_Montage" name="Basis AG Montage">
+      <bpmn2:incoming>Flow_104iu6t</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1hfjo7v</bpmn2:outgoing>
+      <bpmn2:endEvent id="Event_0d0lazb">
+        <bpmn2:incoming>Flow_1e4y8ur</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:userTask id="Activity_0s5lqmy" name="Einfache Rückmeldung" camunda:formKey="ConfirmProductionTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="info_TotalOK" label="Bisherige i.O." type="string" defaultValue="${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="9" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_TotalNOK" label="Bisherige n.i.O." type="string" defaultValue="${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="11" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_RemainingParts" label="Verbleibende i.O." type="string" defaultValue="${machineOccupation.productionOrder.measurement.amount - machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Note" label="Bemerkung" type="string">
+              <camunda:properties>
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="4" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsOK" label="Teile i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="3" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="2" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsNOK" label="Teile n.i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="10" />
+                <camunda:property id="col-width" value="3" />
+                <camunda:property id="row-start" value="2" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_ContinueWithLess" label="Arbeitsgang mit reduzierter Fertigungsstückzahl abschließen" type="boolean" defaultValue="${false}">
+              <camunda:properties>
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-start" value="3" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="ff_ManufacturingProblem" label="Fertigungsproblem" type="enum">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="6" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:value id="Maschinenstoerung" name="Maschinenstörung" />
+              <camunda:value id="Werkzeugstoerung" name="Werkzeugstörung" />
+              <camunda:value id="Mitarbeitereinarbeitung" name="Ungenügende Einarbeitung von Mitarbeitern" />
+              <camunda:value id="AenderungArtikelArbeitsprozess" name="Änderung von Artikel / Arbeitsprozess" />
+            </camunda:formField>
+            <camunda:formField id="info_Video" label="Montageanleitung" type="string">
+              <camunda:properties>
+                <camunda:property id="type" value="video" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="6" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+          </camunda:formData>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varSubProductionStepId">
+              <camunda:script scriptFormat="groovy">return machineOccupation.subProductionSteps.last().id;</camunda:script>
+            </camunda:outputParameter>
+            <camunda:outputParameter name="varTotalOK">${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}</camunda:outputParameter>
+            <camunda:outputParameter name="varTotalNOK">${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0kbg4n5</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_01w7gmg</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:startEvent id="Event_0s4p8o6">
+        <bpmn2:outgoing>Flow_0mhw7i9</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:task id="Activity_0z3wnn4" name="Variablen initialisieren">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varTotalOK" />
+            <camunda:outputParameter name="varTotalNOK" />
+            <camunda:outputParameter name="varProdAmount">${machineOccupation.productionOrder.measurement.amount}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0mhw7i9</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0f42m7m</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:exclusiveGateway id="Gateway_02yffhk">
+        <bpmn2:incoming>Flow_0f42m7m</bpmn2:incoming>
+        <bpmn2:incoming>Flow_024ywmb</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0sm0nxd</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="Gateway_0fawyl1">
+        <bpmn2:incoming>Flow_1sa6ieo</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0wqft21</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_13kq8ae</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:task id="Activity_0z2iysr" name="Rückmeldefelder leeren">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="ff_Note_2_1" />
+            <camunda:outputParameter name="ff_PartsNOK" />
+            <camunda:outputParameter name="ff_PartsOK" />
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0sm0nxd</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0kbg4n5</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:sequenceFlow id="Flow_0kbg4n5" sourceRef="Activity_0z2iysr" targetRef="Activity_0s5lqmy" />
+      <bpmn2:sequenceFlow id="Flow_0wqft21" sourceRef="Gateway_0fawyl1" targetRef="Activity_1i7g989">
+        <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${varTotalOK &lt; varProdAmount  &amp;&amp; !ff_ContinueWithLess}</bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_13kq8ae" sourceRef="Gateway_0fawyl1" targetRef="Activity_0l1jk7d">
+        <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${varTotalOK &gt;= varProdAmount || ff_ContinueWithLess}</bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_0sm0nxd" sourceRef="Gateway_02yffhk" targetRef="Activity_0z2iysr" />
+      <bpmn2:sequenceFlow id="Flow_0f42m7m" sourceRef="Activity_0z3wnn4" targetRef="Gateway_02yffhk" />
+      <bpmn2:sequenceFlow id="Flow_01w7gmg" sourceRef="Activity_0s5lqmy" targetRef="Activity_11x40qh" />
+      <bpmn2:sequenceFlow id="Flow_0mhw7i9" sourceRef="Event_0s4p8o6" targetRef="Activity_0z3wnn4" />
+      <bpmn2:serviceTask id="Activity_1i7g989" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_0wqft21</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_024ywmb</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_024ywmb" sourceRef="Activity_1i7g989" targetRef="Gateway_02yffhk" />
+      <bpmn2:serviceTask id="Activity_0l1jk7d" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_13kq8ae</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1e4y8ur</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1e4y8ur" sourceRef="Activity_0l1jk7d" targetRef="Event_0d0lazb" />
+      <bpmn2:serviceTask id="Activity_11x40qh" name="Buchung anlegen" camunda:class="de.iisys.sysint.hicumes.RunMappingDelegate">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="isSimulate">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="useSavedData">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="mappingName">${"GenerateReport_Partial"}</camunda:inputParameter>
+            <camunda:inputParameter name="readerConfig">${"[{\"configKey\":\"CLASSNAME\",\"configValue\":\"MachineOccupation\"},{\"configKey\":\"SEARCH_COLUMN\",\"configValue\":\"externalId\"},{\"configKey\":\"ADDITIONAL\",\"configValue\":\"".concat(varSubProductionStepId).concat("\"},{\"configKey\":\"SEARCH_VALUE\",\"configValue\":\"").concat(machineOccupation.externalId).concat("\"}]")}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_01w7gmg</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1sa6ieo</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1sa6ieo" sourceRef="Activity_11x40qh" targetRef="Gateway_0fawyl1" />
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="Flow_1hfjo7v" sourceRef="Subprocess_Montage" targetRef="Event_1w67s2l" />
+    <bpmn2:sequenceFlow id="Flow_104iu6t" sourceRef="Event_0ypayox" targetRef="Subprocess_Montage" />
+    <bpmn2:endEvent id="Event_1w67s2l">
+      <bpmn2:incoming>Flow_1hfjo7v</bpmn2:incoming>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmn2:process id="Process_Verpackung" isExecutable="true">
+    <bpmn2:startEvent id="Event_1rmhlu8">
+      <bpmn2:outgoing>Flow_1d5994n</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:endEvent id="Event_076xuo9">
+      <bpmn2:incoming>Flow_0665uvo</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:subProcess id="Subprocess_Verpackung" name="Basis AG Verpackung">
+      <bpmn2:incoming>Flow_1d5994n</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0665uvo</bpmn2:outgoing>
+      <bpmn2:endEvent id="Event_0jsvfcl">
+        <bpmn2:incoming>Flow_0vjnohi</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:userTask id="Activity_11bo43c" name="Einfache Rückmeldung" camunda:formKey="ConfirmProductionTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="info_WorkorderText" label="Arbeitsgangtext" type="string">
+              <camunda:properties>
+                <camunda:property id="type" value="data" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="2" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_TotalOK" label="Bisherige i.O." type="string" defaultValue="${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="9" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="3" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_TotalNOK" label="Bisherige n.i.O." type="string" defaultValue="${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="11" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="3" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="info_RemainingParts" label="Verbleibende i.O." type="string" defaultValue="${machineOccupation.productionOrder.measurement.amount - machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="2" />
+                <camunda:property id="row-start" value="3" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Note" label="Bemerkung" type="string">
+              <camunda:properties>
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="6" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsOK" label="Teile i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="3" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="4" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsNOK" label="Teile n.i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="10" />
+                <camunda:property id="col-width" value="3" />
+                <camunda:property id="row-start" value="4" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_ManufacturingProblem" label="Fertigungsproblem" type="enum">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="7" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:value id="Maschinenstoerung" name="Maschinenstörung" />
+              <camunda:value id="Werkzeugstoerung" name="Werkzeugstörung" />
+              <camunda:value id="Mitarbeitereinarbeitung" name="Ungenügende Einarbeitung von Mitarbeitern" />
+              <camunda:value id="AenderungArtikelArbeitsprozess" name="Änderung von Artikel / Arbeitsprozess" />
+            </camunda:formField>
+            <camunda:formField id="ff_ContinueWithLess" label="Arbeitsgang mit reduzierter Fertigungsstückzahl abschließen" type="boolean" defaultValue="${false}">
+              <camunda:properties>
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="row-start" value="5" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="info_Drawing" label="Packanweisung" type="string">
+              <camunda:properties>
+                <camunda:property id="type" value="image" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="7" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+          </camunda:formData>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varSubProductionStepId">
+              <camunda:script scriptFormat="groovy">return machineOccupation.subProductionSteps.last().id;</camunda:script>
+            </camunda:outputParameter>
+            <camunda:outputParameter name="varTotalOK">${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}</camunda:outputParameter>
+            <camunda:outputParameter name="varTotalNOK">${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_07d6uto</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0baxh5b</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:startEvent id="Event_0zmvdk8">
+        <bpmn2:outgoing>Flow_18psl3u</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:serviceTask id="Activity_1wxz6mu" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_0d73cjr</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0vjnohi</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:task id="Activity_1twka83" name="Variablen initialisieren">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="varTotalOK" />
+            <camunda:outputParameter name="varTotalNOK" />
+            <camunda:outputParameter name="varProdAmount">${machineOccupation.productionOrder.measurement.amount}</camunda:outputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_18psl3u</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0l5amfh</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:exclusiveGateway id="Gateway_1h88btj">
+        <bpmn2:incoming>Flow_16khvgh</bpmn2:incoming>
+        <bpmn2:incoming>Flow_0l5amfh</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0l1vfjv</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:exclusiveGateway id="Gateway_1fdpimc">
+        <bpmn2:incoming>Flow_1obhw2i</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_164belp</bpmn2:outgoing>
+        <bpmn2:outgoing>Flow_0d73cjr</bpmn2:outgoing>
+      </bpmn2:exclusiveGateway>
+      <bpmn2:task id="Activity_1vgryss" name="Rückmeldefelder leeren">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:outputParameter name="ff_Note_2_1" />
+            <camunda:outputParameter name="ff_PartsNOK" />
+            <camunda:outputParameter name="ff_PartsOK" />
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0l1vfjv</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_07d6uto</bpmn2:outgoing>
+      </bpmn2:task>
+      <bpmn2:serviceTask id="Activity_0eaaanp" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_164belp</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_16khvgh</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_16khvgh" sourceRef="Activity_0eaaanp" targetRef="Gateway_1h88btj" />
+      <bpmn2:sequenceFlow id="Flow_07d6uto" sourceRef="Activity_1vgryss" targetRef="Activity_11bo43c" />
+      <bpmn2:sequenceFlow id="Flow_164belp" sourceRef="Gateway_1fdpimc" targetRef="Activity_0eaaanp">
+        <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${varTotalOK &lt; varProdAmount  &amp;&amp; !ff_ContinueWithLess}</bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_0d73cjr" sourceRef="Gateway_1fdpimc" targetRef="Activity_1wxz6mu">
+        <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${varTotalOK &gt;= varProdAmount || ff_ContinueWithLess}</bpmn2:conditionExpression>
+      </bpmn2:sequenceFlow>
+      <bpmn2:sequenceFlow id="Flow_0l1vfjv" sourceRef="Gateway_1h88btj" targetRef="Activity_1vgryss" />
+      <bpmn2:sequenceFlow id="Flow_0l5amfh" sourceRef="Activity_1twka83" targetRef="Gateway_1h88btj" />
+      <bpmn2:sequenceFlow id="Flow_0vjnohi" sourceRef="Activity_1wxz6mu" targetRef="Event_0jsvfcl" />
+      <bpmn2:sequenceFlow id="Flow_0baxh5b" sourceRef="Activity_11bo43c" targetRef="Activity_1j828o4" />
+      <bpmn2:sequenceFlow id="Flow_18psl3u" sourceRef="Event_0zmvdk8" targetRef="Activity_1twka83" />
+      <bpmn2:serviceTask id="Activity_1j828o4" name="Buchung anlegen" camunda:class="de.iisys.sysint.hicumes.RunMappingDelegate">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="isSimulate">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="useSavedData">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="mappingName">${"GenerateReport_Partial"}</camunda:inputParameter>
+            <camunda:inputParameter name="readerConfig">${"[{\"configKey\":\"CLASSNAME\",\"configValue\":\"MachineOccupation\"},{\"configKey\":\"SEARCH_COLUMN\",\"configValue\":\"externalId\"},{\"configKey\":\"ADDITIONAL\",\"configValue\":\"".concat(varSubProductionStepId).concat("\"},{\"configKey\":\"SEARCH_VALUE\",\"configValue\":\"").concat(machineOccupation.externalId).concat("\"}]")}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0baxh5b</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1obhw2i</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1obhw2i" sourceRef="Activity_1j828o4" targetRef="Gateway_1fdpimc" />
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="Flow_0665uvo" sourceRef="Subprocess_Verpackung" targetRef="Event_076xuo9" />
+    <bpmn2:sequenceFlow id="Flow_1d5994n" sourceRef="Event_1rmhlu8" targetRef="Subprocess_Verpackung" />
+  </bpmn2:process>
+  <bpmn2:process id="Process_Check" isExecutable="true">
+    <bpmn2:endEvent id="Event_1erhrp0">
+      <bpmn2:incoming>Flow_1jyq3q2</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:startEvent id="Event_07zg7e6">
+      <bpmn2:outgoing>Flow_0faefkt</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:subProcess id="Subprocess_QS" name="QS Prüfung">
+      <bpmn2:incoming>Flow_0faefkt</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1jyq3q2</bpmn2:outgoing>
+      <bpmn2:startEvent id="Event_1plsj4t">
+        <bpmn2:outgoing>Flow_0iqv3cu</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:userTask id="Activity_0flm6mm" name="Stiftprüfung (QS)" camunda:formKey="CheckQualityTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="info_WorkorderText" label="Arbeitsgangtext" type="string">
+              <camunda:properties>
+                <camunda:property id="type" value="data" />
+                <camunda:property id="col-width" value="4" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="row-start" value="1" />
+                <camunda:property id="row-height" value="2" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="readonly" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Checked" label="Prüfung durchgeführt" type="boolean">
+              <camunda:properties>
+                <camunda:property id="col-width" value="4" />
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="row-start" value="3" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_Note_1_1" label="Bemerkung" type="string">
+              <camunda:properties>
+                <camunda:property id="col-width" value="8" />
+                <camunda:property id="col-start" value="5" />
+                <camunda:property id="row-height" value="1" />
+                <camunda:property id="row-start" value="3" />
+              </camunda:properties>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsOK" label="Teile i.O." type="long">
+              <camunda:properties>
+                <camunda:property id="col-start" value="1" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="4" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+            <camunda:formField id="ff_PartsNOK" label="Teile n.i.O." type="long" defaultValue="${0}">
+              <camunda:properties>
+                <camunda:property id="col-start" value="7" />
+                <camunda:property id="col-width" value="6" />
+                <camunda:property id="row-start" value="4" />
+                <camunda:property id="row-height" value="1" />
+              </camunda:properties>
+              <camunda:validation>
+                <camunda:constraint name="required" config="true" />
+              </camunda:validation>
+            </camunda:formField>
+          </camunda:formData>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_0iqv3cu</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1f2roit</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:endEvent id="Event_1v2mpvc">
+        <bpmn2:incoming>Flow_0gfyfhz</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:serviceTask id="Activity_0xws7xy" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_1f2roit</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1ajdxgs</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1ajdxgs" sourceRef="Activity_0xws7xy" targetRef="Activity_0yga6yo" />
+      <bpmn2:sequenceFlow id="Flow_1f2roit" sourceRef="Activity_0flm6mm" targetRef="Activity_0xws7xy" />
+      <bpmn2:sequenceFlow id="Flow_0iqv3cu" sourceRef="Event_1plsj4t" targetRef="Activity_0flm6mm" />
+      <bpmn2:serviceTask id="Activity_0yga6yo" name="Buchung anlegen" camunda:class="de.iisys.sysint.hicumes.RunMappingDelegate">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="isSimulate">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="useSavedData">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="mappingName">${"GenerateReport"}</camunda:inputParameter>
+            <camunda:inputParameter name="readerConfig">${"[{\"configKey\":\"CLASSNAME\",\"configValue\":\"MachineOccupation\"},{\"configKey\":\"SEARCH_COLUMN\",\"configValue\":\"externalId\"},{\"configKey\":\"SEARCH_VALUE\",\"configValue\":\"".concat(machineOccupation.externalId).concat("\"}]")}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1ajdxgs</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0gfyfhz</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_0gfyfhz" sourceRef="Activity_0yga6yo" targetRef="Event_1v2mpvc" />
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="Flow_1jyq3q2" sourceRef="Subprocess_QS" targetRef="Event_1erhrp0" />
+    <bpmn2:sequenceFlow id="Flow_0faefkt" sourceRef="Event_07zg7e6" targetRef="Subprocess_QS" />
+  </bpmn2:process>
+  <bpmn2:process id="Process_Versand" isExecutable="true">
+    <bpmn2:startEvent id="Event_1ezwwsp">
+      <bpmn2:outgoing>Flow_1ihjxqz</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:endEvent id="Event_09cej7b">
+      <bpmn2:incoming>Flow_0o9s9hs</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:subProcess id="Subprocess_Versand" name="Versandtätigkeit">
+      <bpmn2:incoming>Flow_1ihjxqz</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0o9s9hs</bpmn2:outgoing>
+      <bpmn2:startEvent id="Event_0cz188l">
+        <bpmn2:outgoing>Flow_02827i6</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:userTask id="Activity_14jppin" name="Vorbereiten zum Versand" camunda:formKey="ConfirmProductionTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="ff_PartsOK" label="Teile i.O." type="long" />
+            <camunda:formField id="ff_PartsNOK" label="Teile n.i.O." type="long" />
+            <camunda:formField id="ff_RejectionReason" label="Ausschussgrund" type="enum" />
+            <camunda:formField id="ff_DisturbanceReason" label="Störgrund" type="enum" />
+            <camunda:formField id="ff_Note_2_1" label="Bemerkung" type="string" />
+          </camunda:formData>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_02827i6</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0bpfqyz</bpmn2:outgoing>
+      </bpmn2:userTask>
+      <bpmn2:endEvent id="Event_1kjf05p">
+        <bpmn2:incoming>Flow_1ibqcde</bpmn2:incoming>
+      </bpmn2:endEvent>
+      <bpmn2:scriptTask id="Activity_08anjo3" name="Etikettendruck im ERP anstoßen">
+        <bpmn2:incoming>Flow_0bpfqyz</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0vqng6e</bpmn2:outgoing>
+        <bpmn2:script>println "test"</bpmn2:script>
+      </bpmn2:scriptTask>
+      <bpmn2:serviceTask id="Activity_152o2n7" name="Nächsten AG freigeben" camunda:class="de.iisys.sysint.hicumes.ReleasePlannedProcessDelegate">
+        <bpmn2:incoming>Flow_0vqng6e</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_00pc4ts</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_00pc4ts" sourceRef="Activity_152o2n7" targetRef="Activity_0c3f509" />
+      <bpmn2:sequenceFlow id="Flow_02827i6" sourceRef="Event_0cz188l" targetRef="Activity_14jppin" />
+      <bpmn2:sequenceFlow id="Flow_0bpfqyz" sourceRef="Activity_14jppin" targetRef="Activity_08anjo3" />
+      <bpmn2:sequenceFlow id="Flow_0vqng6e" sourceRef="Activity_08anjo3" targetRef="Activity_152o2n7" />
+      <bpmn2:serviceTask id="Activity_0c3f509" name="Buchung anlegen" camunda:class="de.iisys.sysint.hicumes.RunMappingDelegate">
+        <bpmn2:extensionElements>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="isSimulate">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="useSavedData">${"false"}</camunda:inputParameter>
+            <camunda:inputParameter name="mappingName">${"GenerateReport"}</camunda:inputParameter>
+            <camunda:inputParameter name="readerConfig">${"[{\"configKey\":\"CLASSNAME\",\"configValue\":\"MachineOccupation\"},{\"configKey\":\"SEARCH_COLUMN\",\"configValue\":\"externalId\"},{\"configKey\":\"SEARCH_VALUE\",\"configValue\":\"".concat(machineOccupation.externalId).concat("\"}]")}</camunda:inputParameter>
+          </camunda:inputOutput>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_00pc4ts</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_1ibqcde</bpmn2:outgoing>
+      </bpmn2:serviceTask>
+      <bpmn2:sequenceFlow id="Flow_1ibqcde" sourceRef="Activity_0c3f509" targetRef="Event_1kjf05p" />
+      <bpmn2:textAnnotation id="TextAnnotation_0wmyrdy">
+        <bpmn2:text>getrennt modelliert, da im ERP System eigene Arbeitsgänge</bpmn2:text>
+      </bpmn2:textAnnotation>
+      <bpmn2:association id="Association_0oixve6" sourceRef="Activity_14jppin" targetRef="TextAnnotation_0wmyrdy" />
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="Flow_1ihjxqz" sourceRef="Event_1ezwwsp" targetRef="Subprocess_Versand" />
+    <bpmn2:sequenceFlow id="Flow_0o9s9hs" sourceRef="Subprocess_Versand" targetRef="Event_09cej7b" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Demo_Company">
+      <bpmndi:BPMNShape id="Participant_0icsvjm_di" bpmnElement="Participant_0icsvjm" isHorizontal="true" bioc:stroke="#000000" bioc:fill="#ffffff" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="120" y="80" width="1580" height="360" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_15dvgqw_di" bpmnElement="Flow_15dvgqw">
+        <di:waypoint x="207" y="200" />
+        <di:waypoint x="235" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hnq0zz_di" bpmnElement="Flow_1hnq0zz">
+        <di:waypoint x="1580" y="200" />
+        <di:waypoint x="1622" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1ezucd4_di" bpmnElement="Event_1ezucd4">
+        <dc:Bounds x="171" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1iv5oxg_di" bpmnElement="Event_1iv5oxg">
+        <dc:Bounds x="1622" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xatal9_di" bpmnElement="Subprocess_Basis" isExpanded="true">
+        <dc:Bounds x="235" y="110" width="1345" height="300" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_01wxuji_di" bpmnElement="Flow_01wxuji">
+        <di:waypoint x="760" y="200" />
+        <di:waypoint x="790" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04sbeh6_di" bpmnElement="Flow_04sbeh6">
+        <di:waypoint x="590" y="200" />
+        <di:waypoint x="660" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1077ave_di" bpmnElement="Flow_1077ave">
+        <di:waypoint x="440" y="200" />
+        <di:waypoint x="490" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02239fx_di" bpmnElement="Flow_02239fx">
+        <di:waypoint x="311" y="200" />
+        <di:waypoint x="340" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0o0u3rs_di" bpmnElement="Flow_0o0u3rs">
+        <di:waypoint x="1475" y="200" />
+        <di:waypoint x="1522" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k9fie9_di" bpmnElement="Flow_0k9fie9">
+        <di:waypoint x="975" y="200" />
+        <di:waypoint x="1015" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01z4ldi_di" bpmnElement="Flow_01z4ldi">
+        <di:waypoint x="1115" y="200" />
+        <di:waypoint x="1145" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qm0xae_di" bpmnElement="Flow_1qm0xae">
+        <di:waypoint x="1005" y="330" />
+        <di:waypoint x="815" y="330" />
+        <di:waypoint x="815" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yiqlpo_di" bpmnElement="Flow_1yiqlpo">
+        <di:waypoint x="840" y="200" />
+        <di:waypoint x="875" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ge4woc_di" bpmnElement="Flow_1ge4woc">
+        <di:waypoint x="1245" y="200" />
+        <di:waypoint x="1280" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y3yga0_di" bpmnElement="Flow_1y3yga0">
+        <di:waypoint x="1330" y="200" />
+        <di:waypoint x="1375" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02j5rae_di" bpmnElement="Flow_02j5rae">
+        <di:waypoint x="1305" y="225" />
+        <di:waypoint x="1305" y="330" />
+        <di:waypoint x="1105" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1uavfxv_di" bpmnElement="Event_1uavfxv">
+        <dc:Bounds x="275" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08iqcto_di" bpmnElement="Activity_08iqcto">
+        <dc:Bounds x="340" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_09th77g_di" bpmnElement="Event_09th77g">
+        <dc:Bounds x="1522" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04lip1y_di" bpmnElement="Activity_WZB_Rueckmeldung_Basis" bioc:fill="#d9f2d9">
+        <dc:Bounds x="1015" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1fbuyi2_di" bpmnElement="Gateway_1fbuyi2" isMarkerVisible="true">
+        <dc:Bounds x="790" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1kyn167_di" bpmnElement="Gateway_1kyn167" isMarkerVisible="true">
+        <dc:Bounds x="1280" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1utaoet_di" bpmnElement="Activity_1utaoet">
+        <dc:Bounds x="875" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mxtpz5_di" bpmnElement="Activity_1mxtpz5">
+        <dc:Bounds x="1005" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05o9niv_di" bpmnElement="Activity_05o9niv">
+        <dc:Bounds x="1375" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0dnicqa_di" bpmnElement="Activity_0dnicqa">
+        <dc:Bounds x="1145" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bdtrfa_di" bpmnElement="Activity_1bdtrfa">
+        <dc:Bounds x="660" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0279ebn_di" bpmnElement="Activity_0279ebn" bioc:fill="#ffffcc">
+        <dc:Bounds x="490" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_19o6r28_di" bpmnElement="Participant_19o6r28" isHorizontal="true" bioc:stroke="#000000" bioc:fill="#ffffff" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="120" y="460" width="1243" height="360" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_104iu6t_di" bpmnElement="Flow_104iu6t">
+        <di:waypoint x="207" y="580" />
+        <di:waypoint x="235" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hfjo7v_di" bpmnElement="Flow_1hfjo7v">
+        <di:waypoint x="1265" y="581" />
+        <di:waypoint x="1301" y="581" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0ypayox_di" bpmnElement="Event_0ypayox">
+        <dc:Bounds x="171" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0enq6xr_di" bpmnElement="Subprocess_Montage" isExpanded="true">
+        <dc:Bounds x="235" y="490" width="1030" height="300" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1sa6ieo_di" bpmnElement="Flow_1sa6ieo">
+        <di:waypoint x="920" y="580" />
+        <di:waypoint x="955" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e4y8ur_di" bpmnElement="Flow_1e4y8ur">
+        <di:waypoint x="1160" y="580" />
+        <di:waypoint x="1197" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_024ywmb_di" bpmnElement="Flow_024ywmb">
+        <di:waypoint x="670" y="710" />
+        <di:waypoint x="490" y="710" />
+        <di:waypoint x="490" y="605" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mhw7i9_di" bpmnElement="Flow_0mhw7i9">
+        <di:waypoint x="311" y="580" />
+        <di:waypoint x="340" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01w7gmg_di" bpmnElement="Flow_01w7gmg">
+        <di:waypoint x="790" y="580" />
+        <di:waypoint x="820" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f42m7m_di" bpmnElement="Flow_0f42m7m">
+        <di:waypoint x="440" y="580" />
+        <di:waypoint x="465" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sm0nxd_di" bpmnElement="Flow_0sm0nxd">
+        <di:waypoint x="515" y="580" />
+        <di:waypoint x="550" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_13kq8ae_di" bpmnElement="Flow_13kq8ae">
+        <di:waypoint x="1005" y="580" />
+        <di:waypoint x="1060" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wqft21_di" bpmnElement="Flow_0wqft21">
+        <di:waypoint x="980" y="605" />
+        <di:waypoint x="980" y="710" />
+        <di:waypoint x="770" y="710" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kbg4n5_di" bpmnElement="Flow_0kbg4n5">
+        <di:waypoint x="650" y="580" />
+        <di:waypoint x="690" y="580" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0d0lazb_di" bpmnElement="Event_0d0lazb">
+        <dc:Bounds x="1197" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s5lqmy_di" bpmnElement="Activity_0s5lqmy" bioc:fill="#d9f2d9">
+        <dc:Bounds x="690" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0s4p8o6_di" bpmnElement="Event_0s4p8o6">
+        <dc:Bounds x="275" y="562" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z3wnn4_di" bpmnElement="Activity_0z3wnn4">
+        <dc:Bounds x="340" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_02yffhk_di" bpmnElement="Gateway_02yffhk" isMarkerVisible="true">
+        <dc:Bounds x="465" y="555" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0fawyl1_di" bpmnElement="Gateway_0fawyl1" isMarkerVisible="true">
+        <dc:Bounds x="955" y="555" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z2iysr_di" bpmnElement="Activity_0z2iysr">
+        <dc:Bounds x="550" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i7g989_di" bpmnElement="Activity_1i7g989">
+        <dc:Bounds x="670" y="670" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0l1jk7d_di" bpmnElement="Activity_0l1jk7d">
+        <dc:Bounds x="1060" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11x40qh_di" bpmnElement="Activity_11x40qh">
+        <dc:Bounds x="820" y="540" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1w67s2l_di" bpmnElement="Event_1w67s2l">
+        <dc:Bounds x="1301" y="563" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_13ou7jz_di" bpmnElement="Participant_13ou7jz" isHorizontal="true" bioc:stroke="#000000" bioc:fill="#ffffff" color:background-color="#ffffff" color:border-color="#000000">
+        <dc:Bounds x="120" y="1120" width="1243" height="360" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1d5994n_di" bpmnElement="Flow_1d5994n">
+        <di:waypoint x="207" y="1240" />
+        <di:waypoint x="235" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0665uvo_di" bpmnElement="Flow_0665uvo">
+        <di:waypoint x="1265" y="1240" />
+        <di:waypoint x="1301" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1rmhlu8_di" bpmnElement="Event_1rmhlu8">
+        <dc:Bounds x="171" y="1222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_076xuo9_di" bpmnElement="Event_076xuo9">
+        <dc:Bounds x="1301" y="1222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_037r95n_di" bpmnElement="Subprocess_Verpackung" isExpanded="true">
+        <dc:Bounds x="235" y="1150" width="1030" height="300" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1obhw2i_di" bpmnElement="Flow_1obhw2i">
+        <di:waypoint x="920" y="1240" />
+        <di:waypoint x="955" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_18psl3u_di" bpmnElement="Flow_18psl3u">
+        <di:waypoint x="311" y="1240" />
+        <di:waypoint x="340" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0baxh5b_di" bpmnElement="Flow_0baxh5b">
+        <di:waypoint x="790" y="1240" />
+        <di:waypoint x="820" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vjnohi_di" bpmnElement="Flow_0vjnohi">
+        <di:waypoint x="1150" y="1240" />
+        <di:waypoint x="1197" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l5amfh_di" bpmnElement="Flow_0l5amfh">
+        <di:waypoint x="440" y="1240" />
+        <di:waypoint x="465" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l1vfjv_di" bpmnElement="Flow_0l1vfjv">
+        <di:waypoint x="515" y="1240" />
+        <di:waypoint x="550" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d73cjr_di" bpmnElement="Flow_0d73cjr">
+        <di:waypoint x="1005" y="1240" />
+        <di:waypoint x="1050" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_164belp_di" bpmnElement="Flow_164belp">
+        <di:waypoint x="980" y="1265" />
+        <di:waypoint x="980" y="1380" />
+        <di:waypoint x="720" y="1380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07d6uto_di" bpmnElement="Flow_07d6uto">
+        <di:waypoint x="650" y="1240" />
+        <di:waypoint x="690" y="1240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16khvgh_di" bpmnElement="Flow_16khvgh">
+        <di:waypoint x="620" y="1380" />
+        <di:waypoint x="490" y="1380" />
+        <di:waypoint x="490" y="1265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0jsvfcl_di" bpmnElement="Event_0jsvfcl">
+        <dc:Bounds x="1197" y="1222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_11bo43c_di" bpmnElement="Activity_11bo43c" bioc:fill="#d9f2d9">
+        <dc:Bounds x="690" y="1200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0zmvdk8_di" bpmnElement="Event_0zmvdk8">
+        <dc:Bounds x="275" y="1222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1wxz6mu_di" bpmnElement="Activity_1wxz6mu">
+        <dc:Bounds x="1050" y="1200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1twka83_di" bpmnElement="Activity_1twka83">
+        <dc:Bounds x="340" y="1200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1h88btj_di" bpmnElement="Gateway_1h88btj" isMarkerVisible="true">
+        <dc:Bounds x="465" y="1215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1fdpimc_di" bpmnElement="Gateway_1fdpimc" isMarkerVisible="true">
+        <dc:Bounds x="955" y="1215" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1vgryss_di" bpmnElement="Activity_1vgryss">
+        <dc:Bounds x="550" y="1200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0eaaanp_di" bpmnElement="Activity_0eaaanp">
+        <dc:Bounds x="620" y="1340" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1j828o4_di" bpmnElement="Activity_1j828o4">
+        <dc:Bounds x="820" y="1200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Maschine_Versand_manuell_di" bpmnElement="Participant_19o6r84" isHorizontal="true">
+        <dc:Bounds x="120" y="840" width="1205" height="260" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0faefkt_di" bpmnElement="Flow_0faefkt">
+        <di:waypoint x="203" y="970" />
+        <di:waypoint x="231" y="970" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jyq3q2_di" bpmnElement="Flow_1jyq3q2">
+        <di:waypoint x="1075" y="970" />
+        <di:waypoint x="1111" y="970" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1erhrp0_di" bpmnElement="Event_1erhrp0">
+        <dc:Bounds x="1111" y="952" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07zg7e6_di" bpmnElement="Event_07zg7e6">
+        <dc:Bounds x="167" y="952" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Subprocess_EndkontrolleImVersand_1770-1777_1784_di" bpmnElement="Subprocess_QS" isExpanded="true">
+        <dc:Bounds x="231" y="860" width="844" height="220" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0gfyfhz_di" bpmnElement="Flow_0gfyfhz">
+        <di:waypoint x="950" y="940" />
+        <di:waypoint x="1017" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iqv3cu_di" bpmnElement="Flow_0iqv3cu">
+        <di:waypoint x="287" y="940" />
+        <di:waypoint x="420" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1f2roit_di" bpmnElement="Flow_1f2roit">
+        <di:waypoint x="520" y="940" />
+        <di:waypoint x="729" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ajdxgs_di" bpmnElement="Flow_1ajdxgs">
+        <di:waypoint x="829" y="940" />
+        <di:waypoint x="850" y="940" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1plsj4t_di" bpmnElement="Event_1plsj4t">
+        <dc:Bounds x="251" y="922" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0flm6mm_di" bpmnElement="Activity_0flm6mm" bioc:fill="#ffcc66">
+        <dc:Bounds x="420" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1v2mpvc_di" bpmnElement="Event_1v2mpvc">
+        <dc:Bounds x="1017" y="922" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0xws7xy_di" bpmnElement="Activity_0xws7xy">
+        <dc:Bounds x="729" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0yga6yo_di" bpmnElement="Activity_0yga6yo">
+        <dc:Bounds x="850" y="900" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_17v4uvn_di" bpmnElement="Participant_17v4uvn" isHorizontal="true">
+        <dc:Bounds x="120" y="1510" width="1205" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0o9s9hs_di" bpmnElement="Flow_0o9s9hs">
+        <di:waypoint x="1069" y="1630" />
+        <di:waypoint x="1171" y="1630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ihjxqz_di" bpmnElement="Flow_1ihjxqz">
+        <di:waypoint x="197" y="1630" />
+        <di:waypoint x="229" y="1630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1ezwwsp_di" bpmnElement="Event_1ezwwsp">
+        <dc:Bounds x="161" y="1612" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_09cej7b_di" bpmnElement="Event_09cej7b">
+        <dc:Bounds x="1171" y="1612" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Subprocess_VersandtaetigkeitCBN_1701_di" bpmnElement="Subprocess_Versand" isExpanded="true">
+        <dc:Bounds x="229" y="1530" width="840" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ibqcde_di" bpmnElement="Flow_1ibqcde">
+        <di:waypoint x="960" y="1600" />
+        <di:waypoint x="1001" y="1600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vqng6e_di" bpmnElement="Flow_0vqng6e">
+        <di:waypoint x="679" y="1600" />
+        <di:waypoint x="729" y="1600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0bpfqyz_di" bpmnElement="Flow_0bpfqyz">
+        <di:waypoint x="540" y="1600" />
+        <di:waypoint x="579" y="1600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02827i6_di" bpmnElement="Flow_02827i6">
+        <di:waypoint x="305" y="1600" />
+        <di:waypoint x="440" y="1600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00pc4ts_di" bpmnElement="Flow_00pc4ts">
+        <di:waypoint x="829" y="1600" />
+        <di:waypoint x="860" y="1600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0cz188l_di" bpmnElement="Event_0cz188l">
+        <dc:Bounds x="269" y="1582" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_14jppin_di" bpmnElement="Activity_14jppin" bioc:fill="#d9f2d9">
+        <dc:Bounds x="440" y="1560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1kjf05p_di" bpmnElement="Event_1kjf05p">
+        <dc:Bounds x="1001" y="1582" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08anjo3_di" bpmnElement="Activity_08anjo3">
+        <dc:Bounds x="579" y="1560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_152o2n7_di" bpmnElement="Activity_152o2n7">
+        <dc:Bounds x="729" y="1560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0c3f509_di" bpmnElement="Activity_0c3f509">
+        <dc:Bounds x="860" y="1560" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0wmyrdy_di" bpmnElement="TextAnnotation_0wmyrdy">
+        <dc:Bounds x="523" y="1670" width="220" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0oixve6_di" bpmnElement="Association_0oixve6">
+        <di:waypoint x="540" y="1631" />
+        <di:waypoint x="606" y="1670" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

@@ -1,0 +1,13 @@
+<ng-container *ngIf="(formsDataSourceTree$ | async) as formsDataSourceTree">
+  <app-file-tree [treeNode]="formsDataSourceTree"
+                 (changedSelection)="changedInputSelection($event)"
+                 [componentTitle]="'Camunda workflow selection'"
+                 [smallerThanWindowSize]="500"
+                 [targetLevel]="4"
+  ></app-file-tree>
+</ng-container>
+
+<mat-dialog-actions align="end">
+  <button mat-button [disabled]="this.selectedTaskId===''"  [mat-dialog-close]="openMapping()">Öffnen</button>
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
+</mat-dialog-actions>

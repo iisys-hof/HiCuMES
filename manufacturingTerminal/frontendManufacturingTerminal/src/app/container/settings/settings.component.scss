@@ -1,0 +1,7 @@
+.example-form{
+  display: flex;
+  flex-direction: column;
+}
+mat-card:not(:first-child) {
+  margin-top: 16px;
+}

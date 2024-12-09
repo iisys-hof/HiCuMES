@@ -1,0 +1,22 @@
+[
+  {
+    "key": "machineOccupation.productionOrder.name"
+  },
+  {
+    "type": "simple",
+    "id": "dimension",
+    "className": "bold",
+    "key": "machineOccupation.productionOrder",
+    "props": {
+      "templateString": "Auftrags-Nr.: ${name}"
+    }
+  } ,
+  {
+    "type": "simple",
+    "id": "dimension",
+    "key": "machineOccupation.productionOrder.product",
+    "props": {
+      "templateString": " - <Platz für mehr Informationen>"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+<ng-template #openModalView>
+  <h2 matDialogTitle>Details</h2>
+  <div>
+    <span>{{getField()}}</span>
+  </div>
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Schließen</button>
+  </mat-dialog-actions>
+</ng-template>
+
+<button mat-button
+        matTooltip="{{getField()}}" matTooltipPosition="left" (click)="openModal()" style="text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 14vw;
+    text-align: left;
+}">{{getField()}}</button>

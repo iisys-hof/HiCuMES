@@ -1,0 +1,45 @@
+<div style="height: 100%;display: flex;flex-direction: column;">
+<h1 mat-dialog-title>Gemeinkosten buchen</h1>
+<div mat-dialog-content style="height: 100%">
+  <div class="card" style="margin: 5px;">
+    <p class="card-header">Bitte wählen Sie die Gemeinkostenstelle aus:</p>
+    <div class="card-body">
+      <ng-select *ngIf="overheadCostCenters"
+                 bindLabel="viewValue"
+                 bindValue="value"
+                 [items]="overheadCostCenters"
+                 cdkFocusInitial
+                 [(ngModel)]="selected"
+      >
+      </ng-select>
+      <button color="secondary" mat-stroked-button (click)="onSubmit()" [disabled]="selected == undefined">Starten</button>
+    </div>
+  </div>
+
+  <!--<div class="card" *ngIf="tableLayoutNew && overheadCosts; else progressSpinner" style="margin: 5px;">
+  <p class="card-header" style="margin: 0px">Buchungen:</p>
+  <formly-form class="formly-table card-body" [fields]="tableLayoutNew" [form]="tableForm"
+               [model]="overheadCostCentersModel"></formly-form>
+</div>-->
+  <div class="card" *ngIf="tableLayout && overheadCosts; else progressSpinner" style="margin: 5px;">
+    <p class="card-header" style="margin: 0px">Laufende Buchungen:</p>
+      <formly-form *ngIf="overheadCosts?.overheadCosts?.length > 0" class="formly-table card-body" [fields]="tableLayout" [form]="tableForm"
+                   [model]="overheadCosts"></formly-form>
+  </div>
+  <div class="card" *ngIf="tableLayoutHistory && overheadCostsHistory; else progressSpinner" style="margin: 5px;">
+    <p class="card-header" style="margin: 0px">Abgeschlossene Buchungen:</p>
+      <formly-form *ngIf="overheadCostsHistory?.overheadCosts?.length > 0" class="formly-table card-body" [fields]="tableLayoutHistory" [form]="tableFormHistory"
+                   [model]="overheadCostsHistory"></formly-form>
+  </div>
+</div>
+
+
+<div mat-dialog-actions>
+  <button color="primary" mat-stroked-button (click)="onClose()">Schließen</button>
+</div>
+</div>
+<ng-template #progressSpinner>
+  <div class="spinner" style="position: relative; height: 65vh;">
+    <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+  </div>
+</ng-template>

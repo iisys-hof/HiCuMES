@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+
+}
+
+mat-card {
+  margin-bottom: 16px;
+  padding-bottom: 24px;
+}
+
+.attention {
+  position: absolute;
+  z-index: 99;
+  right: 6px;
+  margin-top: -46px;
+
+  mat-icon {
+    text-align: left;
+    margin-left: -16px;
+    margin-top: -20px;
+    font-size: 42px;
+  }
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.8;
+    background-color: #9e0000;
+  }
+}
+
+.mat-column-details {
+  width: 32px;
+  text-align: center;
+
+}

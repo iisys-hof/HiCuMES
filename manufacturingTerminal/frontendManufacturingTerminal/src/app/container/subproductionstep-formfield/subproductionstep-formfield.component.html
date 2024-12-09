@@ -1,0 +1,4 @@
+<ng-container *ngIf="(machineOccupation$ | async) as machineOccupation">
+  <app-camunda-form-field (onFinish)="finishFormfield($event)" (onFinishWithPause)="finishFormfieldWithPause($event)" (onPause)="pauseMachineOccupation($event)" (onContinue)="continueMachineOccupation()" (onJoin)="joinMachineOccupation()"
+                          [machineOccupation]="machineOccupation" [userOccupation]="userOccupation$ | async"></app-camunda-form-field>
+</ng-container>

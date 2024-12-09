@@ -1,0 +1,111 @@
+[
+  {
+    "key": "machineOccupations",
+    "type": "key-value-list",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        { "name": "Artikel", "id": "product"},
+        { "name": "Fertigungsmenge", "id": "fmge"}
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "product",
+          "key": "product.name"
+        },
+        {
+          "type": "simple",
+          "id": "rand",
+          "key": "product.yrand"
+        },
+        {
+          "type": "simple",
+          "id": "schaft",
+          "key": "product.ytxbs"
+        },
+        {
+          "type": "simple",
+          "id": "yhand",
+          "key": "product.ymgamma"
+        },
+
+        {
+          "type": "simple",
+          "key": "product.ysm1"
+        },
+        {
+          "type": "simple",
+          "key": "product.ykorn1"
+        },
+        {
+          "type": "simple",
+          "key": "product.yhart1"
+        },
+        {
+          "type": "simple",
+          "key": "product.ygef1"
+        },
+        {
+          "type": "simple",
+          "key": "product.ybind1"
+        },
+        {
+          "type": "simple",
+          "key": "product.ybind2"
+        },
+        {
+          "type": "simple",
+          "id": "quality",
+          "key": "product",
+          "defaultValue": {
+          },
+          "props": {
+            "concat": ["ysm1", "ykorn1", "yhart1", "ygef1", "ybind1", "ybind2"],
+            "concatSpacer": " "
+          }
+        },
+        {
+          "type": "simple",
+          "id": "verw",
+          "key": "machineOccupation.productionOrder.customerOrder.name"
+        },
+        {
+          "type": "simple",
+          "id": "art",
+          "key": "machineOccupation.productionOrder.orderType"
+        },
+        {
+          "type": "simple",
+          "id": "bmge",
+          "key": "machineOccupation.productionOrder.orderAmount"
+        },
+        {
+          "type": "simple",
+          "id": "fmge",
+          "key": "machineOccupation.productionOrder.measurement.amount"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.name"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.sumSteps"
+        },
+        {
+          "type": "simple",
+          "id": "nrDone",
+          "key": "machineOccupation",
+          "templateOptions": {
+            "concat": ["name", "productionOrder.sumSteps"],
+            "concatCastNumber": "true",
+            "concatSpacer": "/"
+          }
+        }
+      ]
+    }
+  }
+]

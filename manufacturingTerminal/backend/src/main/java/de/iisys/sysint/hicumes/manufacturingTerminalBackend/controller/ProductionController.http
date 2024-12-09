@@ -1,0 +1,18 @@
+@baseUrl = http://127.0.0.1:8080/manufacturingTerminalBackend/data
+@id = 84
+
+### Get all Production Orders
+GET {{baseUrl}}/production/productionOrder
+Accept: application/json
+
+### Get specific Production Orders with id: {{machineoccupation_id}}
+GET {{baseUrl}}/production/productionOrder/?id=15
+Accept: application/json
+
+### Get specific Production Orders with id: {{machineoccupation_id}}
+GET {{baseUrl}}/production/CDMachine
+Accept: application/json
+
+}
+
+

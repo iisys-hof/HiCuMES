@@ -1,0 +1,103 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <servers>
+    <server>
+      <id>gitlab-maven</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Job-Token</name>
+            <value>${CI_JOB_TOKEN}</value>
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+    <server>
+      <id>nexus-iisys-sysint</id>
+      <username>sysint</username>
+      <password>${IISYS_NEXUS_PASSWORD}</password>
+    </server>
+    <server>
+      <id>nexus-iisys</id>
+      <username>sysint</username>
+      <password>${IISYS_NEXUS_PASSWORD}</password>
+    </server>
+  </servers>
+  <mirrors>
+    <mirror>
+      <id>nexus-iisys-sysint</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://nexus.iisys.de/repository/sysint-maven-public/</url>
+    </mirror>
+    <mirror>
+      <id>nexus-iisys</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://nexus.iisys.de/repository/maven-public/</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+
+
+    <profile>
+      <id>nexus-iisys-sysint</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <profile>
+      <id>nexus-iisys</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+
+      <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>nexus-iisys-sysint</activeProfile>
+  </activeProfiles>
+</settings>

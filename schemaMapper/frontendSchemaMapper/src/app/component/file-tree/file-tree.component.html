@@ -1,0 +1,21 @@
+<mat-card class="mat-elevation-z9">
+  <mat-card-header>
+    <mat-card-title>{{componentTitle}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field style="width: 100%" class="example-full-width">
+      <mat-label>Suche</mat-label>
+      <input matInput type="text" [id]="'search' + sourcetreeId" class="input">
+      <mat-icon style="color: rgba(0, 0, 0, 0.54)" matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button mat-button (click)="collapseAll()">--</button>
+    <button mat-button (click)="expandLess()">-</button>
+    <button mat-button (click)="expandMore()">+</button>
+    <button mat-button (click)="expandAll()">++</button>
+
+    <div [style.height]="cardHeight" class="schemaTree" [id]="sourcetreeId"></div>
+  </mat-card-content>
+</mat-card>
+
+
+

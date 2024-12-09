@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Daten zur Änderung</h2>
+<hr>
+<mat-dialog-content  class="mat-typography">
+  <p *ngIf="data.classes.length === 0">Keine Daten zur Änderung vorgemerkt! <br>
+    <span class="text-muted">Bitte neue Felder anlegen</span>
+  </p>
+
+
+
+  <ng-container *ngFor="let item of data.classes">
+    <h3 style="margin: 0px; margin-top:10px " class="mat-typography">{{item.name}}</h3>
+    <mat-list style="padding-top: 0px">
+      <mat-list-item style="height: 21px; font-family: monospace; font-size: 0.9rem" *ngFor="let member of item.members"><strong>{{member.name}}: </strong> <span class="text-muted">{{member.type}}</span></mat-list-item>
+    </mat-list>
+  </ng-container>
+
+</mat-dialog-content>
+
+<hr style="margin-top: 32px; margin-bottom: 0px;">
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
+  <button [disabled]="data.classes.length === 0" mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Änderungen senden</button>
+</mat-dialog-actions>

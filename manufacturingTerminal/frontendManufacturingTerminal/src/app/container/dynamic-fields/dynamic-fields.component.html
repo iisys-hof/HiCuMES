@@ -1,0 +1,50 @@
+<!--<div [innerHtml]="innerHTML | sanitize"></div>
+<div *ngFor="let area of dynamicLayout?.areas">
+  {{area.heading}}
+  <div *ngFor="let row of area?.rows">
+    <div *ngFor="let column of row?.columns">
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{column.item.payload.name}}</mat-label>
+        <input id="fname" type="text" ngModel="{{getVariable(column.item.payload.variable)}}" (ngModelChange)="changevariable($event, column.item.payload.variable )" matInput  placeholder="TT.MM.JJJJ">
+
+      </mat-form-field>
+
+      xxxx {{column.item.payload.variable}} ::: {{getVariable(column.item.payload.variable) | json}}
+
+    </div>
+  </div>
+</div>
+
+
+
+<mat-form-field appearance="fill">
+  <mat-label>Start-Zeit</mat-label>
+  <input ngModel="{{getVariable('glossary.GlossDiv.date')}}"  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" matInput
+         placeholder="TT.MM.JJJJ">
+  <owl-date-time #dt1 [firstDayOfWeek]="1" backdropClass="mybackdrob"></owl-date-time>
+  <mat-icon matSuffix>history</mat-icon>
+  <ngx-material-timepicker #picker></ngx-material-timepicker>
+</mat-form-field>
+xxxx glossary.GlossDiv.date ::: {{getVariable("glossary.GlossDiv.date") }}
+ <hr>
+
+-->
+<mat-card class="mat-elevation-z6">
+  <mat-card-header>
+    <mat-card-title>Arbeitsgang</mat-card-title>
+    <mat-card-subtitle>Hinweistext zur Rückmeldung</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content *ngFor="let formLayout of formLayouts">
+    <form (ngSubmit)="onSubmit(model)" [formGroup]="formForm">
+      <formly-form [fields]="formLayout" [form]="formForm" [model]="model" ></formly-form>
+    </form>
+  </mat-card-content>
+</mat-card>
+<button  class="add-entry" color="primary" mat-fab>
+  <mat-icon>add</mat-icon>
+</button>
+
+<mat-card-content>
+  {{model | json }}
+</mat-card-content>

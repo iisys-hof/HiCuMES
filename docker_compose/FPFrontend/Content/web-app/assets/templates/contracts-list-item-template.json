@@ -1,0 +1,36 @@
+[
+  {
+    "key": "product",
+    "label": "",
+    "htmltag": "strong",
+    "class": "title-section"
+  },
+  {
+    "key": "content",
+    "label": "Auftragsnummer:",
+    "htmltag": "strong",
+    "class": "text-section"
+  },
+  {
+    "group": [
+      {
+        "key": "container",
+        "label": "",
+        "htmltag": "strong"
+      },
+      {
+        "key": "empty",
+        "label": ["Behälter", "Teilaufträge", " "],
+        "htmltag": "strong"
+      }
+    ],
+    "htmltag": "p",
+    "class": "text-section"
+  },
+  {
+    "key": "deadline",
+    "label": "KW:",
+    "htmltag": "strong",
+    "class": "text-section"
+  }
+]

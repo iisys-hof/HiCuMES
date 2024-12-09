@@ -1,0 +1,95 @@
+[
+  {
+    "key": "camundaMachineOccupations",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        {
+          "name": "MGRF",
+          "id": "productionSteps[0].mgrnr"
+        },
+        {
+          "name": "Arbgang",
+          "id": "productionSteps[0].arbgangNr"
+        },
+        {
+          "name": "Position",
+          "id": "pos"
+        },
+        {
+          "name": "Arbeitsgang",
+          "id": "productionSteps[0].name"
+        },
+        {
+          "name": "AG-Text",
+          "id": "machineOccupation.ptext"
+        },
+        {
+          "name": "Starttermin",
+          "id": "machineOccupation.plannedStartDateTime"
+        },
+        {
+          "name": "Endtermin",
+          "id": "machineOccupation.plannedEndDateTime"
+        },
+        {
+          "name": "Status",
+          "id": "machineOccupation.status"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "productionSteps[0].mgrnr",
+          "key": "productionSteps[0].mgrnr"
+        },
+        {
+          "type": "simple",
+          "id": "productionSteps[0].arbgangNr",
+          "key": "productionSteps[0].arbgangNr"
+        },
+        {
+          "type": "simple",
+          "id": "pos",
+          "key": "machineOccupation.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionSteps[0].name",
+          "key": "productionSteps[0].name"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.ptext",
+          "key": "machineOccupation.ptext"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedStartDateTime",
+          "key": "machineOccupation.plannedStartDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedEndDateTime",
+          "key": "machineOccupation.plannedEndDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "status-icon",
+          "id": "machineOccupation.status",
+          "key": "machineOccupation.status"
+        }
+      ]
+    }
+  }
+]

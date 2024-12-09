@@ -1,0 +1,6 @@
+<div mat-dialog-content>
+  <ng-container #fieldComponent></ng-container>
+  <app-pdf-viewer></app-pdf-viewer>
+
+  <iframe id="embedded" [src]="src | safe" style="height: 50vh; width: 100%;"></iframe>
+</div>

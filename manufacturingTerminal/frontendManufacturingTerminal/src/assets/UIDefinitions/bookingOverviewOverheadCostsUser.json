@@ -1,0 +1,104 @@
+[
+  {
+    "key": "bookingEntries",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "Position",
+          "id": "pos",
+          "colWidth": 12.5,
+          "sortable": true
+        },
+        {
+          "name": "Arbeitsgang",
+          "id": "arg",
+          "colWidth": 12.5,
+          "sortable": true
+        },
+        {
+          "name": "MGR",
+          "id": "mgr",
+          "colWidth": 12.5,
+          "sortable": true
+        },
+        {
+          "name": "Bezeichnung.",
+          "id": "name",
+          "colWidth": 25,
+          "sortable": true
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime",
+          "colWidth": 12.5,
+          "sortable": true
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime",
+          "colWidth": 12.5,
+          "sortable": true,
+          "defaultSort": "asc"
+        },
+        {
+          "name": "Dauer",
+          "id": "duration_work",
+          "colWidth": 12.5,
+          "sortable": true
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "pos",
+          "key": "overheadCost.overheadCostCenter.orderNumber"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "overheadCost.overheadCostCenter.externalId",
+          "id": "arg"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "overheadCost.overheadCostCenter.mgr",
+          "id": "mgr"
+        },
+        {
+          "type": "simple",
+          "key": "overheadCost.overheadCostCenter.name",
+          "id": "name"
+        },
+        {
+          "type": "simple",
+          "key": "overheadCost.timeRecord.startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM. - HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "overheadCost.timeRecord.endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM. - HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "overheadCost.duration",
+          "id": "duration_work"
+        }
+      ]
+    }
+  }
+]

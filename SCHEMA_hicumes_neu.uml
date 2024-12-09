@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>eeefba91-948e-4b0b-889c-c0d88c7fd136.SCHEMA:hicumes</OriginalElement>
+  <nodes>
+    <node x="1206.1088836477986" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolSettingParameter</node>
+    <node x="856.0" y="340.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep</node>
+    <node x="1444.590212264151" y="340.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation_ToolSetting</node>
+    <node x="523.4827044025158" y="421.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.QualityManagement</node>
+    <node x="1193.090212264151" y="421.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CamundaSubProductionStep</node>
+    <node x="1096.1088836477986" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Tool</node>
+    <node x="357.66666666666663" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration</node>
+    <node x="1382.019927536232" y="574.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AllClassExtension_ClassExtension</node>
+    <node x="762.5199275362319" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.DataReader</node>
+    <node x="1676.840212264151" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineStatus</node>
+    <node x="434.96521226415086" y="0.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Product</node>
+    <node x="536.0" y="340.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation_CD_ProductionStep</node>
+    <node x="1263.840212264151" y="0.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_MachineType</node>
+    <node x="0.0" y="584.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration_MappingRule</node>
+    <node x="466.0" y="658.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.hibernate_sequence</node>
+    <node x="1195.4213836477986" y="164.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting</node>
+    <node x="854.9838836477986" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductionStep</node>
+    <node x="1133.394927536232" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MemberExtension</node>
+    <node x="1107.019927536232" y="574.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ClassExtension_MemberExtension</node>
+    <node x="635.5199275362319" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.DataWriter</node>
+    <node x="56.23913043478257" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingRule</node>
+    <node x="234.0" y="658.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CsvReaderParserConfig</node>
+    <node x="351.48270440251565" y="421.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AuxiliaryMaterials</node>
+    <node x="1195.590212264151" y="340.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CamundaMachineOccupation</node>
+    <node x="689.695652173913" y="584.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingAndDataSource</node>
+    <node x="486.5" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CustomerOrder</node>
+    <node x="521.0" y="164.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ProductionOrder</node>
+    <node x="48.5" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_QualityControlFeature</node>
+    <node x="1306.394927536232" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ClassExtension</node>
+    <node x="1526.1702044025155" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Machine</node>
+    <node x="895.5199275362319" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ReaderResult</node>
+    <node x="1007.0902122641509" y="421.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ProductionNumbers</node>
+    <node x="1609.215212264151" y="164.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineStatusHistory</node>
+    <node x="913.090212264151" y="421.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SetUp</node>
+    <node x="273.5" y="81.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductRelationship</node>
+    <node x="299.99999999999994" y="584.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration_MappingConfiguration</node>
+    <node x="1038.965212264151" y="0.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolType</node>
+    <node x="0.0" y="658.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SingleFileReaderConfig</node>
+    <node x="1072.590212264151" y="247.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation</node>
+    <node x="1456.394927536232" y="495.0">eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AllClassExtension</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Machine" relationship="REFERENCES">
+      <point x="62.25" y="-14.5" />
+      <point x="1217.840212264151" y="225.0" />
+      <point x="1598.715212264151" y="225.0" />
+      <point x="1598.715212264151" y="142.0" />
+      <point x="1584.1702044025155" y="142.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.QualityManagement" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep" relationship="REFERENCES">
+      <point x="42.25" y="-14.5" />
+      <point x="650.2327044025158" y="400.0" />
+      <point x="936.5" y="400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration_MappingRule" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration" relationship="REFERENCES">
+      <point x="70.0" y="-14.5" />
+      <point x="210.0" y="564.0" />
+      <point x="347.15579710144925" y="564.0" />
+      <point x="347.15579710144925" y="554.0" />
+      <point x="388.4999999999999" y="554.0" />
+      <point x="-61.666666666666686" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ProductionOrder" relationship="REFERENCES">
+      <point x="-62.25" y="-14.5" />
+      <point x="1093.340212264151" y="225.0" />
+      <point x="593.0" y="225.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation_ToolSetting" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting" relationship="REFERENCES">
+      <point x="62.25" y="-14.5" />
+      <point x="1631.340212264151" y="318.0" />
+      <point x="1574.340212264151" y="318.0" />
+      <point x="1574.340212264151" y="215.0" />
+      <point x="1278.6713836477986" y="215.0" />
+      <point x="27.75" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CamundaMachineOccupation" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="1310.090212264151" y="318.0" />
+      <point x="1081.5463836477986" y="318.0" />
+      <point x="1081.5463836477986" y="298.0" />
+      <point x="1155.590212264151" y="298.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingAndDataSource" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.DataReader" relationship="REFERENCES">
+      <point x="24.75" y="-14.5" />
+      <point x="813.445652173913" y="564.0" />
+      <point x="819.0199275362319" y="564.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolSettingParameter" relationship="REFERENCES">
+      <point x="13.875" y="-14.5" />
+      <point x="1264.7963836477986" y="132.0" />
+      <point x="1308.6088836477986" y="132.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CamundaSubProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CamundaMachineOccupation" relationship="REFERENCES">
+      <point x="56.0" y="-14.5" />
+      <point x="1361.090212264151" y="400.0" />
+      <point x="1310.090212264151" y="400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AllClassExtension_ClassExtension" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AllClassExtension" relationship="REFERENCES">
+      <point x="62.5" y="-14.5" />
+      <point x="1569.519927536232" y="549.0" />
+      <point x="1530.394927536232" y="549.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_MachineType" relationship="REFERENCES">
+      <point x="54.0" y="-14.5" />
+      <point x="989.9838836477986" y="50.0" />
+      <point x="1337.840212264151" y="50.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AllClassExtension_ClassExtension" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ClassExtension" relationship="REFERENCES">
+      <point x="-62.5" y="-14.5" />
+      <point x="1444.519927536232" y="549.0" />
+      <point x="1403.894927536232" y="549.0" />
+      <point x="32.5" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation_CD_ProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" relationship="REFERENCES">
+      <point x="75.0" y="-14.5" />
+      <point x="761.0" y="308.0" />
+      <point x="1100.2568789308175" y="308.0" />
+      <point x="-55.33333333333337" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration_MappingConfiguration" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration" relationship="REFERENCES">
+      <point x="-85.5" y="-14.5" />
+      <point x="385.49999999999994" y="564.0" />
+      <point x="347.15579710144925" y="564.0" />
+      <point x="347.15579710144925" y="554.0" />
+      <point x="388.4999999999999" y="554.0" />
+      <point x="-61.666666666666686" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductRelationship" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Product" relationship="REFERENCES">
+      <point x="48.25" y="-14.5" />
+      <point x="418.25" y="60.0" />
+      <point x="495.46521226415086" y="60.0" />
+      <point x="495.46521226415086" y="50.0" />
+      <point x="518.2152122641509" y="50.0" />
+      <point x="27.75" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Product" relationship="REFERENCES">
+      <point x="-54.0" y="-14.5" />
+      <point x="881.9838836477986" y="60.0" />
+      <point x="495.46521226415086" y="60.0" />
+      <point x="495.46521226415086" y="50.0" />
+      <point x="518.2152122641509" y="50.0" />
+      <point x="27.75" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting" relationship="REFERENCES">
+      <point x="20.75" y="-14.5" />
+      <point x="1176.340212264151" y="215.0" />
+      <point x="1223.1713836477986" y="215.0" />
+      <point x="-27.75" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Machine" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_MachineType" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="1584.1702044025155" y="50.0" />
+      <point x="1337.840212264151" y="50.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Machine" relationship="REFERENCES">
+      <point x="41.625" y="-14.5" />
+      <point x="1292.5463836477986" y="142.0" />
+      <point x="1584.1702044025155" y="142.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingAndDataSource" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.DataWriter" relationship="REFERENCES">
+      <point x="-24.75" y="-14.5" />
+      <point x="763.945652173913" y="544.0" />
+      <point x="689.0199275362319" y="544.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation_ToolSetting" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" relationship="REFERENCES">
+      <point x="-62.25" y="-14.5" />
+      <point x="1506.840212264151" y="308.0" />
+      <point x="1210.9235455974842" y="308.0" />
+      <point x="55.33333333333337" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ProductionNumbers" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="1090.090212264151" y="400.0" />
+      <point x="936.5" y="400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ProductionOrder" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Product" relationship="REFERENCES">
+      <point x="36.0" y="-14.5" />
+      <point x="629.0" y="142.0" />
+      <point x="632.0" y="142.0" />
+      <point x="632.0" y="60.0" />
+      <point x="495.46521226415086" y="60.0" />
+      <point x="495.46521226415086" y="50.0" />
+      <point x="518.2152122641509" y="50.0" />
+      <point x="27.75" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.QualityManagement" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_QualityControlFeature" relationship="REFERENCES">
+      <point x="-42.25" y="-14.5" />
+      <point x="565.7327044025158" y="390.0" />
+      <point x="151.0" y="390.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolSettingParameter" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_MachineType" relationship="REFERENCES">
+      <point x="51.25" y="-14.5" />
+      <point x="1359.8588836477986" y="50.0" />
+      <point x="1337.840212264151" y="50.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_QualityControlFeature" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Product" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="151.0" y="60.0" />
+      <point x="495.46521226415086" y="60.0" />
+      <point x="495.46521226415086" y="50.0" />
+      <point x="518.2152122641509" y="50.0" />
+      <point x="27.75" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingAndDataSource" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ReaderResult" relationship="REFERENCES">
+      <point x="74.25" y="-14.5" />
+      <point x="862.945652173913" y="564.0" />
+      <point x="956.0199275362319" y="564.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingAndDataSource" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration" relationship="REFERENCES">
+      <point x="-74.25" y="-14.5" />
+      <point x="714.445652173913" y="554.0" />
+      <point x="511.83333333333326" y="554.0" />
+      <point x="61.666666666666686" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Tool" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolType" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="1141.1088836477986" y="60.0" />
+      <point x="1099.965212264151" y="60.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Tool" relationship="REFERENCES">
+      <point x="-20.75" y="-14.5" />
+      <point x="1134.840212264151" y="225.0" />
+      <point x="1141.1088836477986" y="225.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="936.5" y="318.0" />
+      <point x="1081.5463836477986" y="318.0" />
+      <point x="1081.5463836477986" y="298.0" />
+      <point x="1155.590212264151" y="298.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingConfiguration_MappingRule" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MappingRule" relationship="REFERENCES">
+      <point x="-70.0" y="-14.5" />
+      <point x="70.0" y="564.0" />
+      <point x="117.73913043478257" y="564.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.AuxiliaryMaterials" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="427.48270440251565" y="400.0" />
+      <point x="936.5" y="400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolType" relationship="REFERENCES">
+      <point x="0.0" y="-14.5" />
+      <point x="935.9838836477986" y="60.0" />
+      <point x="1099.965212264151" y="60.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ProductionOrder" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CustomerOrder" relationship="REFERENCES">
+      <point x="-36.0" y="-14.5" />
+      <point x="557.0" y="142.0" />
+      <point x="554.0" y="142.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineOccupation_CD_ProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductionStep" relationship="REFERENCES">
+      <point x="-75.0" y="-14.5" />
+      <point x="611.0" y="318.0" />
+      <point x="680.75" y="318.0" />
+      <point x="680.75" y="142.0" />
+      <point x="895.4838836477986" y="142.0" />
+      <point x="-40.5" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CamundaSubProductionStep" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep" relationship="REFERENCES">
+      <point x="-56.0" y="-14.5" />
+      <point x="1249.090212264151" y="400.0" />
+      <point x="936.5" y="400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineStatusHistory" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Machine" relationship="REFERENCES">
+      <point x="-44.25" y="-14.5" />
+      <point x="1653.465212264151" y="142.0" />
+      <point x="1584.1702044025155" y="142.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_Tool" relationship="REFERENCES">
+      <point x="-13.875" y="-14.5" />
+      <point x="1237.0463836477986" y="132.0" />
+      <point x="1141.1088836477986" y="132.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolSettingParameter" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ToolType" relationship="REFERENCES">
+      <point x="-51.25" y="-14.5" />
+      <point x="1257.3588836477986" y="60.0" />
+      <point x="1099.965212264151" y="60.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ClassExtension_MemberExtension" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ClassExtension" relationship="REFERENCES">
+      <point x="63.75" y="-14.5" />
+      <point x="1298.269927536232" y="549.0" />
+      <point x="1338.894927536232" y="549.0" />
+      <point x="-32.5" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ToolSetting" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.CD_ProductionStep" relationship="REFERENCES">
+      <point x="-41.625" y="-14.5" />
+      <point x="1209.2963836477986" y="142.0" />
+      <point x="976.4838836477986" y="142.0" />
+      <point x="40.5" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineStatusHistory" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MachineStatus" relationship="REFERENCES">
+      <point x="44.25" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.ClassExtension_MemberExtension" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.MemberExtension" relationship="REFERENCES">
+      <point x="-63.75" y="-14.5" />
+      <point x="1170.769927536232" y="549.0" />
+      <point x="1209.894927536232" y="549.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SetUp" target="eeefba91-948e-4b0b-889c-c0d88c7fd136.TABLE:hicumes.SubProductionStep" relationship="REFERENCES">
+      <point x="-1.1368683772161603E-13" y="-14.5" />
+      <point x="950.0902122641508" y="400.0" />
+      <point x="936.5" y="400.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8105375199574242" showDependencies="false" x="929.5" y="343.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Comments</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

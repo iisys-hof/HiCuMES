@@ -1,0 +1,102 @@
+[
+  {
+    "key": "productRelationships",
+    "type": "datatable-advanced",
+    "className": "detailBtnRight",
+    "props": {
+      "multiple": true,
+      "disableRowClick": true,
+      "columns": [
+        {
+          "name": "Artikel",
+          "id": "part.name"
+        },
+        {
+          "name": "Suchwort",
+          "id": "part.elemsuch"
+        },
+        {
+          "name": "Bezeichnung/Zeichnung",
+          "id": "part.elemname"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "part.ybem"
+        },
+        {
+          "name": "Prozent",
+          "className": "alignRight",
+          "id": "amountPercent"
+        },
+        {
+          "name": "Menge",
+          "className": "alignRight",
+          "id": "amount"
+        },
+        {
+          "name": "Charge",
+          "id": "batch"
+        },
+        {
+          "name": "Datum",
+          "id": "batchDate"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "part.name",
+          "key": "part.name"
+        },
+        {
+          "type": "simple",
+          "id": "part.elemsuch",
+          "key": "part.elemsuch"
+        },
+        {
+          "type": "simple",
+          "id": "part.elemname",
+          "key": "part.elemname"
+        },
+        {
+          "type": "simple",
+          "id": "part.ybem",
+          "key": "part.ybem"
+        },
+        {
+          "type": "simple",
+          "id": "amountPercent",
+          "key": "amountPercent",
+          "className": "alignRight",
+          "props": {
+            "type": "measurementWithUnit",
+            "unitLabel": "%"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "amount",
+          "key": "amount",
+          "className": "alignRight",
+          "props": {
+            "type": "measurementWithUnit",
+            "unitLabelSrc": "unitString",
+            "round": 3
+          }
+        },
+        {
+          "type": "simple",
+          "key": "batch",
+          "id": "batch"
+        },
+        {
+          "type": "simple",
+          "key": "batchDate",
+          "id": "batchDate"
+        }
+      ]
+    }
+  }
+]

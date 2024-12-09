@@ -1,0 +1,80 @@
+
+::ng-deep .table-short {
+  max-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+::ng-deep .table-medium {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+
+  max-height: 80px;
+  overflow: auto;
+}
+
+::ng-deep .table-large {
+  min-width: 130px;
+  max-width: 150px;
+  white-space: normal;
+  display: block;
+}
+
+.formly-table {
+  overflow-y: auto;
+  margin: 5px;
+
+  ::ng-deep .custom-header-row {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: white;
+    box-shadow: 0 -1px 5px lightgrey;
+  }
+
+  ::ng-deep .custom-header-cell {
+    font-size: 13px;
+    padding: 10px !important;
+  }
+
+  ::ng-deep .mat-cell {
+    padding: 2px 10px 2px 10px !important;
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding: 0;
+  }
+
+  .card {
+    display: flex;
+    height: 100%;
+  }
+}
+
+
+::ng-deep .spinner{
+  .ngx-spinner-overlay{
+    position: relative !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .la-square-jelly-box{
+      position: relative !important;
+      top: unset !important;
+      left: unset !important;
+      margin: 20px !important;
+      transform: unset !important;
+    }
+    .loading-text{
+      position: relative !important;
+      top: unset;
+      left: unset;
+      transform: unset;
+    }
+  }
+}

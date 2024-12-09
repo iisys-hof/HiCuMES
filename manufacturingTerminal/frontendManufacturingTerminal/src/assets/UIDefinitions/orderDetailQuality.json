@@ -1,0 +1,181 @@
+[
+  {
+    "key": "product",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        {
+          "name": "Schleifm.",
+          "id": "ysm1"
+        },
+        {
+          "name": "Körnung",
+          "id": "ykorn1"
+        },
+        {
+          "name": "Härte",
+          "id": "yhart1"
+        },
+        {
+          "name": "Gefüge",
+          "id": "ygef1"
+        },
+        {
+          "name": "Bindung",
+          "id": "ybind1"
+        },
+        {
+          "name": "Poren",
+          "id": "ybind2"
+        },
+        {
+          "name": "NB",
+          "id": "ynachb"
+        },
+        {
+          "name": "Spez.",
+          "id": "yspezgew"
+        },
+        {
+          "name": "Y-Hand",
+          "id": "ymgamma"
+        },
+        {
+          "name": "Y-Auto",
+          "id": "yagamma"
+        },
+        {
+          "name": "Konz.",
+          "id": "ykonz"
+        },
+        {
+          "name": "Rand/Radius",
+          "id": "yrand"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "ysm1",
+          "key": "ysm1"
+        },
+        {
+          "type": "simple",
+          "id": "ykorn1",
+          "key": "ykorn1"
+        },
+        {
+          "type": "simple",
+          "id": "yhart1",
+          "key": "yhart1"
+        },
+        {
+          "type": "simple",
+          "id": "ygef1",
+          "key": "ygef1"
+        },
+        {
+          "type": "simple",
+          "id": "ybind1",
+          "key": "ybind1"
+        },
+        {
+          "type": "simple",
+          "id": "ybind2",
+          "key": "ybind2"
+        },
+        {
+          "type": "simple",
+          "id": "ynachb",
+          "key": "ynachb"
+        },
+        {
+          "type": "simple",
+          "id": "yspezgew",
+          "key": "yspezgew"
+        },
+        {
+          "type": "simple",
+          "id": "ymgamma",
+          "key": "ymgamma"
+        },
+        {
+          "type": "simple",
+          "id": "yagamma",
+          "key": "yagamma"
+        },
+        {
+          "type": "simple",
+          "id": "ykonz",
+          "key": "ykonz"
+        },
+        {
+          "type": "simple",
+          "id": "yrand",
+          "key": "yrand"
+        }
+      ]
+    }
+  },
+  {
+    "key": "product",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        {
+          "name": "Brand",
+          "id": "ybrand"
+        },
+        {
+          "name": "Code",
+          "id": "ycode"
+        },
+        {
+          "name": "Schaft",
+          "id": "ytxbs"
+        },
+        {
+          "name": "Farbkörper",
+          "id": "yfarbkoerper"
+        },
+        {
+          "name": "Form",
+          "id": "yform"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "ybrand",
+          "key": "ybrand"
+        },
+        {
+          "type": "simple",
+          "id": "ycode",
+          "key": "ycode"
+        },
+        {
+          "type": "simple",
+          "id": "ytxbs",
+          "key": "ytxbs"
+        },
+        {
+          "type": "simple",
+          "id": "yfarbkoerper",
+          "key": "yfarbkoerper"
+        },
+        {
+          "type": "simple",
+          "id": "yform",
+          "key": "yform"
+        }
+      ]
+    }
+  }
+]

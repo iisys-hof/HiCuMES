@@ -1,0 +1,78 @@
+<div mat-dialog-content>
+  <ng-container *ngIf="model?.camundaMachineOccupations && tableLayout; else progressSpinner">
+  <mat-stepper orientation="horizontal" linear>
+    <mat-step>
+      <ng-template matStepLabel>Auftrag auswählen</ng-template>
+      <ng-template matStepContent>
+
+        <div class="card">
+        <p  class="card-header" style="margin: 0px">Wählen Sie den Auftrag aus, den Sie aufteilen möchten:</p>
+        <div class="card-body">
+          <app-advanced-data-filter class="filter-form" [fields]="tableLayout" [model]="model" [(filteredModel)]="filteredModel" *ngIf="tableLayout && model"></app-advanced-data-filter>
+
+          <span class="example-spacer"></span>
+          <formly-form [fields]="tableLayout" [form]="tableForm" [model]="filteredModel"></formly-form>
+        </div>
+        </div>
+
+
+        <div class="stepper-buttons">
+          <button color="primary" mat-raised-button matStepperNext [disabled]="getSelected().length <= 0" (click)="nextStep()">Weiter</button>
+        </div>
+      </ng-template>
+    </mat-step>
+
+    <mat-step [stepControl]="secondStepperFormGroup">
+      <div>
+
+            <ng-template matStepLabel>Aufteilung wählen</ng-template>
+            <ng-template matStepContent>
+              <ng-container *ngFor="let selected of this.getSelected()">
+                <p>BA-Nr.: {{selected?.machineOccupation?.productionOrder?.name}}, Artikel: {{selected?.machineOccupation?.productionOrder?.product?.name}}, Fertigungsmenge: {{selected?.machineOccupation?.productionOrder?.measurement?.amount}}</p>
+                <!-- TODO Get this working with formly table-->
+                <!--<formly-form [fields]="detailLayout" [form]="detailForm" [model]="getModelClone(selected)"></formly-form>-->
+                <form [formGroup]="secondStepperFormGroup">
+                  <mat-form-field appearance="outline" *ngIf="!selected['toggleFull']" style="margin-left: 10px" required>
+                    <input  type="number" [min]="1" matInput (keyup)="updateValue($event, selected)">
+                    <mat-label>Teilmenge</mat-label>
+                  </mat-form-field>
+                  <div style="margin: 10px 0px"><span>Restmenge: {{selected['amountLeft']}}</span></div>
+                  <mat-slide-toggle (click)="toggleFull(selected)">Gesamten Auftrag hinzufügen?</mat-slide-toggle>
+              </form>
+                <hr>
+            </ng-container>
+              <div class="stepper-buttons">
+                <button mat-stroked-button matStepperPrevious>Zurück</button>
+                <button color="primary" mat-raised-button matStepperNext (click)="nextStep(this.getSelected())"  [disabled]="!allFilled()">Weiter</button>
+              </div>
+          </ng-template>
+      </div>
+
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Bestätigung</ng-template>
+      <p>Folgende Aufträge werden zusammengefasst:</p>
+      <div>
+        <mat-list>
+          <mat-list-item *ngFor="let selected of this.getSelected()"> {{ selected?.machineOccupation.productionOrder.name}}  (Teilmenge: {{ selected?.toggleFull ? "nein" : selected?.subAmount}}) </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious>Zurück</button>
+        <button color="primary" mat-raised-button mat-dialog-close="" (click)="submit()">Abschicken</button>
+      </div>
+    </mat-step>
+
+  </mat-stepper>
+
+  </ng-container>
+
+</div>
+
+
+<ng-template #progressSpinner>
+  <div class="spinner" style="position: relative; height: 65vh;">
+    <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+  </div>
+</ng-template>

@@ -1,0 +1,128 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+"key": "startDateTime",
+        "props": {
+          "label": "Start-Zeit",
+          "addonLeft": {
+            "icon": "history"
+          }
+        }
+      },
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+"key": "endDateTime",
+        "props": {
+          "label": "End-Zeit",
+          "addonLeft": {
+            "icon": "update"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-3",
+        "type": "input",
+"key": "tool",
+        "props": {
+          "label": "Wekrzeug"
+        }
+      },
+      {
+        "className": "col-3",
+        "type": "input",
+"key": "product",
+        "props": {
+          "label": "Produkt"
+        }
+      },
+      {
+        "className": "col-6",
+        "type": "input",
+"key": "note",
+        "props": {
+          "label": "Bemerkungen",
+          "addonLeft": {
+            "icon": "edit_note"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [{
+      "className": "col-12",
+      "fieldGroupClassName": "row",
+      "fieldGroup": [
+        {
+          "className": "col-12 formly-data-table",
+"key": "toolSettings",
+          "type": "datatable",
+          "wrappers": ["mat-panel"],
+          "props": {
+            "label": "Maschineneinstellung",
+            "columns": [
+              {
+                "name": "Einstellung",
+                "id": "externalId"
+              },
+              {
+                "name": "Wert",
+                "id": "measurement.amount"
+              },
+              {
+                "name": "Einheit",
+                "id": "measurement.unitString"
+              },
+              {
+                "name": "Bemerkung",
+                "id": "note"
+              }
+            ]
+          },
+          "fieldArray": {
+            "fieldGroup": [
+              {
+                "type": "simple",
+                "id": "externalId",
+"key": "externalId"
+              },
+              {
+                "type": "simple",
+                "id": "measurement.amount",
+"key": "measurement.amount"
+              },
+              {
+                "type": "simple",
+                "id": "measurement.unitString",
+"key": "measurement.unitString"
+              },
+              {
+                "type": "input",
+                "id": "note",
+"key": "note",
+                "props": {
+                  "label": "Bemerkungen",
+                  "addonLeft": {
+                    "icon": "edit_note"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+    ]
+  }
+]

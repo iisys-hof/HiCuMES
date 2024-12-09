@@ -1,0 +1,32 @@
+<div class="hide-bar" (click)="hideSheet($event)" >
+  <button mat-raised-button class="hide-advanced-mode" (click)="hideSheet($event)"><mat-icon >expand_more</mat-icon><br><span >Schließen</span></button>
+</div>
+<div class="container-fluid hc-container">
+  <div class="row">
+    <div class="mat-card-title">Erweitere Ansicht</div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h3>Eingangsdaten-Objekt</h3>
+      <div>
+        <ngx-json-viewer [json]="data.mappingInput?.jsonNode" [depth]="2"></ngx-json-viewer>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <h3>Log-Meldungen</h3>
+      <div>
+        <ngx-json-viewer [json]="data.mappingLogging?.log" [depth]="2"></ngx-json-viewer>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <h3>Ausgangsdaten-Objekt</h3>
+        <div>
+          <ngx-json-viewer [json]="data.mappingOutput?.result" [depth]="2"></ngx-json-viewer>
+        </div>
+    </div>
+  </div>
+
+
+</div>

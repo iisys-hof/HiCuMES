@@ -1,0 +1,45 @@
+[
+  {
+    "key": "machineOccupation[0].productionOrder.notes",
+    "type": "datatable",
+    "props": {
+      "columns": [
+        {
+          "name": "Bemerkung",
+          "id": "noteString"
+        },
+        {
+          "name": "Benutzer",
+          "id": "user"
+        },
+        {
+          "name": "Datum",
+          "id": "dateTime"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "noteString",
+          "key": "noteString"
+        },
+        {
+          "type": "simple",
+          "id": "user",
+          "key": "userName"
+        },
+        {
+          "type": "simple",
+          "id": "dateTime",
+          "key": "creationDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        }
+      ]
+    }
+  }
+]

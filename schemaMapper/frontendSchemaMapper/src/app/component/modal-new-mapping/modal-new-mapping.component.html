@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Neue Zuordnung erstellen</h2>
+<hr>
+<mat-dialog-content  class="mat-typography">
+
+  <form [formGroup]="form" *ngIf="pluginInformations.length > 0">
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  </form>
+
+</mat-dialog-content>
+
+
+<hr style="margin-top: 32px; margin-bottom: 0px;">
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
+  <button *ngIf="this.data.loadModel == undefined" mat-button [disabled]="!form.valid" (click)="createMapping()">Mapping erstellen</button>
+  <button *ngIf="this.data.loadModel != undefined" mat-button [disabled]="!form.valid" (click)="createMapping()">Mapping ändern</button>
+</mat-dialog-actions>
+
+

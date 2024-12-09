@@ -1,0 +1,21 @@
+[
+  {
+    "key": "machineOccupation.machineOccupation.notes",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        { "name": "Bisherige Hinweise:", "id": "noteString"}
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "noteString",
+          "key": "noteString"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Zuordnung aus Datei laden</h2>
+<hr>
+<mat-dialog-content  class="mat-typography">
+
+<input type="file" (change)="changeListener($event)" /><br />
+<p class="content">{{fileData | json}}</p>
+
+</mat-dialog-content>
+
+
+<hr style="margin-top: 32px; margin-bottom: 0px;">
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
+  <button mat-button (click)="loadMapping()">Mapping laden</button>
+
+</mat-dialog-actions>
+
+

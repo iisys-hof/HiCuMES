@@ -1,0 +1,4 @@
+<ng-content></ng-content>
+<button class="scroll-top-button" [id]="scrollId" [hidden]="!(showScroll$ | async)" mat-mini-fab color="primary" (click)="onScrollTop()">
+  <div class="scroll-icon"><mat-icon>arrow_upward</mat-icon></div>
+</button>

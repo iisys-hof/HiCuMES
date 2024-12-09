@@ -1,0 +1,40 @@
+<mat-card class="mat-elevation-z9">
+  <mat-card-header>
+    <mat-card-title>Zuordnung: <strong>{{componentTitle}}</strong></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table cellspacing="0" class="table mat-table  table-sm table-user-entity">
+      <thead class="mat-header-cell " class="table-header">
+      <tr class="mat-row">
+        <th class="mat-header-cell table-header-cell" scope="col">Quelle</th>
+        <th class=" mat-header-cell table-header-cell" scope="col"></th>
+        <th class=" mat-header-cell table-header-cell" scope="col">Ziel</th>
+        <th class=" mat-header-cell table-header-cell" scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="mat-row" *ngFor="let mappingRule of mappingRules">
+        <td class="mat-cell" style="width: 45%; vertical-align: middle">
+          <ng-container *ngFor="let loopName of mappingRule.inputLoops">{{loopName.replace('input.','')}} > </ng-container>
+         {{mappingRule.mappingRule.inputSelector.replace('input.','')}}
+        </td>
+        <td  style="width: 10%" class="noWrapColumn mat-cell">
+
+          <button (click)="openTransformModal(mappingRule)" mat-icon-button color="accent">
+            <mat-icon>east</mat-icon>
+          </button>
+        </td>
+        <td class="mat-cell"  style="width: 40%; vertical-align: middle">
+          <ng-container *ngFor="let loopName of mappingRule.outputLoops">{{loopName.replace('output.','')}} > </ng-container>
+          {{mappingRule.mappingRule.outputSelector.replace('output.','')}}
+        </td>
+        <td style="width: 5%" class="noWrapColumn mat-cell">
+          <button (click)="removeMapping(mappingRule)" mat-icon-button color="accent">
+          <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>
+

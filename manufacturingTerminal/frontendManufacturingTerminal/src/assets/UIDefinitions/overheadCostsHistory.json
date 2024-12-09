@@ -1,0 +1,95 @@
+[
+  {
+    "key": "overheadCosts",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "Kostenstelle",
+          "id": "center"
+        },
+        {
+          "name": "Bezeichnung",
+          "id": "name"
+        },
+        {
+          "name": "Text",
+          "id": "text"
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime"
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime"
+        },
+        {
+          "name": "Dauer (h)",
+          "id": "duration"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "note"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-short",
+          "type": "simple",
+          "id": "center",
+          "key": "overheadCostCenter.externalId"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "name",
+          "key": "overheadCostCenter.name"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "text",
+          "key": "overheadCostCenter.text"
+        },
+        {
+          "type": "simple",
+          "key": "timeRecord.startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "timeRecord.endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "timeDuration",
+          "id": "duration",
+          "props": {
+            "type": "duration",
+            "durationUnit": "h"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "note",
+          "id": "note"
+        }
+      ]
+    }
+  }
+]

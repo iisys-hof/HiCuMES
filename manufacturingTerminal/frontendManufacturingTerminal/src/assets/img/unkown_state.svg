@@ -1,0 +1,18 @@
+<svg height="29" id="pending_black_24dp" viewBox="0 0 29 29" width="29" xmlns="http://www.w3.org/2000/svg">
+  <g data-name="Gruppe 39" id="Gruppe_39">
+    <rect data-name="Rechteck 28" fill="none" height="29" id="Rechteck_28" width="29"/>
+  </g>
+  <g data-name="Gruppe 41" id="Gruppe_41" transform="translate(2.422 2.422)">
+    <g data-name="Gruppe 40" id="Gruppe_40">
+      <path d="M14.111,2A12.111,12.111,0,1,0,26.222,14.111,12.116,12.116,0,0,0,14.111,2Zm0,21.8A9.689,9.689,0,1,1,23.8,14.111,9.686,9.686,0,0,1,14.111,23.8Z" data-name="Pfad 39"
+            fill="rgba(0,0,0,0.68)"
+            id="Pfad_39" transform="translate(-2 -2)"/>
+      <circle cx="1.817" cy="1.817" data-name="Ellipse 12" fill="rgba(0,0,0,0.68)" id="Ellipse_12" r="1.817"
+              transform="translate(4.239 10.294)"/>
+      <circle cx="1.817" cy="1.817" data-name="Ellipse 13" fill="rgba(0,0,0,0.68)" id="Ellipse_13"
+              r="1.817" transform="translate(10.294 10.294)"/>
+      <circle cx="1.817" cy="1.817" data-name="Ellipse 14" fill="rgba(0,0,0,0.68)" id="Ellipse_14" r="1.817"
+              transform="translate(16.35 10.294)"/>
+    </g>
+  </g>
+</svg>

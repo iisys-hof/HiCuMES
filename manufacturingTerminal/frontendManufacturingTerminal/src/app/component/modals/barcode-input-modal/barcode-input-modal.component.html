@@ -1,0 +1,44 @@
+<div mat-dialog-content>
+  <mat-horizontal-stepper  (animationDone)="setFocus()" (selectionChange)="setTargetId($event)" #stepper>
+    <mat-step>
+        <ng-template matStepLabel>Auftrag einscannen</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-icon matPrefix>barcode_scanner</mat-icon>
+          <mat-label>Arbeitsgangnummer</mat-label>
+          <input id="input0" matInput (keyup.enter)="onEnterOccupation(stepper)" [(ngModel)]="machineOccupationInput">
+          {{machineOccupations | json}}
+        </mat-form-field>
+
+      <div *ngIf="firstFormGroup.errors">
+        Fehler: Arbeitsgangnummer nicht gefunden!
+      </div>
+      <div class="stepper-buttons">
+          <button color="primary" mat-raised-button  (click)="onEnterOccupation(stepper)">Weiter</button>
+        </div>
+    </mat-step>
+    <mat-step *ngIf="withMachineSelection">
+        <ng-template matStepLabel>Maschine einscannen</ng-template>
+          <mat-form-field appearance="outline">
+            <mat-icon matPrefix>barcode_scanner</mat-icon>
+            <mat-label>Maschinennummer</mat-label>
+            <input matInput id="input1" (keyup.enter)="onEnterMachine(stepper)" [(ngModel)]="machineInput">
+          </mat-form-field>
+
+      <div *ngIf="secondFormGroup.errors">
+        Fehler: Maschine nicht gefunden!
+      </div>
+      <div class="stepper-buttons">
+          <button mat-stroked-button matStepperPrevious>Zurück</button>
+          <button color="primary" mat-raised-button  (click)="onEnterMachine(stepper)">Weiter</button>
+        </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Bestätigung</ng-template>
+      Soll der Auftrag {{scannedMachineOccupation?.machineOccupation?.productionOrder?.name}}-{{scannedMachineOccupation?.machineOccupation?.name}} auf der Maschine {{scannedMachine?.externalId}} {{scannedMachine?.name}} gestartet werden?
+      <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious>Zurück</button>
+        <button color="primary" mat-raised-button mat-dialog-close="" (click)="submit()">Bestätigen</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

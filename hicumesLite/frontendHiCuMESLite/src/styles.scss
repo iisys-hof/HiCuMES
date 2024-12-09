@@ -1,0 +1,254 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+@import "google-fonts.css";
+@import '~@angular/material/theming';
+@import "~@ng-select/ng-select/themes/material.theme.css";
+@import 'material-symbols';
+@import 'styles_global';
+
+$md-hicumes: (
+  50 : var(--hc-blue-lighter-color),
+  100 : #b3cde1,
+  200 : var(--hc-blue-light-color),
+  300 : var(--hc-blue-mid-color),
+  400 : #2770aa,
+  500 : var(--hc-blue-dark-color),
+  600 : #014f93,
+  700 : #014689,
+  800 : #013c7f,
+  900 : #002c6d,
+  A100 : #9cbbff,
+  A200 : #6998ff,
+  A400 : #3674ff,
+  A700 : #1d63ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+@import '@angular/material/theming';
+@include mat-core();
+$my-app-primary: mat-palette($md-hicumes);
+$my-app-accent: mat-palette($md-hicumes);
+$my-app-warn: mat-palette($mat-red);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+
+/* ********************************************************************************************************************/
+/* *********** Gerneral CSS Definitions */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
+}
+
+/* ********************************************************************************************************************/
+/* *********** Specific Things */
+
+.hc-snackbar button span {
+  color: var(--hc-snackbar-color) !important;
+}
+
+.hc-snackbar {
+  white-space: pre-wrap
+}
+
+.mat-grid-tile-content {
+  overflow-y: scroll;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+mat-card-header {
+  margin-bottom: 10px;
+}
+
+code {
+  font-family: 'Roboto Mono', monospace !important;
+}
+
+.mat-bottom-sheet-container {
+  min-width: calc(100vw - 140px) !important;
+  min-height: calc(100vh - 140px) !important;
+}
+
+.ngx-json-viewer {
+  overflow: scroll !important;
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 14px !important;
+
+}
+
+.table-modal{
+  td{
+    word-wrap: break-word;
+    max-width: 150px;
+  }
+  th{
+    word-wrap: break-word;
+    max-width: 150px;
+  }
+}
+.cdk-overlay-backdrop {
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+/** {
+  -ms-overflow-style: none !important; !* Internet Explorer 10+ *!
+  scrollbar-width: none !important; !* Firefox *!
+}
+
+*::-webkit-scrollbar {
+  display: none !important; !* Safari and Chrome *!
+}*/
+
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+  //background-color: #345eb3;
+  //background-color: var(--hc-blue-dark-color);
+}
+
+.mat-bottom-sheet-container {
+  background: none !important;
+  padding: 100px 35px !important;
+  padding-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.mat-dialog-container {
+  max-height: calc(100vh - 100px) !important;
+}
+
+code {
+  color: var(--hc-blue-mid-color) !important;
+}
+
+.jstree-default .jstree-search {
+  color: var(--hc-blue-mid-color) !important;
+  font-weight: 500 !important;
+}
+
+.hicumes-frame {
+  .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-form-field-type-mat-native-select .mat-form-field-infix::after {
+    border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+    border-top: 10px solid !important;
+    color: white !important;
+    top: 23% !important;
+  }
+
+  .toolbar-btn {
+    padding-left: 19px;
+    padding-right: 19px;
+    height: 100%;
+    border-radius: 0px;
+    background: linear-gradient(333deg, rgba(255, 255, 255, 0.31) 0%, rgba(255, 255, 255, 0) 79%);
+    border-left: 1px solid rgba(255, 255, 255, 0.28);
+    font-size: 16px;
+    font-weight: normal;
+
+    .mat-select-arrow {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 8px solid;
+      margin: 0 4px;
+    }
+  }
+
+  .mat-form-field-flex {
+    background: none !important;
+  }
+
+  .mat-toolbar-row {
+    padding-right: 0px !important;
+  }
+
+  .toolbar-selection-info, .toolbar-selection {
+    font-size: 16px;
+
+    input {
+      font-size: 16px;
+    }
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    padding: 0.95em .75em 0 .75em;
+  }
+
+}
+
+
+.mybackdrob {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: $overlay-backdrop-z-index;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+  opacity: 1 !important;
+  transition: opacity $backdrop-animation-duration $backdrop-animation-timing-function !important;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+}
+.no-input {
+  background: green;
+}
+.no-input2 {
+  background: red;
+}
+
+.formly-data-table {
+  .mat-form-field-wrapper{
+    padding-bottom: 0 !important;
+  }
+  .mat-form-field-flex{
+    background-color: #FFFFFF !important;
+  }
+
+}
+
+.mat-form-field-infix {
+  width: 100% !important;
+}
+.hc-status {
+  text-align: center;
+  .datatable-status-img {
+    margin: auto;
+  }
+}

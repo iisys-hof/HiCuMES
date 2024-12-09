@@ -1,0 +1,16 @@
+:host {
+
+  width: calc(100%);
+  height: calc(100% - 40px);
+
+  mat-card {
+    margin: 20px;
+    height: calc(100% - 20px);
+  }
+
+  .schemaTree {
+    overflow-y: scroll;
+    border: 1px solid rgba(210, 210, 210, 0.37);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.04) inset;
+  }
+}

@@ -1,0 +1,20 @@
+<mat-card class="mat-elevation-z6 order-detail-auxiliary-materials-card">
+  <mat-card-header>
+    <mat-card-title><h4>Positionen</h4></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table *ngIf="dataSourceAuxiliaryMaterials.length > 0" [dataSource]="dataSourceAuxiliaryMaterials" mat-table>
+      <mat-text-column headerText="MAT" name="extMAT"></mat-text-column>
+      <mat-text-column headerText="Artikel" name="extArtikel"></mat-text-column>
+      <mat-text-column headerText="Suchwort" name="extSuchwort"></mat-text-column>
+      <mat-text-column headerText="Bezeichnung/Zeichnung" name="extBezeichnungZeichnung"></mat-text-column>
+      <mat-text-column headerText="Lager" name="extLager"></mat-text-column>
+      <mat-text-column headerText="Menge" name="extMenge"></mat-text-column>
+
+      <tr *matHeaderRowDef="displayedColumnsAuxiliaryMaterials" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumnsAuxiliaryMaterials;" mat-row></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+
+

@@ -1,0 +1,160 @@
+<!--
+<ng-container matColumnDef="toInputMask">
+  <th mat-header-cell *matHeaderCellDef>Status</th>
+  <td mat-cell *matCellDef="let element">
+    <button mat-stroked-button color="primary" (click)="toInputMask(element)">ToFormFields</button>
+  </td>
+</ng-container>
+-->
+<mat-card class="mat-elevation-z8">
+  <mat-card-header>
+    <mat-card-title>
+      Aufträge
+    </mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <table #outerSort="matSort" [dataSource]="dataSource" class="order-overview-table" mat-table matSort
+           multiTemplateDataRows>
+      <ng-container matColumnDef="baNr">
+        <th *matHeaderCellDef mat-header-cell>BA-Nr.</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded" mat-cell>
+          <!--<span class="exl"</span>-->{{element?.machineOccupation?.externalId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="article">
+        <th *matHeaderCellDef mat-header-cell>Artikel</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded"
+            mat-cell> {{element?.machineOccupation?.productionOrder?.product?.name}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="startDate">
+        <th *matHeaderCellDef mat-header-cell>Starttermin</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded"
+            mat-cell> {{element?.machineOccupation?.plannedStartDateTime}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="endTime">
+        <th *matHeaderCellDef mat-header-cell>Endtermin</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded"
+            mat-cell> {{element?.machineOccupation?.plannedEndDateTime}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastFeedback">
+        <th *matHeaderCellDef mat-header-cell>Letzte Buchung</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded" mat-cell>
+          ------------------
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="progress">
+        <th *matHeaderCellDef mat-header-cell>Fortschritt</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded" mat-cell>
+
+          <div class="progress_bar">
+            <div [style.border-bottom-right-radius.px]="progressBarRadius" [style.border-top-right-radius.px]="progressBarRadius"
+                 [style.width.%]="progressBar"
+                 class="progress_bar_inner progress_background"></div>
+            <div class="progress_bar_inner progress_text">7/10 Stk.</div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="startButton">
+        <th *matHeaderCellDef mat-header-cell>Status</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded" mat-cell>
+            <img *ngIf="element?.machineOccupation?.status==='READY_TO_START'" alt="Dashboard" height="32" src="../../../../assets/img/ready_to_start.svg" width="32"/>
+            <img *ngIf="element?.machineOccupation?.status==='RUNNING'" alt="Dashboard" height="28" src="../../../../assets/img/running.svg" style="margin-right: 2px; margin-left: 2px" width="28"/>
+            <img *ngIf="element?.machineOccupation?.status==='FINISHED'" alt="Dashboard" height="32" src="../../../../assets/img/finished.svg" width="32"/>
+            <img *ngIf="element?.machineOccupation?.status==='ARCHIVED'" alt="Dashboard" height="32" src="../../../../assets/img/archived.svg" width="32"/>
+            <img *ngIf="element?.machineOccupation?.status==='PLANNED'" alt="Dashboard" height="32" src="../../../../assets/img/planned.svg" width="32"/>
+            <img *ngIf="element?.machineOccupation?.status==='SUSPENDED'" alt="Dashboard" height="32" src="../../../../assets/img/suspended.svg" width="32"/>
+           </td>
+      </ng-container>
+
+      <ng-container matColumnDef="toInputMask">
+        <th *matHeaderCellDef mat-header-cell>Aktionen</th>
+        <td *matCellDef="let element" [class.blur-cell]="element !== expandedElement && tableExpanded" mat-cell>
+          <button routerLink="order-details" style="margin-left: 10px" (click)="toDetailMask(element)" class="action-icon-btn" color="accent"
+                  mat-stroked-button>
+            <mat-icon>data_info_alert</mat-icon>
+            DETAILS
+          </button>
+
+          <button *ngIf="element?.machineOccupation?.status==='READY_TO_START'" (click)="startMachineOccupationEvent(element)" class="state_button" color="primary" mat-stroked-button>
+            START
+          </button>
+          <button *ngIf="element?.machineOccupation?.status==='RUNNING'" class="state_button" color="primary" disabled mat-stroked-button>
+            LÄUFT
+          </button>
+          <button *ngIf="element?.machineOccupation?.status==='FINISHED'" class="state_button" color="primary" disabled mat-stroked-button>
+            BEENDET
+          </button>
+
+          <button style="margin-left: 10px" (click)="toInputMask(element)" *ngIf="element?.machineOccupation?.status==='RUNNING'" class="action-icon-btn" color="accent" [disabled]="disableResponseButtonsSet?.has(element?.currentSubProductionStep?.taskId)"
+                  mat-stroked-button>
+            <mat-icon>open_in_new</mat-icon>
+           RÜCKMELDUNG
+          </button>
+        </td>
+      </ng-container>
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td *matCellDef="let element" [attr.colspan]="columnsToDisplay.length" mat-cell>
+          <div *ngIf="element?.camundaSubProductionSteps?.data?.length" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'"
+               class="order-overview-element-detail">
+            <div *ngIf="expandedElement" class="inner-table mat-elevation-z8">
+              <table #innerTables [dataSource]="element.camundaSubProductionSteps" class="order-overview-table-inner"
+                     mat-table>
+                <ng-container *ngFor="let innerColumn of innerDisplayedColumnsAutomatic" matColumnDef="{{innerColumn}}">
+                  <th *matHeaderCellDef mat-header-cell> {{getInnercolumnName(innerColumn)}} </th>
+                  <!-- TODO: PIPE -->
+                  <td *matCellDef="let element" [class.form_key]="innerColumn === 'formKey'" [ngClass]="'form_key_' +element?.formKey"
+                      mat-cell>
+                    <div>
+                      <mat-icon
+                        *ngIf="innerColumn === 'formKey'">{{getFormKeyType(element[innerColumn]).icon}}</mat-icon>
+                      <span *ngIf="innerColumn === 'formKey' ">{{getFormKeyType(element[innerColumn]).name}}</span>
+
+                      <div *ngIf="innerColumn === 'filledFormField'">
+                        <div *ngFor="let item of jsonToObject(element[innerColumn]) | keyvalue" style="display:block;">
+                          <span
+                            style="display: inline-block; width: 130px;"><b>{{item.key}}</b>:</span><span> {{item.value}} </span>
+                        </div>
+
+                      </div>
+
+                      <span
+                        *ngIf="innerColumn !== 'formKey' && innerColumn !== 'filledFormField'">{{element[innerColumn]}}</span>
+                    </div>
+                  </td> <!-- Inhalt der inneren zellen -->
+                </ng-container>
+                <!--
+                            <ng-container matColumnDef="toInputMask">
+                              <th mat-header-cell *matHeaderCellDef>Status</th>
+                              <td mat-cell *matCellDef="let element">
+                                <button mat-stroked-button color="primary" (click)="toInputMask(element)">ToFormFields</button>
+                              </td>
+                            </ng-container>
+                -->
+                <tr *matHeaderRowDef="innerDisplayedColumns" mat-header-row></tr>
+                <tr *matRowDef="let row; columns: innerDisplayedColumns;" mat-row></tr>
+              </table>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="columnsToDisplay" mat-header-row></tr>
+      <tr (click)="toggleRow(element)" *matRowDef="let element; columns: columnsToDisplay;" [class.order-overview-element-row]="element.camundaSubProductionSteps?.data?.length"
+          [class.order-overview-expanded-row]="expandedElement === element"
+          class="order-overview-row" mat-row>
+      </tr>
+      <tr *matRowDef="let row; columns: ['expandedDetail']" class="order-overview-detail-row" mat-row></tr>
+    </table>
+
+  </mat-card-content>
+
+</mat-card>

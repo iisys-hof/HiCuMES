@@ -1,0 +1,154 @@
+[
+  {
+    "key": "machineOccupation",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        {
+          "name": "BA-Nummer",
+          "id": "machineOccupation.productionOrder.name"
+        },
+        {
+          "name": "Menge",
+          "id": "productionOrder.measurement.amount"
+        },
+        {
+          "name": "Artikel",
+          "id": "productionOrder.product.name"
+        },
+        {
+          "name": "Artikelbezeichnung",
+          "id": "productionOrder.product.elemname"
+        },
+        {
+          "name": "Starttermin",
+          "id": "machineOccupation.plannedStartDateTime"
+        },
+        {
+          "name": "Endtermin",
+          "id": "machineOccupation.plannedEndDateTime"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "machineOccupation.productionOrder.name",
+          "key": "machineOccupation.productionOrder.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.measurement.amount",
+          "key": "productionOrder.measurement.amount",
+          "props": {
+            "type": "measurementWithUnit",
+            "unitLabelSrc": "productionOrder.measurement.unitString",
+            "round": 2
+          }
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.product.name",
+          "key": "productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.product.elemname",
+          "key": "productionOrder.product.elemname"
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedStartDateTime",
+          "key": "machineOccupation.plannedStartDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "machineOccupation.plannedEndDateTime",
+          "key": "machineOccupation.plannedEndDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "key": "machineOccupation",
+    "type": "datatable",
+    "props": {
+      "columns": [
+        {
+          "name": "Auftragsart",
+          "id": "productionOrder.orderType"
+        },
+        {
+          "name": "Verwendung",
+          "id": "customerOrder.name"
+        },
+        {
+          "name": "B-Menge",
+          "id": "productionOrder.orderAmount"
+        },
+        {
+          "name": "Verkauf",
+          "id": "customerOrder.ysbvertr"
+        },
+        {
+          "name": "Kunde",
+          "id": "customerOrder.customerName"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "customerOrder.note"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "big-letter",
+          "type": "simple",
+          "id": "productionOrder.orderType",
+          "key": "productionOrder.orderType"
+        },
+        {
+          "type": "simple",
+          "id": "customerOrder.name",
+          "key": "customerOrder.name"
+        },
+        {
+          "type": "simple",
+          "id": "productionOrder.orderAmount",
+          "key": "productionOrder.orderAmount",
+          "props": {
+            "type": "measurementWithUnit",
+            "unitLabelSrc": "productionOrder.measurement.unitString",
+            "round": 3
+          }
+        },
+        {
+          "type": "simple",
+          "id": "customerOrder.ysbvertr",
+          "key": "customerOrder.ysbvertr"
+        },
+        {
+          "type": "simple",
+          "id": "customerOrder.customerName",
+          "key": "customerOrder.customerName"
+        },
+        {
+          "type": "simple",
+          "id": "customerOrder.note",
+          "key": "customerOrder.note"
+        }
+      ]
+    }
+  }
+]

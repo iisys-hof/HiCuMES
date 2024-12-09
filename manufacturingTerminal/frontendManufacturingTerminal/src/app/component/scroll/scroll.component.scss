@@ -1,0 +1,23 @@
+.scroll-top-button {
+  position: fixed;
+  float: right;
+  cursor: pointer;
+  right: 14px;
+  bottom: 14px;
+  z-index: 100;
+  opacity: 0.75;
+}
+
+.scroll-top-button:hover {
+  opacity: 1;
+}
+
+.scroll-top-button .scroll-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scroll-top-button .mat-mdc-mini-fab.mat-primary {
+  background-color: rgba(18, 18, 18, 0.8);
+}

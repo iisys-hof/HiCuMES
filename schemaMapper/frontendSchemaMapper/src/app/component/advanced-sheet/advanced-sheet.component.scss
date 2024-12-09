@@ -1,0 +1,53 @@
+.mat-card-title {
+  padding-left: 18px;
+  padding-top: 13px;
+  padding-bottom: 21px;
+}
+h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+.col-4 > div {
+  border: 1px solid rgba(210, 210, 210, 0.37);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.04) inset;
+  max-height: calc(100vh - 360px);
+  overflow-y: scroll;
+  //margin-right: 10px;
+  padding: 10px;
+}
+.col:last-child {
+    margin-right: 0px !important;
+
+}
+.hide-advanced-mode {
+  margin: auto;
+  position: fixed;
+  top: 46px;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  box-shadow: 0 0 30px 13px rgb(0 0 0 / 16%);
+  line-height: 10px;
+  padding-bottom: 17px;
+  padding-top: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.hide-bar{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: -1;
+  height: 100px;
+}
+.hc-container {
+  box-shadow: 0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%);
+  background: #fff;
+  color: rgba(0,0,0,.87);
+  height: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+

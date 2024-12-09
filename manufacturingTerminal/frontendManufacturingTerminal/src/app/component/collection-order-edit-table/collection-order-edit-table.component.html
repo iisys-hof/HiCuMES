@@ -1,0 +1,14 @@
+<ng-container *ngIf="machineOccupation">
+    <formly-form *ngIf="model" [fields]="headLayout" [form]="tableForm" [model]="model" (modelChange)="this.updateForm()"></formly-form>
+    <div class="card"  *ngIf="tableLayout" style="
+  overflow-y: auto; margin: 5px;">
+    <div class="card-header" style="display: flex; justify-content: space-between">
+      <h3 class="header-title">Unteraufträge</h3>
+      <!--<button class="add-button" (click)="add()" color="primary" mat-raised-button type="button">Auftrag hinzufügen</button>-->
+      <button *ngIf="!isReadOnly()" class="add-button" (click)="add()" color="primary" mat-mini-fab type="button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <formly-form *ngIf="tableLayout" class="formly-table card-body" [fields]="tableLayout" [form]="tableForm" [model]="model" (modelChange)="this.updateForm()"></formly-form>
+    </div>
+</ng-container>

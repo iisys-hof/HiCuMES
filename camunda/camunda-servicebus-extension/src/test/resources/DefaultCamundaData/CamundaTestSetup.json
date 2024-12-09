@@ -1,0 +1,15 @@
+[
+  {
+    "eventType": "undeployAllBpmnProcesses",
+    "eventContent": {
+    }
+  },
+  {
+    "eventType": "deployBpmnProcess",
+    "eventContent": {
+      "test": "\"",
+      "bpmn": ""
+    }
+  }
+]
+

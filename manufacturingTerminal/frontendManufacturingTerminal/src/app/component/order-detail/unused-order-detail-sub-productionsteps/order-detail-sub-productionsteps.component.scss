@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+}
+
+mat-card {
+  margin-bottom: 16px;
+  padding-bottom: 24px;
+}
+
+.order-detail-sub-productionsteps-card {
+
+  table {
+    tr.mat-header-row {
+      height: 20px;
+    }
+
+    tr.mat-row {
+    }
+
+    ::ng-deep tr td:first-child {
+      font-weight: 500;
+    }
+  }
+
+}

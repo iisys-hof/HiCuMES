@@ -1,0 +1,44 @@
+<!--
+<div class="mdc-drawer__header">
+  <div class="circle mat-elevation-z3">
+    <span class="initials">{{userProfile?.firstName?.charAt(0)}}{{userProfile?.lastName?.charAt(0)}}</span>
+  </div>
+  <h3 class="mdc-drawer__title">PuLaMa</h3>
+  <h6 class="mdc-drawer__subtitle">{{userProfile?.firstName}} {{userProfile?.lastName}}</h6>
+  <div>
+    <button (click)="logout()" *ngIf="isLoggedIn" mat-button>
+      <div class="button-logo-text">
+        <mat-icon>exit_to_app</mat-icon>
+        <div>Abmelden</div>
+      </div>
+    </button>
+  </div>
+  <div>
+    <button *ngIf="isLoggedIn" [routerLink]="'/settings'" mat-button>
+      <div class="button-logo-text">
+        <mat-icon>settings</mat-icon>
+        <div>Einstellungen</div>
+      </div>
+    </button>
+  </div>
+</div>
+-->
+
+<button [matMenuTriggerFor]="menu" class="toolbar-btn " mat-button>
+  <mat-icon style="font-size: 24px;margin-top: -1px; margin-right: 10px">account_circle</mat-icon>
+  <span *ngIf="isLoggedIn">{{userProfile?.firstName}} {{userProfile?.lastName}}</span>
+  <mat-icon style="font-size: 24px;margin-top: -1px; margin-left: 10px">more_vert</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu" id="user-menu" xPosition="before">
+  <button *ngIf="isLoggedIn" mat-menu-item routerLink="user-order-overview">
+    <mat-icon>patient_list</mat-icon>
+    <span>Meine Aufträge</span>
+  </button>
+  <button *ngIf="isLoggedIn" mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Abmelden</span>
+  </button>
+
+</mat-menu>
+

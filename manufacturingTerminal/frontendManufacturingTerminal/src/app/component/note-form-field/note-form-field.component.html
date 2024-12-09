@@ -1,0 +1,10 @@
+<div style="width: 100%">
+  <mat-form-field appearance="fill"  style="width: 100%; margin: 5px" >
+    <mat-label>Bemerkung hinzufügen</mat-label>
+    <input matInput type="text" [(ngModel)]="noteString" [formControl]="formControl">
+    <button mat-icon-button matSuffix (click)="addNoteToMachineOccupation()" type="reset">
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-form-field>
+</div>
+

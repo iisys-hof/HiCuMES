@@ -1,0 +1,42 @@
+[
+  {
+    "key": "qualityControlFeatures",
+    "type": "datatable",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        {
+          "name": "Eigenschaft",
+          "id": "name"
+        },
+        {
+          "name": "Wert",
+          "id": "value"
+        },
+        {
+          "name": "Toleranz",
+          "id": "tolerance"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "name",
+          "key": "name"
+        },
+        {
+          "type": "simple",
+          "id": "value",
+          "key": "value"
+        },
+        {
+          "type": "simple",
+          "id": "tolerance",
+          "key": "tolerance"
+        }
+      ]
+    }
+  }
+]

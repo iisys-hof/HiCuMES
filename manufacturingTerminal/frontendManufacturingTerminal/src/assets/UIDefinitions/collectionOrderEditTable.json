@@ -1,0 +1,186 @@
+[
+  {
+    "key": "machineOccupation.subMachineOccupations",
+    "type": "selectiontable-barcode-advanced",
+    "props": {
+      "multiple": true,
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "externalId"
+        },
+        {
+          "name": "Verwendung",
+          "id": "usage"
+        },
+        {
+          "name": "Artikel",
+          "id": "product"
+        },
+        {
+          "name": "Start-Termin",
+          "id": "plannedStartDateTime"
+        },
+        {
+          "name": "End-Termin",
+          "id": "plannedEndDateTime"
+        },
+        {
+          "name": "Brand",
+          "id": "cbn_brennen_320_ytybnr"
+        },
+        {
+          "name": "Menge",
+          "id": "cbn_brennen_320_ytykmge"
+        },
+        {
+          "name": "Ofen",
+          "id": "cbn_brennen_320_ytyonr"
+        },
+        {
+          "name": "V/VL Rohde",
+          "id": "cbn_brennen_320_ytyvorne"
+        },
+        {
+          "name": "M/VR Rohde",
+          "id": "cbn_brennen_320_ytymitte"
+        },
+        {
+          "name": "H/HL Rohde",
+          "id": "cbn_brennen_320_ytyhinten"
+        },
+        {
+          "name": "HR Rohde",
+          "id": "cbn_brennen_320_ytyhintenre"
+        },
+        {
+          "name": "Nummer",
+          "id": "cbn_brennen_320_ytynr"
+        },
+        {
+          "name": "Kurve",
+          "id": "cbn_brennen_320_ytykurve"
+        },
+        {
+          "name": "Einbau",
+          "id": "cbn_brennen_320_ytyeinbau"
+        },
+        {
+          "name": "Brenner",
+          "id": "cbn_brennen_320_ytybrenner"
+        },
+        {
+          "name": "Datum",
+          "id": "cbn_brennen_320_ytydatum"
+        },
+        {
+          "name": "Text",
+          "id": "ptext"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "externalId",
+          "key": "externalId",
+          "props": {
+            "split": "_"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "usage",
+          "key": "productionOrder.customerOrder.externalId"
+        },
+        {
+          "type": "input",
+          "id": "product",
+          "key": "productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "plannedStartDateTime",
+          "key": "plannedStartDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "plannedEndDateTime",
+          "key": "plannedEndDateTime",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytybnr",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytybnr[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytykmge",
+          "key": "machineOccupation.productionOrder.measurement.amount"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytyonr",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytyonr[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytyvorne",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytyvorne[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytymitte",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytymitte[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytyhinten",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytyhinten[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytyhintenre",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytyhintenre[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytynr",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytynr[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytykurve",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytykurve[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytyeinbau",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytyeinbau[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytybrenner",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytybrenner[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytydatum",
+          "key": "toolSettingsGrouped.cbn_brennen_320_ytydatum[0].settingsValue"
+        },
+        {
+          "type": "simple",
+          "id": "ptext",
+          "key": "ptext"
+        }
+      ]
+    }
+  }
+]

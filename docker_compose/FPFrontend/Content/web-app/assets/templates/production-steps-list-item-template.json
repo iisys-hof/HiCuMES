@@ -1,0 +1,20 @@
+[
+  {
+    "key": "productionStep",
+    "label": "",
+    "htmltag": "strong",
+    "class": "title-section"
+  },
+  {
+    "key": "machineType",
+    "label": "MG:",
+    "htmltag": "p",
+    "class": "text-section"
+  },
+  {
+    "key": "container",
+    "label": "",
+    "htmltag": "p",
+    "class": "text-section"
+  }
+]

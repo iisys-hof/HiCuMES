@@ -1,0 +1,39 @@
+<div id="box">
+  <div class="corner bottom-left"></div>
+</div>
+<div class="rsft">
+  <div class="order-overview-subtable"
+       *ngIf="expandedElement?.machineOccupation?.subMachineOccupations">
+
+    <div class="order-overview-subtable-div">
+      <mat-accordion class="sub-acc">
+
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Unteraufträge
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <form [formGroup]="expansionForm" class="expansion-table-subtable">
+            <formly-form [fields]="expansionTableOrdersLayout"
+                         [model]="subMachineOccupations"></formly-form>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+
+  </div>
+  <div class="order-overview-subtable" *ngIf="expandedElement?.camundaSubProductionSteps?.length > 0">
+
+    <form [formGroup]="expansionForm" class="expansion-table-subtable">
+      <formly-form [fields]="expansionTableTasksLayout" [form]="expansionForm"
+                   [model]="expandedElement"></formly-form>
+    </form>
+
+  </div>
+
+  <!--<div class="container">
+    <table datatable [dtOptions]="dtOptions" class="row-border hover" style="width: 100%"></table>
+  </div>-->
+</div>
+

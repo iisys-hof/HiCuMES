@@ -1,0 +1,48 @@
+
+<div class="open-close-container">
+  <button  class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'"  (click)="saveMapping()" mat-fab>
+    <mat-icon>save</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Zuordnung Speichern</span>
+
+  </button>
+
+  <button  class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'" (click)="loadMapping()" mat-fab>
+    <mat-icon>folder</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Zuordnung Öffnen</span>
+
+  </button>
+
+  <button  class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'" (click)="editMapping()" mat-fab>
+    <mat-icon>edit</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Zuordnung Bearbeiten</span>
+
+  </button>
+
+  <button  class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'"  (click)="newMapping()" mat-fab>
+    <mat-icon>insert_drive_file</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Neue Zuordnung</span>
+
+  </button>
+
+  <button  class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'"  (click)="openCamundaMapping()" mat-fab>
+    <mat-icon>insert_drive_file</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Camunda Zuordnung</span>
+  </button>
+
+  <button type="file" class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'" (click)="loadFromFile()" mat-fab>
+    <mat-icon>upload</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Zuordnung Importieren</span>
+
+  </button>
+
+  <button  class="mat-fab-extended" [@openCloseBtn]="isOpen ? 'open' : 'closed'" (click)="exportMapping()" mat-fab>
+    <mat-icon>download</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Zuordnung Exportieren</span>
+
+  </button>
+
+
+</div>
+<button style="float: right" (click)="toggle()" mat-fab>
+  <mat-icon>more_vert</mat-icon>
+</button>

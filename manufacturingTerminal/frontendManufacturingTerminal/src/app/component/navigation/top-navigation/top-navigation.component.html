@@ -1,0 +1,109 @@
+<mat-toolbar class="hicumes-frame">
+  <mat-toolbar-row>
+    <button (click)="toggleRightSidenav()" class="menu-icon" mat-icon-button>
+      <mat-icon *ngIf="!navBarOpen">menu</mat-icon>
+      <mat-icon *ngIf="navBarOpen">close</mat-icon>
+
+    </button>
+    <a routerLink="order-overview" style="color: white; text-decoration: none"><span >HiCuMES</span><span *ngIf="title.length > 0">&nbsp;–&nbsp;{{title}} </span></a>
+
+    <span class="example-spacer"></span>
+
+
+
+    <button *ngIf="router.url == '/order-overview' || router.url == '/user-order-overview'  || router.url == '/' || router.url == '/booking-overview' || router.url == '/user-booking-overview'"  class="menu-icon" mat-icon-button (click)="reload()" style="margin: 5px; float: right">
+      <mat-icon>refresh</mat-icon>
+    </button>
+
+    <ng-container  *ngIf="(currentMachineOccupation$ | async) as machineOccupation; else selection ">
+      <div  class="toolbar-label">
+        <span class="toolbar-desc">BA-Nr.</span>
+        <span class="toolbar-value">{{getLabel(machineOccupation)}}</span>
+      </div>
+      <div  class="toolbar-label" *ngIf="getDepartment(machineOccupation)">
+        <span class="toolbar-desc">Abteilung</span>
+        <span class="toolbar-value">{{getDepartment(machineOccupation)}}</span>
+      </div>
+      <!--<div  class="toolbar-label" *ngIf="getMachineType(machineOccupation)">
+        <span class="toolbar-desc">Maschinengruppe</span>
+        <span class="toolbar-value">{{getMachineType(machineOccupation)}}</span>
+      </div>-->
+      <div  class="toolbar-label" *ngIf="getMachine(machineOccupation)">
+        <span class="toolbar-desc">Maschine</span>
+        <span class="toolbar-value">{{getMachine(machineOccupation)}}</span>
+      </div>
+    </ng-container>
+<!--    <mat-form-field *ngIf="(allOrders$ | async) as allOrders" appearance="fill" class="toolbar-btn toolbar-selection-info">-->
+<!--      <mat-label>Aktueller Auftrag</mat-label>-->
+<!--      <mat-select (selectionChange)="changeOrderSelection($event)" [(value)]="selectedOrder" matNativeControl>-->
+<!--      <mat-option [value]="undefined">Alle Aufträge</mat-option>-->
+<!--      <mat-optgroup [label]="'Aufträge'">-->
+<!--        <mat-option *ngFor="let order of allOrders" [value]="order">-->
+<!--          {{order.externalId}}-->
+<!--        </mat-option>-->
+<!--      </mat-optgroup>-->
+
+<!--    </mat-select>-->
+<!--    </mat-form-field>-->
+
+    <ng-template #selection>
+    <mat-form-field *ngIf="(allDepartments$ | async)" appearance="fill"
+                    class="toolbar-btn toolbar-selection" style="width: 300px">
+      <mat-label>Abteilung</mat-label>
+      <mat-select #selectDepartment (selectionChange)="changeDepartmentSelection()" [(value)]="selectedDepartments" [compareWith]="compareSelection" multiple>
+        <div class="select-all">
+          <mat-checkbox [(ngModel)]="allSelectedDepartment"
+                        [ngModelOptions]="{standalone: true}"
+                        (change)="toggleAllDepartments()">Alle Abteilungen</mat-checkbox>
+        </div>
+        <mat-optgroup [label]="'Abteilungen'">
+          <mat-option *ngFor="let department of sort(allDepartments)" [value]="department">
+            {{department.externalId}} - {{department.name}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="(allMachineTypes$ | async)" appearance="fill"
+                    class="toolbar-btn toolbar-selection" style="width: 300px">
+      <mat-label>Maschinengruppe</mat-label>
+      <mat-select #selectMachineType (selectionChange)="changeMachineTypeSelection()" [(value)]="selectedMachineTypes" [compareWith]="compareSelection" multiple>
+        <div class="select-all">
+          <mat-checkbox [(ngModel)]="allSelectedMachineType"
+                        [ngModelOptions]="{standalone: true}"
+                        (change)="toggleAllMachineTypes()">Alle Maschinen</mat-checkbox>
+        </div>
+        <mat-optgroup [label]="'Maschinen'">
+          <mat-option *ngFor="let machineType of sort(filteredMachineTypes)" [value]="machineType">
+            <!--TODO make this configurable from outside?-->
+            {{machineType.externalId}} - {{machineType.name}}
+          </mat-option>
+        </mat-optgroup>
+
+      </mat-select>
+    </mat-form-field>
+    </ng-template>
+
+
+    <app-login style="height: inherit;"></app-login>
+
+    <!--<button [matMenuTriggerFor]="menu" class="toolbar-btn " mat-button>
+      <mat-icon style="font-size: 24px;margin-top: -1px; margin-right: 10px">account_circle</mat-icon>
+      <span *ngIf="(user$ | async) as user">{{user.name}}</span>
+      <mat-icon style="font-size: 24px;margin-top: -1px; margin-left: 10px">more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" id="user-menu" xPosition="before">
+      <button *ngIf="(user$ | async) as user" mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Abmelden</span>
+      </button>
+
+    </mat-menu>-->
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<app-side-nav>
+  <ng-content></ng-content>
+</app-side-nav>

@@ -1,0 +1,39 @@
+:host {
+  mat-card-header {
+    border-bottom: 1px solid lightgray;
+    margin-right: 56px;
+  }
+  width: calc(100%);
+  height: calc(100% - 20px);
+  mat-card {
+    margin: 20px;
+    height: calc(100% - 40px);
+  }
+
+  tr.mat-header-row {
+    height: 40px;
+  }
+  td, th {
+    padding-right: 40px;
+  }
+ .unseen-table{
+   td:nth-child(1) {
+      color: rgba(0, 0, 0, 0.54) !important;
+     font-size: 12px;
+     font-weight: 500;
+   }
+   th, td {
+     padding-bottom: 10px;
+   }
+  }
+}
+mat-card-content {
+  overflow-y: scroll;
+  max-height: calc(100% - 50px);
+}
+.no-class-def-note {
+  text-align: center;
+  font-size: 18px;
+  color: lightgray;
+  padding-top: 30px
+}

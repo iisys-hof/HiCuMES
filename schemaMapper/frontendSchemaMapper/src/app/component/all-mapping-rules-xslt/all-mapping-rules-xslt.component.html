@@ -1,0 +1,22 @@
+<mat-card class="mat-elevation-z9">
+  <mat-card-header>
+    <mat-card-title>XSLT Regeln: <strong>{{componentTitle}}</strong></mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="height: 100%">
+    <ngs-code-editor *ngIf="showEditor" style="height: 100%; width: 100%"
+      [theme]="theme"
+      [codeModel]="codeModel"
+      [options]="options"
+      (valueChanged)="onCodeChanged($event)">
+    </ngs-code-editor>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="save()" style="position: absolute;right: 70px; top:8px" mat-fab>
+      <mat-icon>database</mat-icon>
+    </button>
+    <button (click)="update()" style="position: absolute;right: 10px; top:8px" mat-fab>
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>
+

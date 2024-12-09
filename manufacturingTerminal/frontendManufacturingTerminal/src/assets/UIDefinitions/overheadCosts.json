@@ -1,0 +1,120 @@
+[
+  {
+    "key": "overheadCosts",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "banr"
+        },
+        {
+          "name": "Kostenstelle",
+          "id": "center"
+        },
+        {
+          "name": "Bezeichnung",
+          "id": "name"
+        },
+        {
+          "name": "Text",
+          "id": "text"
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime"
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime"
+        },
+        {
+          "name": "Dauer (h)",
+          "id": "duration"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "note"
+        },
+        {
+          "name": "Aktion",
+          "id": "button"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "banr",
+          "key": "overheadCostCenter.orderNumber"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "id": "center",
+          "key": "overheadCostCenter.externalId"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "name",
+          "key": "overheadCostCenter.name"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "text",
+          "key": "overheadCostCenter.text"
+        },
+        {
+          "type": "simple",
+          "key": "timeRecord.startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "timeRecord.endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "timeDuration",
+          "id": "duration",
+          "props": {
+            "type": "duration",
+            "durationUnit": "h"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "note",
+          "id": "note"
+        },
+        {
+          "type": "overhead-cost-button",
+          "key": "id",
+          "id": "button",
+          "props": {
+            "label": "Anhalten"
+          },
+          "expressions": {
+            "hide": "model.timeRecord.endDateTime != undefined"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,13 @@
+.name-details-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+::ng-deep.details-icon-btn{
+  min-width: auto;
+  padding: 0 10px;
+  min-height: 36.9px;
+}

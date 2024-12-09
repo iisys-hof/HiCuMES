@@ -1,0 +1,107 @@
+
+.popup-info-button {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.start_button{
+  margin-left: 0;
+}
+
+.pause_button{
+  margin-left: 10px;
+}
+
+.action-icon-btn{
+  margin-left: 0;
+}
+
+.task-icon{
+  margin-right: 5px;
+}
+.start_button:active {
+  background-size: 500% 800%;
+  background-image: radial-gradient( #617CAD8C 0%, #6179ad1A 25%, #99b4c905 51%, #617CAD5C 100%);
+  -webkit-animation: AnimateBG 20s ease infinite;
+  animation: AnimateBG 20s ease infinite;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+@keyframes start_button {
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.btn-pgs {
+  text-align: center;
+  position: absolute;
+  border: 1px solid #6179ad;
+  border-radius: 5px;
+  height: 36px;
+  width: 87px;
+  margin-top: -60px;
+  margin-left: 0;
+
+
+
+  mat-progress-bar {
+    border-radius: 4px;
+    --mdc-linear-progress-track-color: #99b4c9;
+    height: 100%;
+    --mdc-linear-progress-active-indicator-color: #6179ad /*#2b4885*/;
+    --mdc-linear-progress-active-indicator-height: 36px !important;
+    --mdc-linear-progress-track-height: 36px;
+  }
+
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+.popup-text {
+  width: 100%;
+  font-size: 0.65rem;
+  font-family: Roboto, sans-serif;
+  position:absolute;
+  left: 0;
+  top:4px;
+  z-index: 9999;
+  text-transform: uppercase;
+  color: white;
+}
+.popup-icon {
+  height: 42px;
+  width: 100%;
+  left: 0;
+  position: absolute;
+  z-index: 9999;
+  top: 5px;
+}

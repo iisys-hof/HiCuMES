@@ -1,0 +1,98 @@
+<!--<mat-card class="mat-elevation-z6">
+  <mat-card-header>
+    <mat-card-title>Arbeitsgang</mat-card-title>
+    <mat-card-subtitle>Hinweistext zur Rückmeldung</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="row">
+      <div class="col col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>Start-Zeit</mat-label>
+          <input [(ngModel)]="dataElement.dateStart" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" matInput
+                 placeholder="TT.MM.JJJJ">
+          <owl-date-time #dt1 [firstDayOfWeek]="1" backdropClass="mybackdrob"></owl-date-time>
+          <mat-icon matSuffix>history</mat-icon>
+          <ngx-material-timepicker #picker></ngx-material-timepicker>
+
+        </mat-form-field>
+      </div>
+      <div class="col col-3">
+        <mat-form-field appearance="fill">
+          <mat-label>End-Zeit</mat-label>
+          <input [(ngModel)]="dataElement.dateEnd" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" matInput
+                 placeholder="TT.MM.JJJJ">
+          <owl-date-time #dt2 [firstDayOfWeek]="1" backdropClass="mybackdrob"></owl-date-time>
+          <mat-icon matSuffix>update</mat-icon>
+
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Bemerkungen</mat-label>
+          <input [(ngModel)]="dataElement.note" matInput>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Gut-Menge</mat-label>
+          <input [(ngModel)]="dataElement.extGutMenge" matInput>
+          <mat-icon matSuffix>check</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Ausschuss-Menge</mat-label>
+          <input [(ngModel)]="dataElement.extAusschussMenge" matInput>
+          <mat-icon matSuffix>close</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Ausschuss-Grund</mat-label>
+          <mat-select [(ngModel)]="dataElement.extAusschussGrund">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="fill">
+          <mat-label>Fehlzeit-Grund</mat-label>
+          <mat-select [(ngModel)]="dataElement.extFehlzeitGrund">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>
+<button (click)="openDialog()" class="add-entry" color="primary" mat-fab>
+  <mat-icon>add</mat-icon>
+</button>
+-->
+
+<mat-card class="mat-elevation-z6">
+  <mat-card-header>
+    <mat-card-title>Arbeitsgang</mat-card-title>
+    <mat-card-subtitle>Hinweistext zur Rückmeldung</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit(model)" [formGroup]="formForm">
+      <formly-form [fields]="formLayout" [form]="formForm" [model]="model" ></formly-form>
+    </form>
+  </mat-card-content>
+</mat-card>
+<button  class="add-entry" color="primary" mat-fab>
+  <mat-icon>add</mat-icon>
+</button>
+
+<button (click)="openDialog()" class="add-entry" color="primary" mat-fab>
+  <mat-icon>add</mat-icon>
+</button>

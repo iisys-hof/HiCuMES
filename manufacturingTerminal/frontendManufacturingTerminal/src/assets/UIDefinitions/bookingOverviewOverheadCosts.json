@@ -1,0 +1,161 @@
+[
+  {
+    "key": "bookingEntries",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "Position",
+          "id": "pos"
+        },
+        {
+          "name": "Arbeitsgang",
+          "id": "arg"
+        },
+        {
+          "name": "MGR",
+          "id": "mgr"
+        },
+        {
+          "name": "Bezeichnung.",
+          "id": "name"
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime"
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime"
+        },
+        {
+          "name": "Dauer",
+          "id": "duration_work"
+        },
+        {
+          "name": "Pers. Nr.",
+          "id": "userExternalId"
+        },
+        {
+          "name": "Benutzern.",
+          "id": "userName"
+        },
+        {
+          "name": "Nachricht",
+          "id": "message"
+        },
+        {
+          "name": "Antwort",
+          "id": "response"
+        },
+        {
+          "name": "Buchungsstatus",
+          "id": "httpStat"
+        },
+        {
+          "name": "Aktion",
+          "id": "button"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "pos",
+          "key": "overheadCost.overheadCostCenter.orderNumber"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "overheadCost.overheadCostCenter.externalId",
+          "id": "arg"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "overheadCost.overheadCostCenter.mgr",
+          "id": "mgr"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "key": "overheadCost.overheadCostCenter.name",
+          "id": "name"
+        },
+        {
+          "type": "simple",
+          "key": "overheadCost.timeRecord.startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "overheadCost.timeRecord.endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "overheadCost.duration",
+          "id": "duration_work"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "overheadCost.user.externalId",
+          "id": "userExternalId"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "overheadCost.user.userName",
+          "id": "userName"
+        },
+        {
+          "type": "simple-modal",
+          "key": "message",
+          "id": "message",
+          "props":
+          {
+            "type": "json"
+          }
+        },
+        {
+          "type": "simple-modal",
+          "key": "response",
+          "id": "response",
+          "props":
+          {
+            "type": "json"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "bookingState",
+          "id": "httpStat"
+        },
+        {
+          "type": "resend-button",
+          "key": "id",
+          "id": "button",
+          "props": {
+            "label": "Erneut senden"
+          },
+          "expressions": {
+            "hide": "model.bookingState != 'ERROR'"
+          }
+        }
+      ]
+    }
+  }
+]

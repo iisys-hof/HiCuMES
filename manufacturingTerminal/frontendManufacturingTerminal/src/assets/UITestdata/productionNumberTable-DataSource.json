@@ -1,0 +1,72 @@
+{
+  "glossary": {
+    "title": "example glossary",
+    "GlossDiv": {
+      "title": "S",
+      "date": "2021-10-21T12:11:54.000Z",
+      "GlossList": {
+        "GlossEntry": {
+          "ID": "SGML",
+          "SortAs": "SGML",
+          "GlossTerm": "Standard Generalized Markup Language",
+          "Acronym": "SGML",
+          "Abbrev": "ISO 8879:1986",
+          "GlossDef": {
+            "para": "A meta-markup language, used to create markup languages such as DocBook.",
+            "GlossSeeAlso": ["GML", "XML"]
+          },
+          "GlossSee": "markup"
+        }
+      }
+    }
+  },
+
+  "investments": [
+    {
+      "x": {
+        "start": 123
+      },
+      "investmentName": "project1",
+      "investmentDate": "2012",
+      "stockIdentifier": 1
+    },
+    {
+      "x": {
+        "start": 456
+      },
+      "investmentName": "project2",
+      "investmentDate": "2013",
+      "stockIdentifier": 2
+    },
+    {
+      "x": {
+        "start": 678
+      },
+      "investmentName": "project3",
+      "investmentDate": "2014",
+      "stockIdentifier": 3
+    }
+  ],
+  "orderdetailheader": [
+    {
+      "baNumber": 124,
+      "printDate": "2012-12-12",
+      "amount": 785,
+      "article": "Schleifscheibe 384d-X",
+      "start": "2012-12-12",
+      "end": "rdh",
+      "status": "RUNNING"
+    }
+  ],
+  "orderDetailHeaderPos2": [
+    {
+      "orderType": "P",
+      "orderName": "Hof_IO-IG98",
+      "bAmount": 785,
+      "salesDeparment": "Lager43",
+      "costumer": "Max Meier",
+      "description": "Einheiten gleich groß einpacken"
+
+    }
+  ]
+}

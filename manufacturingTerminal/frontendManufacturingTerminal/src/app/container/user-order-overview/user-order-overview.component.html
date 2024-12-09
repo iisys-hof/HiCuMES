@@ -1,0 +1,5 @@
+<!--<app-order-overview-table (startMachineOccupation)="startMachineOccupation($event)"></app-order-overview-table>-->
+<app-order-overview-data-table class="overview-table" *ngIf="(machineOccupationsFilterByMachineType$ | async)  && (machines$ | async); else progressSpinner" [machineOccupationsFilterByMachineType]="machineOccupationsFilterByMachineType$ | async " [machines]="machines$ | async" [overViewName]="'Meine Aufträge'"  [overViewIcon]="'patient_list'" [timeSelection]="'week'"></app-order-overview-data-table>
+<ng-template #progressSpinner>
+  <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+</ng-template>

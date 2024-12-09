@@ -1,0 +1,190 @@
+<div *ngIf="camundaSubProductionStep != undefined && machineOccupation != undefined && !afterRequest && !updatePaused; else progressSpinner" class="task-form">
+  <!--  <div class="header" *ngIf="headerFormLayout"  [@openCloseHeader]="isOpenHeader ? 'open' : 'closed'">-->
+  <!--  &lt;!&ndash;<span class="header-title">BA-Nr: {{machineOccupation?.machineOccupation?.productionOrder?.name}}-{{machineOccupation?.machineOccupation?.name}}</span>&ndash;&gt;-->
+
+
+  <!--&lt;!&ndash;    <button mat-icon-button (click)="toggleHeader()"  class="icon-button" >&ndash;&gt;-->
+  <!--&lt;!&ndash;      <mat-icon *ngIf="!isOpenHeader">expand_more</mat-icon>&ndash;&gt;-->
+  <!--&lt;!&ndash;      <mat-icon *ngIf="isOpenHeader">expand_less</mat-icon>&ndash;&gt;-->
+  <!--&lt;!&ndash;    </button>&ndash;&gt;-->
+  <!--  </div>-->
+  <div class="task-form-view">
+    <mat-card class="formfield-card mat-elevation-z8">
+      <mat-card-header [style.border-color]="color" class="formfield-card-header" style="border-bottom: 6px solid blue; align-items: center">
+        <div mat-card-avatar>
+          <mat-icon [style.color]="color" style="font-size: 38px;">{{icon}}</mat-icon>
+        </div>
+
+        <mat-card-title>
+          <h2> Vorgang: {{camundaSubProductionStep?.name}}</h2>
+        </mat-card-title>
+        <span _ngcontent-lwr-c265="" style="flex: 1 1 auto"></span>
+        <h3 style="display: contents">
+          <div *ngIf="titleFormLayout">
+          <form (ngSubmit)="onSubmit(model)" [formGroup]="titleForm" class="header-form">
+            <formly-form [fields]="titleFormLayout" [form]="titleForm" [model]="modelHeaderFooter"></formly-form>
+          </form>
+          </div>
+        </h3>
+        <span _ngcontent-lwr-c265="" style="flex: 1 1 auto"></span>
+        <button routerLink="order-details"  mat-stroked-button (click)="toDetailMask(machineOccupation)" class="details-icon-btn" style="min-width: 115px;" [style.color]="color"
+                mat-stroked-button>
+          <mat-icon>data_info_alert</mat-icon>
+          <span style="margin-left: 5px; color: black">DETAILS</span>
+        </button>
+      </mat-card-header>
+      <mat-card-content class="formfield-card-content" id="scroll-here">
+        <!--<form (ngSubmit)="onSubmit(model)" [formGroup]="form">
+          <formly-form [fields]="fields" [form]="form" [model]="model" [options]="options"></formly-form>
+          &lt;!&ndash;        <button color="primary" mat-raised-button type="submit">Abschicken</button>&ndash;&gt;
+          &lt;!&ndash;        <button (click)="resetModel()" class="btn btn-default" type="button">Zurücksetzen</button>&ndash;&gt;
+        </form>-->
+        <!--<ng-container *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null">
+            <ng-container *ngIf="!machineOccupation.machineOccupation.subMachineOccupations">
+              <form (ngSubmit)="onSubmit(model)" [formGroup]="formForm">
+                <formly-form [fields]="formLayout" [form]="formForm" [model]="model" [options]="options"></formly-form>
+              </form>
+            </ng-container>
+            <ng-container *ngIf="machineOccupation.machineOccupation.subMachineOccupations">
+              <app-collection-order-edit-table *ngIf="machineOccupation.machineOccupation.subMachineOccupations" #collectionOrderForm [machineOccupation]="machineOccupation" [(tableForm)]="formForm" (onRowClick)="onCollectionOrderRowSelect($event)" style="display: flex; flex-direction: column; height: calc(100vh - 180px);}"></app-collection-order-edit-table>
+            </ng-container>
+        </ng-container>
+          <div *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType != null" style="place-self: center; text-align: center;">
+            <h1>Unterbrechung {{getSuspensionName()}}</h1>
+            <h2>Seit {{getBreakTime()}}</h2>
+            <div class="spinner-with-icon" [style.color]="color">
+              <mat-spinner [ngStyle]="{color: this.color}" strokeWidth="4" mode="determinate" [value]="getPercentage()"></mat-spinner>
+              <mat-icon class="spinner-icon" >pause</mat-icon>
+            </div>
+          </div>-->
+
+        <div class="formfield_wrapper">
+          <ng-container>
+            <ng-container *ngIf="!machineOccupation.machineOccupation.subMachineOccupations">
+              <form (ngSubmit)="onSubmit(model)" [formGroup]="formForm">
+                <formly-form [fields]="formLayout" [form]="formForm" [model]="model" [options]="options"></formly-form>
+              </form>
+            </ng-container>
+            <ng-container *ngIf="machineOccupation.machineOccupation.subMachineOccupations">
+              <app-collection-order-edit-table *ngIf="machineOccupation.machineOccupation.subMachineOccupations" #collectionOrderForm [machineOccupation]="machineOccupation" [(tableForm)]="formForm" (onRowClick)="onCollectionOrderRowSelect($event)" style="display: flex; flex-direction: column; height: calc(100vh - 180px);}"></app-collection-order-edit-table>
+            </ng-container>
+          </ng-container>
+          <div *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType != null" class="break_overlay">
+            <h1>Unterbrechung {{getSuspensionName()}}</h1>
+            <h2>Seit {{getBreakTime()}}</h2>
+            <div class="spinner-with-icon" [style.color]="color">
+              <mat-spinner [ngStyle]="{color: this.color}" strokeWidth="4" mode="determinate" [value]="getPercentage()"></mat-spinner>
+              <mat-icon class="spinner-icon" >pause</mat-icon>
+            </div>
+          </div>
+          <div *ngIf="!isActiveUser()" class="break_overlay">
+            <h1>Aktiv für andere Benutzer</h1>
+            <h2>Jemand anderes arbeitet gerade an diesem Arbeitsgang!</h2>
+            <div class="spinner-with-icon" [style.color]="color">
+              <mat-spinner [ngStyle]="{color: this.color}" strokeWidth="4" mode="determinate" [value]="100"></mat-spinner>
+              <mat-icon class="spinner-icon" >groups</mat-icon>
+            </div>
+            <h3 style="margin-top: 10px">Aktive Benutzer:</h3>
+            <p *ngFor="let user of userOccupation?.activeUsers; index as i">{{user.userName}}</p>
+          </div>
+        </div>
+      </mat-card-content>
+      <!--    <mat-card-actions>-->
+      <!--      <button (click)="submit()" color="primary" mat-raised-button type="submit">ABSCHICKEN</button>-->
+      <!--      <button (click)="resetModel()" mat-button type="button">ZURÜCKSETZEN</button>-->
+      <!--      <button (click)="cancel()" mat-button type="button">ABBRECHEN</button>-->
+      <!--    </mat-card-actions>-->
+        <app-scroll containerToScroll="scroll-here"></app-scroll>
+      <mat-card-footer>
+        <div *ngIf="fieldErrors.length>0" class="errorMessage">
+          <h1>Invalid Form fields</h1>
+          <p>{{fieldErrors | json}}</p>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+    <div class="side-menu">
+      <button (click)="toggleLargeMenu()"
+              class="toggle-visibility-btn" mat-stroked-button>
+        <mat-icon *ngIf="!isLargeMenu">chevron_left</mat-icon>
+        <mat-icon *ngIf="isLargeMenu">chevron_right</mat-icon>
+      </button>
+      <div [@openCloseSideMenuLarge]="isLargeMenu ? 'open' : 'close'" class="large-side-menu">
+
+
+        <!--    <button *ngIf="modelHeaderFooter?.machineOccupation?.machineOccupation?.notes?.length > 0" mat-mini-fab (click)="toggle()" color="secondary" class="icon-button" >-->
+        <!--      <mat-icon *ngIf="!isOpen">chevron_left</mat-icon>-->
+        <!--      <mat-icon *ngIf="isOpen">chevron_right</mat-icon>-->
+        <!--    </button>-->
+        <div *ngIf="headerFormLayout">
+          <ng-container *ngIf="this.machineOccupation?.machineOccupation?.subMachineOccupations">
+            <mat-form-field appearance="outline"
+                            class="order-selection">
+              <mat-label>Unterauftrag</mat-label>
+              <mat-select (selectionChange)="changeHeaderFooterModel($event)" [(value)]="this.selectedSubMachineOccupation">
+                <mat-option *ngFor="let subOccupation of this.cloneMachineOccupation?.machineOccupation?.subMachineOccupations" [value]="subOccupation">{{subOccupation.productionOrder.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+          <form (ngSubmit)="onSubmit(model)" [formGroup]="headerForm" class="header-form">
+            <formly-form [fields]="headerFormLayout" [form]="headerForm" [model]="modelHeaderFooter"></formly-form>
+          </form>
+        </div>
+        <span style="flex: 1 1 auto;"></span>
+        <div *ngIf="modelFooter?.machineOccupation?.productionOrder?.notes?.length > 0" style="overflow: auto">
+          <form (ngSubmit)="onSubmit(model)" [formGroup]="footerForm" class="footer-form">
+            <formly-form [fields]="footerFormLayout" [form]="footerForm" [model]="modelFooter"></formly-form>
+          </form>
+        </div>
+        <div>
+          <app-note-form-field [machineOccupation]="this.selectedSubMachineOccupation" style="width: 100%"></app-note-form-field>
+        </div>
+        <span style="flex: 1 1 auto;"></span>
+        <div class="large-side-menu-btns">
+
+          <button color="primary" mat-raised-button type="submit" id="submit-btn" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null && isActiveUser()" (touchstart)="handleTouchStart($event)" (touchend)="stopTimer()" (touchcancel)="stopTimer()" (mousedown)="handleMouseDown($event)" (mouseup)="stopTimer()" (mouseleave)="stopTimer()">
+            <span>MELDEN</span>
+            <mat-progress-bar mode="determinate" color="accent" [value]="progressValue"></mat-progress-bar>
+          </button>
+          <!--<button (click)="submit()" color="primary" mat-raised-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null">MELDEN</button>-->
+          <button (click)="submitWithPause()" mat-stroked-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null && isActiveUser()">MELDEN UND UNTERBRECHEN</button>
+          <button (click)="pause()" mat-stroked-button type="button" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null && isActiveUser()   ">UNTERBRECHEN</button>
+          <button (click)="continue()" color="primary" mat-raised-button type="button" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType != null">FORTSETZEN</button>
+          <button (click)="joinMO()" color="primary" mat-raised-button type="button" *ngIf="!isActiveUser()">TEILNEHMEN</button>
+          <!--<button (click)="resetModel()" mat-stroked-button type="button">ZURÜCKSETZEN</button>-->
+          <button (click)="cancel()" mat-stroked-button type="button">ZUR ÜBERSICHT</button>
+        </div>
+      </div>
+      <div [@openCloseSideMenuSmall]="isLargeMenu ? 'close' : 'open'" class="small-side-menu">
+
+        <button class="mat-icon-btn" color="primary" mat-raised-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null" (touchstart)="handleTouchStart($event)" (touchend)="stopTimer()" (touchcancel)="stopTimer()" (mousedown)="handleMouseDown($event)" (mouseup)="stopTimer()" (mouseleave)="stopTimer()">
+          <mat-icon>send</mat-icon>
+          <mat-progress-bar mode="determinate" color="accent" [value]="progressValue"></mat-progress-bar>
+        </button>
+        <!--<button (click)="submit()" class="mat-icon-btn" color="primary" mat-raised-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null">
+          <mat-icon>send</mat-icon>
+        </button>-->
+        <button (click)="submitWithPause()" class="mat-icon-btn" color="secondary" mat-stroked-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null">
+          <mat-icon>skip_next</mat-icon>
+        </button>
+        <button (click)="pause()" class="mat-icon-btn" color="secondary" mat-stroked-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType == null">
+          <mat-icon>pause</mat-icon>
+        </button>
+        <button (click)="continue()" class="mat-icon-btn" color="primary" mat-raised-button type="submit" *ngIf="machineOccupation.camundaSubProductionSteps.slice(-1)[0].subProductionStep?.timeRecords.slice(-1)[0].suspensionType != null">
+          <mat-icon>play_arrow</mat-icon>
+        </button>
+        <!--<button (click)="resetModel()" class="mat-icon-btn" color="secondary" mat-stroked-button type="button">
+          <mat-icon>delete</mat-icon>
+        </button>-->
+        <button (click)="cancel()" class="mat-icon-btn" color="secondary" mat-stroked-button type="button">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #progressSpinner>
+  <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+</ng-template>
+

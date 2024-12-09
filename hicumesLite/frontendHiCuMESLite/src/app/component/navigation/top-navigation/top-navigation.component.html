@@ -1,0 +1,61 @@
+<mat-toolbar class="hicumes-frame">
+  <mat-toolbar-row>
+    <button (click)="toggleRightSidenav()" class="menu-icon" mat-icon-button>
+      <mat-icon *ngIf="!navBarOpen">menu</mat-icon>
+      <mat-icon *ngIf="navBarOpen">close</mat-icon>
+
+    </button>
+    <a routerLink="order-overview" style="color: white; text-decoration: none"><span >HiCuMES Terminal</span><span *ngIf="title.length > 0">&nbsp;–&nbsp;{{title}} </span></a>
+
+    <span class="example-spacer"></span>
+
+
+
+    <button (click)="reload()" *ngIf="router.url == '/order-overview' || router.url == '/user-order-overview'  || router.url == '/' || router.url == '/booking-overview' || router.url == '/user-booking-overview'"  class="menu-icon" mat-button style="margin: 5px; float: right">
+      <mat-icon>refresh</mat-icon> Seite zurücksetzen
+    </button>
+
+<!--    <mat-form-field *ngIf="(allOrders$ | async) as allOrders" appearance="fill" class="toolbar-btn toolbar-selection-info">-->
+<!--      <mat-label>Aktueller Auftrag</mat-label>-->
+<!--      <mat-select (selectionChange)="changeOrderSelection($event)" [(value)]="selectedOrder" matNativeControl>-->
+<!--      <mat-option [value]="undefined">Alle Aufträge</mat-option>-->
+<!--      <mat-optgroup [label]="'Aufträge'">-->
+<!--        <mat-option *ngFor="let order of allOrders" [value]="order">-->
+<!--          {{order.externalId}}-->
+<!--        </mat-option>-->
+<!--      </mat-optgroup>-->
+
+<!--    </mat-select>-->
+<!--    </mat-form-field>-->
+   <!-- <mat-form-field *ngIf="(openData | async) as data" appearance="fill"
+                    class="toolbar-btn toolbar-selection" style="width: 300px">
+      <mat-label>Offene</mat-label>
+      <mat-select #selectOpen>
+        <mat-optgroup [label]="'AG'">
+          <mat-option *ngFor="let dings of data.machineOccupations" [value]="dings.externalId" (click)="toInputMask(dings)">
+            {{dings.machineOccupation.productionOrder.name}} - {{dings.machineOccupation.name}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>-->
+
+    <!--<button [matMenuTriggerFor]="menu" class="toolbar-btn " mat-button>
+      <mat-icon style="font-size: 24px;margin-top: -1px; margin-right: 10px">account_circle</mat-icon>
+      <span *ngIf="(user$ | async) as user">{{user.name}}</span>
+      <mat-icon style="font-size: 24px;margin-top: -1px; margin-left: 10px">more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" id="user-menu" xPosition="before">
+      <button *ngIf="(user$ | async) as user" mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Abmelden</span>
+      </button>
+
+    </mat-menu>-->
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<app-side-nav>
+  <ng-content></ng-content>
+</app-side-nav>

@@ -1,0 +1,90 @@
+[
+  {
+    "key": "camundaMachineOccupations",
+    "type": "selectiontable-barcode-advanced",
+    "className": "table-modal",
+    "props": {
+      "multiple": false,
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "externalId"
+        },
+        {
+          "name": "Artikel",
+          "id": "product"
+        },
+        {
+          "name": "Start-Termin",
+          "id": "plannedStartDateTime"
+        },
+        {
+          "name": "End-Termin",
+          "id": "plannedEndDateTime"
+        },
+        {
+          "name": "Menge",
+          "id": "cbn_brennen_320_ytykmge"
+        },
+        {
+          "name": "Text",
+          "id": "ptext"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+        "type": "simple",
+        "key": "machineOccupation.name"
+      },
+        {
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.name"
+        },
+        {
+          "type": "simple",
+          "id": "externalId",
+          "key": "machineOccupation",
+          "props": {
+            "concat": ["productionOrder.name", "name"],
+            "concatSpacer": "-"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "product",
+          "key": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "plannedStartDateTime",
+          "key": "machineOccupation.plannedStartDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "plannedEndDateTime",
+          "key": "machineOccupation.plannedEndDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YYYY"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "cbn_brennen_320_ytykmge",
+          "key": "machineOccupation.productionOrder.measurement.amount"
+        },
+        {
+          "type": "simple",
+          "id": "ptext",
+          "key": "machineOccupation.ptext"
+        }
+      ]
+    }
+  }
+]

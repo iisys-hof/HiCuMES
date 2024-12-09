@@ -1,0 +1,192 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-3",
+        "type": "input",
+        "key": "startTime",
+        "props": {
+          "label": "Start-Zeit"
+        }
+      },
+      {
+        "className": "col-3",
+        "type": "input",
+        "key": "endTime",
+        "props": {
+          "label": "End-Zeit"
+        }
+      },
+      {
+        "className": "col-6",
+        "type": "input",
+        "key": "notes",
+        "props": {
+          "label": "Bemerkungen"
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "valueOK",
+        "props": {
+          "label": "Gut-Menge"
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "valueNOK",
+        "props": {
+          "label": "Ausschuss-Menge"
+        }
+      },
+      {
+        "className": "col-4",
+        "type": "input",
+        "key": "valueNOKReason",
+        "props": {
+          "label": "Ausschuss-Grund"
+        }
+      },
+      {
+        "className": "col-4",
+        "type": "input",
+        "key": "missedTimeReason",
+        "props": {
+          "label": "Fehlzeit-Grund"
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-6",
+        "type": "input",
+        "key": "glossary.title",
+        "props": {
+          "label": "Title 222"
+        }
+      },
+      {
+        "className": "col-6",
+        "type": "input",
+        "key": "glossary.GlossDiv.title",
+        "props": {
+          "label": "Title 124"
+        }
+      }
+    ]
+  },
+  {
+    "className": "section-label",
+    "template": "<hr /><div><strong>Address:</strong></div>"
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-6",
+        "type": "datetimepicker",
+        "key": "datepicker1",
+        "props": {
+          "label": "Datepicker1"
+        }
+      },
+      {
+        "className": "col-3",
+        "key": "datepicker2",
+        "type": "datetimepicker",
+        "props": {
+          "label": "Datepicker2",
+          "placeholder": "Placeholder",
+          "description": "Description",
+          "required": true
+        }
+      },
+      {
+        "className": "col-3",
+        "type": "input",
+        "key": "zip",
+        "props": {
+          "type": "number",
+          "label": "Zip",
+          "max": 99999,
+          "min": 0,
+          "pattern": "\\d{5}"
+        }
+      }
+    ]
+  },
+  {
+    "template": "<hr />"
+  },
+  {
+    "type": "textarea",
+    "key": "otherInput",
+    "props": {
+      "label": "Other Input"
+    }
+  },
+  {
+    "type": "checkbox",
+    "key": "otherToo",
+    "props": {
+      "label": "Other Checkbox"
+    }
+  },
+  {
+    "template": "<hr />"
+  },
+  {
+    "key": "investments",
+    "type": "datatable",
+    "props": {
+      "columns": [
+        { "name": "Name of Investment", "id": "investmentName", "width": 100},
+        { "name": "Date of Investment", "id": "investmentDate","width": 200 },
+        { "name": "Stock Identifier", "id": "stockIdentifier","width": 300 }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "input",
+          "id": "investmentName",
+          "key": "investmentName",
+          "props": {
+            "required": true
+          }
+        },
+        {
+          "type": "input",
+          "id": "investmentDate",
+          "key": "investmentDate",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "className": "no-input no-input2",
+          "type": "input",
+          "id": "stockIdentifier",
+          "key": "stockIdentifier",
+          "props": {
+            "label": "Stock Identifier:"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "template": "<hr />"
+  }
+]

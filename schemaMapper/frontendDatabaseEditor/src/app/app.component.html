@@ -1,0 +1,24 @@
+<mat-progress-bar mode="indeterminate"  *ngIf="isLoading$ | async as loading"></mat-progress-bar>
+
+<mat-grid-list cols="4" rowHeight="100%" >
+  <mat-grid-tile
+    [colspan]="1"
+    >
+    <app-entity-master [fieldExtension]="fieldExtension$ | async" (changedSelection)="changedSelection($event)"></app-entity-master>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    class = "mat-grid-selector"
+    [colspan]="3"
+  >
+    <app-entity-detail *ngIf="selectedClass" [selectedClass]="selectedClass" [model]="selectedClassToExtend" ></app-entity-detail>
+
+  </mat-grid-tile>
+</mat-grid-list>
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 999999" class="example-button-container">
+  <button (click)="exportSchema()" class="mat-fab-extended" mat-fab  aria-label="Example icon button with a heart icon">
+    <mat-icon>save</mat-icon>
+    <span class="mdc-button__label" style="margin-left: 10px;">Datenbank speichern</span>
+  </button>
+</div>

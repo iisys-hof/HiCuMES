@@ -1,0 +1,80 @@
+[
+  {
+    "key": "overheadCostCenters",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "orderNumber"
+        },
+        {
+          "name": "AG",
+          "id": "extId"
+        },
+        {
+          "name": "MGR",
+          "id": "mgr"
+        },
+        {
+          "name": "Bezeichnung",
+          "id": "name"
+        },
+        {
+          "name": "Text",
+          "id": "text"
+        },
+        {
+          "name": "Aktion",
+          "id": "button"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "orderNumber",
+          "key": "orderNumber"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "name",
+          "key": "name"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "extId",
+          "key": "externalId"
+        },
+        {
+          "className": "table-small",
+          "type": "simple",
+          "id": "mgr",
+          "key": "mgr"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "text",
+          "key": "text"
+        },
+        {
+          "type": "overhead-cost-button",
+          "key": "id",
+          "id": "button",
+          "props": {
+            "label": "Anhalten"
+          },
+          "expressions": {
+            "hide": "model.timeRecord.endDateTime != undefined"
+          }
+        }
+      ]
+    }
+  }
+]

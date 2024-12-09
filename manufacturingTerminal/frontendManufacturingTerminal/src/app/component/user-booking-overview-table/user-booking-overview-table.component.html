@@ -1,0 +1,50 @@
+
+  <ng-template #progressSpinner>
+    <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+  </ng-template>
+  <div>
+    <mat-form-field appearance="outline" style="width: 0; height: 0; margin: 0; content-visibility: hidden">
+      <mat-label style="display: none">Zeitraum wählen</mat-label>
+      <mat-date-range-input
+
+        [formGroup]="range"
+        [rangePicker]="rangePicker"
+        style="display: none">
+        <input formControlName="start" matStartDate
+               placeholder="Start date">
+        <input formControlName="end" matEndDate
+               placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle [for]="rangePicker" matSuffix style="display: none"></mat-datepicker-toggle>
+      <mat-date-range-picker #rangePicker [touchUi]="isTouch$ | async" (closed)="onClose()"></mat-date-range-picker>
+    </mat-form-field>
+    <button (click)="rangePicker.open()" color="white" mat-stroked-button style="margin-bottom: 10px">
+      <mat-icon>today</mat-icon>
+    </button>
+  </div>
+<mat-card class="mat-elevation-z8 order-overview" style="
+    margin-bottom: 16px;
+    padding-bottom: 24px;">
+  <mat-card-header>
+    <mat-card-title>Meine Auftrags-Buchungen</mat-card-title>
+    <span style="flex: 1 1 auto;"></span>
+    <span style="place-self: end; text-align: end;">Gesamtdauer Aufträge:<br>{{sumBookingsString}}</span>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="model; else progressSpinner">
+      <formly-form [fields]="tableLayout" [form]="tableFormBooking" [model]="model"></formly-form>
+    </div>
+  </mat-card-content>
+</mat-card>
+  <mat-card class="mat-elevation-z8 order-overview">
+  <mat-card-header>
+    <mat-card-title>Meine Gemeinkosten-Buchungen</mat-card-title>
+    <span style="flex: 1 1 auto;"></span>
+    <span style="place-self: end; text-align: end;">Gesamtdauer Gemeinkosten:<br>{{sumOverheadCostsString}}</span>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="modelOverheadCosts; else progressSpinner">
+      <formly-form [fields]="tableLayoutOverheadCosts" [form]="tableFormOverheadCosts" [model]="modelOverheadCosts"></formly-form>
+    </div>
+  </mat-card-content>
+</mat-card>

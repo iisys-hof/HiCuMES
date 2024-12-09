@@ -1,0 +1,86 @@
+[
+  {
+"key": "investments",
+    "type": "datatable",
+    "props": {
+      "columns": [
+        { "name": "Start", "id": "x.start"},
+        { "name": "End", "id": "end"},
+        { "name": "Auftrag", "id": "order"},
+        { "name": "Arbeitsgang", "id": "productionstep"},
+        { "name": "Gut-Menge", "id": "valueOK"},
+        { "name": "Ausschuss-Menge", "id": "valueNOK"},
+        { "name": "Ausschuss-Grund", "id": "valueNOKReason"},
+        { "name": "Fehlzeit-Grund", "id": "missedTimeReason"}
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "x.start",
+"key": "x.start",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "end",
+"key": "end",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "order",
+"key": "order",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "productionstep",
+"key": "productionstep",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "valueOK",
+"key": "valueOK",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "valueNOK",
+"key": "valueNOK",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "valueNOKReason",
+"key": "valueNOKReason",
+          "props": {
+            "type": "date"
+          }
+        },
+        {
+          "type": "simple",
+          "id": "missedTimeReason",
+"key": "missedTimeReason",
+          "props": {
+            "type": "date"
+          }
+        }
+      ]
+    }
+  }
+]

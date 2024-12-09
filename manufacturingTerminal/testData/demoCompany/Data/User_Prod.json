@@ -1,0 +1,52 @@
+[
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "User",
+      "classContent": {
+        "userName": "admin",
+        "externalId": "001"
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "User",
+      "classContent": {
+        "userName": "rpeinl",
+        "externalId": "002"
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "User",
+      "classContent": {
+        "userName": "ffunke",
+        "externalId": "003"
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "User",
+      "classContent": {
+        "userName": "llustig",
+        "externalId": "004"
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "User",
+      "classContent": {
+        "userName": "bbecker",
+        "externalId": "005"
+      }
+    }
+  }
+]

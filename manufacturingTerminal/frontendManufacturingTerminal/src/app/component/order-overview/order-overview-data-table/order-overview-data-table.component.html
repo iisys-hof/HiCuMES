@@ -1,0 +1,69 @@
+<mat-card class="mat-elevation-z8 order-overview">
+  <mat-card-header>
+    <mat-card-title>
+      {{overViewName}}
+    </mat-card-title>
+    <span style="flex: 1 1 auto;"></span>
+    <div class="dt-buttons" style="place-self: end; text-align: end;
+    margin-right: -5px;" *ngIf="tableLoaded">
+      <!--<button class="dt-button hide-occupations" tabindex="0" aria-controls="dataTable" type="button" (click)="hideOpenMachineOccupations()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Offene Aufträge ausblenden</span></button>-->
+      <button [disabled]="true" class="disabled dt-button hide-occupations" tabindex="0" aria-controls="dataTable" type="button" (click)="hideOpenMachineOccupations()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Offene Aufträge ausblenden</span></button>
+      <!--<button class="dt-button load-all-states" tabindex="0" aria-controls="dataTable" type="button" (click)="loadAllStates()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Jeden Status laden</span></button>-->
+      <button [disabled]="true" class="disabled dt-button load-all-states" tabindex="0" aria-controls="dataTable" type="button" (click)="loadAllStates()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Jeden Status laden</span></button>
+      <!--<button [disabled]="this.disableCollectionOrderButton" [ngClass]="{'disabled': this.disableCollectionOrderButton}" class="dt-button create-collection-order"  tabindex="0" aria-controls="dataTable" type="button" (click)="enableCollectionOrderModeModal()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Sammelauftrag anmelden</span></button>-->
+      <button [disabled]="true" class="disabled dt-button create-collection-order"  tabindex="0" aria-controls="dataTable" type="button" (click)="enableCollectionOrderModeModal()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Sammelauftrag anmelden</span></button>
+      <!--<button [disabled]="this.disableCollectionOrderButton" [ngClass]="{'disabled': this.disableCollectionOrderButton}" class="dt-button" tabindex="0" aria-controls="dataTable" type="button" (click)="enableSplitOrderMode()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Teilauftrag anmelden</span></button>-->
+      <button [disabled]="true" class="disabled dt-button" tabindex="0" aria-controls="dataTable" type="button" (click)="enableSplitOrderMode()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Teilauftrag anmelden</span></button>
+      <button class="dt-button" tabindex="0" aria-controls="dataTable" type="button" (click)="startReaderModal()"><span style="text-transform: uppercase; letter-spacing: 0.5px;">Barcode / RF-ID lesen</span></button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!--<app-advanced-data-filter *ngIf="machineOccupationsFilterByMachineType !== null && machineOccupationsFilterByMachineType !== undefined" [data]="machineOccupationsFilterByMachineType"></app-advanced-data-filter>-->
+    <div style="display: flex; margin-bottom: -42px" id="timeSelection" *ngIf="tableLoaded">
+      <span style="flex: 1 1 auto;"></span>
+    <div class="dt-buttons" style="place-self: end; text-align: end; margin-right: 260px; z-index: 100000">
+     <mat-button-toggle-group [(ngModel)]="timeSelection" (valueChange)="timeSelectionChange()">
+      <mat-button-toggle class="mat-btn-group" value="week">Woche</mat-button-toggle>
+      <mat-button-toggle class="mat-btn-group" value="month">Monat</mat-button-toggle>
+      <mat-button-toggle class="mat-btn-group" value="all">Alle</mat-button-toggle>
+      <!--mat-button-toggle class="mat-btn-group" value="week">
+      <mat-icon>date_range</mat-icon></mat-button-toggle>
+      <mat-button-toggle class="mat-btn-group" value="month">
+        <mat-icon>calendar_month</mat-icon></mat-button-toggle>
+      <mat-button-toggle class="mat-btn-group" value="all">
+        <mat-icon>event_upcoming</mat-icon></mat-button-toggle>-->
+    </mat-button-toggle-group>
+    <!--<mat-form-field appearance="outline">
+      <mat-label>Zeitfilter</mat-label>
+      <mat-select [(ngModel)]="timeSelection" (valueChange)="timeSelectionChange()">
+        <mat-option value="week">Woche</mat-option>
+        <mat-option value="month">Monat</mat-option>
+        <mat-option value="all">Alle</mat-option>
+      </mat-select>
+    </mat-form-field>-->
+    </div>
+    </div>
+    <table id="dataTable" *ngIf="!isLoadOnBarcode; else progressSpinner" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="dataTable row-border"
+           style="width: 100%" >
+    </table>
+    <!-- adtData contains the information for every row -->
+    <ng-template #checkbox let-data="adtData" let-emitter="captureEvents">
+      <app-machine-occupation-checkbox *ngIf="isCollectionOrderMode" [data]="data"
+                                       (emitter)="emitter($event)"></app-machine-occupation-checkbox>
+    </ng-template>
+    <ng-template #detailButton let-data="adtData" let-emitter="captureEvents">
+      <app-machine-occupation-name-and-details-button [data]="data"
+                                                      (emitter)="emitter($event)"></app-machine-occupation-name-and-details-button>
+    </ng-template>
+    <ng-template #actionButtons let-data="adtData" let-emitter="captureEvents">
+      <app-machine-occupation-action-buttons [data]="data" [machines]="machines"
+                                             (emitter)="emitter($event)"></app-machine-occupation-action-buttons>
+    </ng-template>
+
+    <ng-template #progressSpinner>
+      <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
+<app-scroll></app-scroll>

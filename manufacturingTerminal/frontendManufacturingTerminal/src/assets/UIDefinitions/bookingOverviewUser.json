@@ -1,0 +1,116 @@
+[
+  {
+    "key": "bookingEntries",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "Position",
+          "id": "pos",
+          "sortable": true
+        },
+        {
+          "name": "Arbeitsgang",
+          "id": "arg",
+          "sortable": true
+        },
+        {
+          "name": "Artikel",
+          "id": "article",
+          "sortable": true
+        },
+        {
+          "name": "Gutmge.",
+          "id": "acceptedMeasurement",
+          "sortable": true
+        },
+        {
+          "name": "Schlechtmge.",
+          "id": "rejectedMeasurement",
+          "sortable": true
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime",
+          "sortable": true
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime",
+          "sortable": true,
+          "defaultSort": "asc"
+        },
+        {
+          "name": "Dauer",
+          "id": "duration_auto"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-short",
+          "type": "simple",
+          "id": "productionSteps[0].arbgangNr",
+          "key": "machineOccupation.productionSteps[0].arbgangNr"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "pos",
+          "key": "machineOccupation.externalId",
+          "props": {
+            "split": "_"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.productionSteps[0].name",
+          "id": "arg"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.product.name",
+          "id": "article"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.productionNumbers[0].acceptedMeasurement.amount",
+          "id": "acceptedMeasurement"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.productionNumbers[0].rejectedMeasurement.amount",
+          "id": "rejectedMeasurement"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeRecords[0].startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM. - HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeRecords[last()].endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM. - HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.duration",
+          "id": "duration_auto"
+        }
+      ]
+    }
+  }
+]

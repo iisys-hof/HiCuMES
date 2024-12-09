@@ -1,0 +1,12 @@
+[
+  {
+    "key": "machineOccupation.machineOccupation.productionOrder.notes",
+    "type": "noteList",
+    "className": "detailBtnRight",
+    "props":
+    {
+        "headerTitle": "Bisherige Bemerkungen:",
+        "dateFormat": "DD.MM.YYYY HH:mm"
+    }
+  }
+]

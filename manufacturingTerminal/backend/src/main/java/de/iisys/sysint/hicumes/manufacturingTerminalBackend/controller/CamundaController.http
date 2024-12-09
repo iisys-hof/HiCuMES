@@ -1,0 +1,38 @@
+@baseUrl = http://127.0.0.1:8080/manufacturingTerminalBackend/data
+@id = 84
+
+### Get all Production Orders
+GET {{baseUrl}}/camunda/machineOccupation
+Accept: application/json
+
+### Get specific Production Orders with id: {{machineoccupation_id}}
+GET {{baseUrl}}/camunda/machineOccupation/?id=18
+Accept: application/json
+
+### Get specific Production Orders with businesskey: {{machineoccupation_id}}
+GET {{baseUrl}}/camunda/machineOccupation?businessKey=Process_Schneiden#machineOccupation2#221252031
+Accept: application/json
+
+
+### Start Production Order
+POST {{baseUrl}}/camunda/startMachineOccupation
+Content-Type: application/json
+
+{
+  "id": "{{machineoccupation_id}}"
+}
+
+### Finish Process with FormField
+POST {{baseUrl}}/camunda/finishFormField
+Content-Type: application/json
+
+{
+  "id": "{{machineoccupation_id}}",
+  "formField": {
+      "testString": "testString",
+      "testBool": true,
+      "testLong": 5
+  }
+}
+
+

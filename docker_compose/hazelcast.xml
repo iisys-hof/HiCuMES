@@ -1,0 +1,22 @@
+<hazelcast xmlns="http://www.hazelcast.com/schema/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.hazelcast.com/schema/config http://www.hazelcast.com/schema/config/hazelcast-config-3.12.xsd">
+    <group>
+        <name>hicumes_docker_test</name>
+    </group>
+    <network>
+        <port auto-increment="false">5701</port>
+        <outbound-ports>
+            <ports>37000-37100</ports>
+        </outbound-ports>
+        <join>
+            <multicast enabled="false"></multicast>
+            <tcp-ip enabled="true">
+                <member>camunda</member>
+                <member>hicumes:5701</member>
+                <member>hicumes:5702</member>
+            </tcp-ip>
+        </join>
+    </network>
+    <map name="sessions">
+        <time-to-live-seconds>1000</time-to-live-seconds>
+    </map>
+</hazelcast>

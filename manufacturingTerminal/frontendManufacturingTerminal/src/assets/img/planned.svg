@@ -1,0 +1,7 @@
+<svg id="pause_circle_black_24dp" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Gruppe_254" data-name="Gruppe 254">
+    <rect id="Rechteck_135" data-name="Rechteck 135" width="24" height="24" fill="rgba(0,0,0,0)"/>
+  </g>
+  <path id="Pfad_139" data-name="Pfad 139" d="M12,2A10,10,0,1,0,22,12,9.991,9.991,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.011,8.011,0,0,1,12,20Z" fill="#adadad"/>
+  <circle id="Ellipse_60" data-name="Ellipse 60" cx="3" cy="3" r="3" transform="translate(9 9)" fill="#adadad"/>
+</svg>

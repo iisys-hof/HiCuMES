@@ -1,0 +1,87 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-6",
+        "type": "pdfviewer",
+        "key": "valueOK",
+        "props": {
+          "label": "Prüfungsanweisung"
+        }
+      },
+      {
+        "className": "col-6",
+        "fieldGroupClassName": "row",
+        "fieldGroup": [
+          {
+            "className": "col-12 formly-data-table",
+            "key": "CheckQualityJson",
+            "type": "datatable",
+            "wrappers": ["mat-panel"],
+            "props": {
+              "label": "Prüfprotokoll",
+              "columns": [
+                {
+                  "name": "I. O.",
+                  "id": "qualityOk"
+                },
+                {
+                  "name": "Maß",
+                  "id": "name"
+                },
+                {
+                  "name": "Wert",
+                  "id": "value"
+                },
+                {
+                  "name": "Toleranz",
+                  "id": "tolerance"
+                },
+                {
+                  "name": "Bemerkung",
+                  "id": "note"
+                }
+              ]
+            },
+            "fieldArray": {
+              "fieldGroup": [
+                {
+                  "type": "togglesimple",
+                  "id": "qualityOk",
+                  "key": "qualityOk"
+                },
+                {
+                  "type": "simple",
+                  "id": "name",
+                  "key": "qualityControlFeature.name"
+                },
+                {
+                  "type": "simple",
+                  "id": "value",
+                  "key": "qualityControlFeature.value"
+                },
+                {
+                  "type": "simple",
+                  "id": "tolerance",
+                  "key": "qualityControlFeature.tolerance"
+                },
+                {
+                  "type": "input",
+                  "id": "note",
+                  "key": "note",
+                  "props": {
+                    "label": "Bemerkungen",
+                    "addonLeft": {
+                      "icon": "edit_note"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

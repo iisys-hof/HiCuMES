@@ -1,0 +1,37 @@
+[
+  {
+    "key": "product",
+    "label": "",
+    "htmltag": "strong",
+    "class": "title"
+  },
+  {
+    "group": [
+      {
+        "key": "amount",
+        "label": "Menge",
+        "htmltag": "span"
+      },
+      {
+        "key": "unit",
+        "label": "",
+        "htmltag": "span"
+      }
+    ],
+    "htmltag": "p",
+    "class": "group-section"
+  },
+
+  {
+    "key": "productionStepSequence",
+    "label": "Sequenz",
+    "htmltag": "p",
+    "class": ""
+  },
+  {
+    "key": "content",
+    "label": "",
+    "htmltag": "p",
+    "class": "content-section"
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+        "key": "startTime",
+        "props": {
+          "label": "Start-Zeit",
+          "addonLeft": {
+            "icon": "history"
+          }
+        }
+      },
+      {
+        "className": "col-3",
+        "type": "datetimepicker",
+        "key": "endTime",
+        "props": {
+          "label": "End-Zeit",
+          "addonLeft": {
+            "icon": "update"
+          }
+        }
+      },
+      {
+        "className": "col-6",
+        "type": "input",
+        "key": "notes",
+        "props": {
+          "label": "Bemerkungen",
+          "addonLeft": {
+            "icon": "edit_note"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "fieldGroupClassName": "row",
+    "fieldGroup": [
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "valueOK",
+        "props": {
+          "label": "Gut-Menge",
+          "type": "number",
+          "addonLeft": {
+            "icon": "check"
+          }
+        }
+      },
+      {
+        "className": "col-2",
+        "type": "input",
+        "key": "valueNOK",
+        "props": {
+          "label": "Ausschuss-Menge",
+          "type": "number",
+          "addonLeft": {
+            "icon": "close"
+          }
+        }
+      },
+      {
+        "className": "col-4",
+        "type": "input",
+        "key": "valueNOKReason",
+        "props": {
+          "label": "Ausschuss-Grund",
+          "addonLeft": {
+            "icon": "rule"
+          }
+        }
+      },
+      {
+        "className": "col-4",
+        "type": "input",
+        "key": "missedTimeReason",
+        "props": {
+          "label": "Fehlzeit-Grund",
+          "addonLeft": {
+            "icon": "running_with_errors"
+          }
+        }
+      }
+    ]
+  }
+]

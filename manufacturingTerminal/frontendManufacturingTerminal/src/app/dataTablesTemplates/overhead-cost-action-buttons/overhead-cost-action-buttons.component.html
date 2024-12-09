@@ -1,0 +1,19 @@
+<div class="action-btns">
+  <button *ngIf="!data.timeRecord?.startDateTime" (touchstart)="handleTouchStart($event)" (touchend)="stopTimer()" (touchcancel)="stopTimer()" (mousedown)="handleMouseDown($event)" (mouseup)="stopTimer()" (mouseleave)="stopTimer()" class="start_button" color="primary" [disabled]="disabledStart" mat-stroked-button>
+    <mat-icon>start</mat-icon>
+    START
+    <mat-progress-bar mode="indeterminate" *ngIf="disabledStart"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" color="accent"  *ngIf="!disabledStart" [value]="progressValue"></mat-progress-bar>
+  </button>
+  <ng-container *ngIf="data.timeRecord?.startDateTime && !data.timeRecord?.endDateTime">
+  <button class="start_button" color="primary" [disabled]="disabledStart" (click)="openEditModal()" mat-stroked-button>
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button (touchstart)="handleTouchStart2($event)" (touchend)="stopTimer()" (touchcancel)="stopTimer()" (mousedown)="handleMouseDown2($event)" (mouseup)="stopTimer()" (mouseleave)="stopTimer()" class="start_button" color="primary" [disabled]="disabledStart" mat-stroked-button>
+    <mat-icon>stop</mat-icon>
+    STOP
+    <mat-progress-bar mode="indeterminate" *ngIf="disabledStart"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" color="accent"  *ngIf="!disabledStart" [value]="progressValue"></mat-progress-bar>
+  </button>
+  </ng-container>
+</div>

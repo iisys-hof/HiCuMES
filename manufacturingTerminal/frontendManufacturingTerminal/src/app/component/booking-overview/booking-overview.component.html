@@ -1,0 +1,43 @@
+<div>
+  <mat-form-field appearance="fill" style="width: 0; height: 0; margin: 0; visibility: hidden">
+    <mat-label style="display: none">Zeitraum wählen</mat-label>
+    <mat-date-range-input
+      [formGroup]="range"
+      [rangePicker]="rangePicker"
+      style="display: none">
+      <input formControlName="start" matStartDate
+             placeholder="Start date">
+      <input formControlName="end" matEndDate
+             placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle [for]="rangePicker" matSuffix style="display: none"></mat-datepicker-toggle>
+    <mat-date-range-picker #rangePicker [touchUi]="isTouch$ | async" (closed)="onClose()"></mat-date-range-picker>
+  </mat-form-field>
+  <button (click)="rangePicker.open()" color="white" mat-stroked-button style="margin: 5px">
+    <mat-icon>today</mat-icon>
+  </button>
+
+  <mat-slide-toggle (toggleChange)="toggleError()" [(ngModel)]="filterError">Nur fehlerhafte Buchungen anzeigen</mat-slide-toggle>
+  <button color="white"  mat-stroked-button (click)="exportexcel()" style="margin: 5px; float: right">
+    <span class="material-symbols-outlined">
+      file_save
+    </span>
+</button>
+</div>
+
+<mat-tab-group id="booking-overview-tabs" *ngIf="model && modelOverheadCosts; else progressSpinner">
+  <mat-tab label="Produktionsaufträge">
+    <div *ngIf="model; else progressSpinner">
+      <formly-form [fields]="tableLayout" [form]="tableForm" [model]="model"></formly-form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Gemeinkosten">
+    <div *ngIf="modelOverheadCosts; else progressSpinner">
+      <formly-form [fields]="tableLayoutOverheadCosts" [form]="tableFormOverheadCosts" [model]="modelOverheadCosts"></formly-form>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+  <ng-template #progressSpinner>
+    <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+  </ng-template>
+

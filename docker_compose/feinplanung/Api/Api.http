@@ -1,0 +1,6 @@
+@Api_HostAddress = http://localhost:5163
+
+GET {{Api_HostAddress}}/api/hicumes/
+Accept: application/json
+
+###

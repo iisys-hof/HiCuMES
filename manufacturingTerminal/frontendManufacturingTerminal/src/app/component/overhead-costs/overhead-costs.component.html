@@ -1,0 +1,22 @@
+<mat-card class="mat-elevation-z8 order-overview">
+  <mat-card-header>
+    <mat-card-title>
+      {{overViewName}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="datatable row-border hover"
+           style="width: 100%" ></table>
+
+    <ng-template #actionButtons let-data="adtData" let-emitter="captureEvents">
+        <app-overhead-cost-action-buttons [data]="data" (emitter)="emitter($event)"></app-overhead-cost-action-buttons>
+    </ng-template>
+
+  </mat-card-content>
+</mat-card>
+<app-scroll></app-scroll>
+
+<ng-template #simpleModal let-data="adtData" let-emitter="captureEvents">
+  <app-simple-modal [data]="data?.overheadCostCenter?.text"></app-simple-modal>
+</ng-template>

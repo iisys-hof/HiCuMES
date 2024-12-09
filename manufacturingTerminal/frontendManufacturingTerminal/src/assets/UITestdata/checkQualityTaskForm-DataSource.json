@@ -1,0 +1,44 @@
+{
+  "CheckQualityJson": [
+    {
+      "className": "qualityManagement",
+      "feature": "Maß 1",
+      "qualityOk": false,
+      "value": "50",
+      "tolerance": "+- 1 mm",
+      "note": "Bemerkung"
+    },
+    {
+      "className": "qualityManagement",
+      "feature": "Maß 2",
+      "qualityOk": true,
+      "value": "1 mm",
+      "tolerance": "+- 0.01 mm",
+      "note": "Darf nicht durchfallen"
+    },
+    {
+      "className": "qualityManagement",
+      "feature": "Maß 3",
+      "qualityOk": false,
+      "value": "10 mm",
+      "tolerance": "+- 0.1 mm",
+      "note": ""
+    },
+    {
+      "className": "qualityManagement",
+      "feature": "Maß 4",
+      "qualityOk": true,
+      "value": "4.9 mm",
+      "tolerance": "+- 1 mm",
+      "note": ""
+    },
+    {
+      "className": "qualityManagement",
+      "feature": "Maß 5",
+      "qualityOk": false,
+      "value": "20 mm",
+      "tolerance": "+- 0.001 mm",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Projectspecific #
+####################
+.run
+.classpath
+.factorypath
+.project
+.settings
+nb-configuration.xml
+target
+.idea
+*.iml
+/out
+node_modules/
+jspm_packages/
+dist/
+/camunda-h2-dbs/
+
+node/
+.java-version
+/docker_compose/DBEditor/Content/frontendDatabaseEditor/
+/docker_compose/keycloak/theme/hicumes-material-kc-theme/
+/docker_compose/MFT/Content/frontendManufacturingTerminal/
+/docker_compose/SchemaMapper/Content/frontendSchemaMapper/
+/docker_compose/testData/Deployment/BPMN/
+/docker_compose/testData/Deployment/Data/
+/docker_compose/testData/Deployment/Mapping/
+/docker_compose/wildfly/deployments/
+/docker_compose/wildfly/wildfly-plugins/
+docker_compose/testData/process-engine.mv.db_booked
+/docker_compose_build/

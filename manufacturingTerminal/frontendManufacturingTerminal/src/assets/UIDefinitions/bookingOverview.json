@@ -1,0 +1,274 @@
+[
+  {
+    "key": "bookingEntries",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "Position",
+          "id": "pos"
+        },
+        {
+          "name": "Arbeitsgang",
+          "id": "arg"
+        },
+        {
+          "name": "Artikel",
+          "id": "article"
+        },
+        {
+          "name": "Artikelbez.",
+          "id": "articleName"
+        },
+
+        {
+          "name": "Status",
+          "id": "status"
+        },
+        {
+          "name": "Menge",
+          "id": "measurement"
+        },
+        {
+          "name": "Gutmge.",
+          "id": "acceptedMeasurement"
+        },
+        {
+          "name": "Schlechtmge.",
+          "id": "rejectedMeasurement"
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime",
+          "sortable": true
+        },
+        {
+          "name": "Endzeit",
+          "id": "endDateTime"
+        },
+        {
+          "name": "Dauer",
+          "id": "duration_auto"
+        },
+        {
+          "name": "Pers. Nr.",
+          "id": "userExternalId"
+        },
+        {
+          "name": "Benutzern.",
+          "id": "userName"
+        },
+        {
+          "name": "Rückm.typ",
+          "id": "submitType"
+        },
+        {
+          "name": "Nachricht",
+          "id": "message"
+        },
+        {
+          "name": "Antwort",
+          "id": "response"
+        },
+        {
+          "name": "Buchungsstatus",
+          "id": "httpStat"
+        },
+        {
+          "name": "Aktion",
+          "id": "button"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "className": "table-short",
+          "type": "simple",
+          "id": "productionSteps[0].arbgangNr",
+          "key": "machineOccupation.productionSteps[0].arbgangNr"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "pos",
+          "key": "machineOccupation.externalId",
+          "props": {
+            "split": "_"
+          }
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "machineOccupation.productionSteps[0].name",
+          "id": "arg"
+        },
+        {
+          "className": "table-medium",
+          "type": "status-icon",
+          "key": "machineOccupation.status",
+          "id": "status"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.product.name",
+          "id": "article"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.product.elemname",
+          "id": "articleName"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.measurement.amount",
+          "id": "measurement"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.productionNumbers[0].acceptedMeasurement.amount",
+          "id": "acceptedMeasurement"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.productionNumbers[0].rejectedMeasurement.amount",
+          "id": "rejectedMeasurement"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeRecords[0].startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeRecords[last()].endDateTime",
+          "id": "endDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "type": "duration-modal",
+          "key": "",
+          "id": "duration_auto"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeDurations.work",
+          "id": "duration_work",
+          "props": {
+            "type": "duration",
+            "durationUnit": "h"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeDurations.break",
+          "id": "duration_break",
+          "props": {
+            "type": "duration",
+            "durationUnit": "h"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.timeDurations.work",
+          "id": "duration_all_work",
+          "props": {
+            "type": "duration",
+            "durationUnit": "h"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.timeDurations.break",
+          "id": "duration_all_break",
+          "props": {
+            "type": "duration",
+            "durationUnit": "h"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "stepTime",
+          "id": "time_step"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.subProductionStep.timeRecords[last()].responseUser.externalId",
+          "id": "userExternalId"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "key": "user.userName",
+          "id": "userName"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "key": "subProductionStep.submitType",
+          "id": "submitType",
+          "props": {
+            "map": [
+              {"key": "SUBMIT", "value": "Melden" },
+              {"key": "SUBMIT_WITH_BREAK", "value": "Melden und Unterb." },
+              {"key": "OTHER", "value": "Sonst."}
+            ]
+          }
+        },
+        {
+          "type": "simple-modal",
+          "key": "message",
+          "id": "message",
+          "props":
+          {
+            "type": "json"
+          }
+        },
+        {
+          "type": "simple-modal",
+          "key": "response",
+          "id": "response",
+          "props":
+          {
+            "type": "json"
+          }
+        },
+        {
+          "type": "simple",
+          "key": "bookingState",
+          "id": "httpStat"
+        },
+        {
+          "type": "resend-button",
+          "key": "id",
+          "id": "button",
+          "props": {
+            "label": "Erneut senden"
+          },
+          "expressions": {
+            "hide": "model.bookingState != 'ERROR'"
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,22 @@
+<!--<app-order-detail-formly *ngIf="(machineOccupation$ | async); else progressSpinner" [machineOccupation]="machineOccupation$ | async"-->
+<!--                         [productRelationships]="productRelationships$ | async"></app-order-detail-formly>-->
+<mat-tab-group id="order-overview-tabs" dynamicHeight (selectedTabChange)="tabChange($event)">
+<ng-container *ngFor="let machineOccupation of machineOccupations">
+  <ng-container *ngIf="machineOccupation.machineOccupation.subMachineOccupations">
+    <mat-tab label="{{machineOccupation.machineOccupation.productionOrder.name}}">
+      <app-order-detail-formly *ngIf="machineOccupation; else progressSpinner" [machineOccupation]="machineOccupation"
+                           [productRelationships]="productRelationships$ | async" [machines]="machines$ | async"></app-order-detail-formly>
+    </mat-tab>
+  </ng-container>
+  <ng-container *ngIf="!machineOccupation.machineOccupation.subMachineOccupations">
+
+    <mat-tab label="{{machineOccupation.machineOccupation.productionOrder.name}}">
+    <app-order-detail-formly *ngIf="machineOccupation && productRelationships$ | async; else progressSpinner" [machineOccupation]="machineOccupation"
+                             [productRelationships]="productRelationships$ | async" [machines]="machines$ | async"></app-order-detail-formly>
+    </mat-tab>
+  </ng-container>
+</ng-container>
+</mat-tab-group>
+<ng-template #progressSpinner>
+  <ngx-spinner  class="hc-spinner" type="square-jelly-box" [fullScreen]="false"  > Lädt ... </ngx-spinner>
+</ng-template>

@@ -1,0 +1,61 @@
+
+<mat-card class="mat-elevation-z9">
+  <div class="example-button-container">
+    <button (click)="addMapping()" style="position: absolute;right: 10px; top:18px" mat-fab [disabled]="!nextPossibleRule">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-card-header>
+    <mat-card-title>
+      <span>Neue Regel</span>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="no-class-def-note" *ngIf="!nextPossibleRule">
+      Bitte Eingangsvariable und Ausgangsvariable wählen!
+    </div>
+    <div class="row" *ngIf="nextPossibleRule" >
+      <div class="col-6">
+          <table class="unseen-table">
+            <tr>
+              <td>Beispiel Inputdaten:</td>
+              <td><code>{{selectedInputNode?.treeNode?.exampleData }}</code></td>
+            </tr>
+            <tr>
+              <td>Vermuteter Datentyp:</td>
+              <td><code>{{selectedInputNode?.treeNode?.type }}</code></td>
+            </tr>
+            <tr>
+              <td>Entstehende Regel:</td>
+              <td><code>{{nextPossibleRule?.mappingRule?.rule}}</code></td>
+            </tr>
+          </table>
+        </div>
+
+      <div class="col-6">
+        <table mat-table [dataSource]="tableContent" class="mat-elevation-z0 " style="margin-top: -12px; ">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="input">
+            <th mat-header-cell *matHeaderCellDef>Eingangsschleife</th>
+            <td mat-cell *matCellDef="let element"> <code>{{element.input}}</code> </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="output">
+            <th mat-header-cell *matHeaderCellDef>Ausgangsschleife</th>
+            <td mat-cell *matCellDef="let element"> <code>{{element.output}}</code> </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+        </table>
+      </div>
+
+    </div>
+
+  </mat-card-content>
+</mat-card>

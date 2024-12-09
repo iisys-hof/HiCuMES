@@ -1,0 +1,14 @@
+<div class="name-details-btn">
+  <span>
+    <ng-container *ngIf="data?.machineOccupation.productionOrder != null">
+      <span>{{data?.machineOccupation?.productionOrder?.name}}-{{data?.machineOccupation?.name}}</span>
+      <br>
+      <!--<span *ngIf="!isNaN(data?.machineOccupation?.name)" class="sub-info">({{data?.machineOccupation?.name | number}}/{{data?.machineOccupation?.productionOrder?.sumSteps}})</span>-->
+    </ng-container>
+    <ng-container *ngIf="data?.machineOccupation.productionOrder == null"> {{data?.machineOccupation?.name}}</ng-container>
+  </span>
+  <button routerLink="order-details" (click)="toDetailMask(this.data)" class="details-icon-btn" color="accent"
+          mat-stroked-button>
+    <mat-icon>data_info_alert</mat-icon>
+  </button>
+</div>

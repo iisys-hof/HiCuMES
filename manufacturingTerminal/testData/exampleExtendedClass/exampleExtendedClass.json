@@ -1,0 +1,86 @@
+[
+    {
+      "id": "de.iisys.sysint.hicumes.core.entities.CustomerOrder",
+      "name": "customerOrder",
+      "members": [
+        {
+          "name": "note",
+          "type": "java.lang.String"
+        }
+      ]
+    },
+    {
+      "id": "de.iisys.sysint.hicumes.core.entities.MachineOccupation",
+      "name": "machineOccupation",
+      "members": [
+        {
+          "name": "datasheet",
+          "type": "java.lang.String"
+        },
+        {
+          "name": "drawing",
+          "type": "java.lang.String"
+        },
+        {
+          "name": "image",
+          "type": "java.lang.String"
+        },
+        {
+          "name": "instruction",
+          "type": "java.lang.String"
+        }
+      ]
+    },
+    {
+      "id": "de.iisys.sysint.hicumes.core.entities.CD_ProductionStep",
+      "name": "cD_ProductionStep",
+      "members": [
+        {
+          "name": "mgrnr",
+          "type": "java.lang.String"
+        }
+      ]
+    },
+    {
+      "id": "de.iisys.sysint.hicumes.core.entities.ProductionOrder",
+      "name": "productionOrder",
+      "members": [
+        {
+          "name": "orderAmount",
+          "type": "java.lang.Double"
+        },
+        {
+          "name": "startDateTime",
+          "type": "java.time.LocalDateTime"
+        }
+      ]
+    },
+    {
+      "id": "de.iisys.sysint.hicumes.core.entities.CD_Product",
+      "name": "cD_Product",
+      "members": [
+        {
+          "name": "searchString",
+          "type": "java.lang.String"
+        },
+        {
+          "name": "width",
+          "type": "java.lang.Double"
+        },
+        {
+          "name": "height",
+          "type": "java.lang.Double"
+        }
+      ]
+    },
+  {
+    "id": "de.iisys.sysint.hicumes.core.entities.CD_ProductRelationship",
+    "name": "cD_ProductRelationship",
+    "members": [
+      {
+        "name": "batch",
+        "type": "java.lang.String"
+      }
+    ]
+  }
+]

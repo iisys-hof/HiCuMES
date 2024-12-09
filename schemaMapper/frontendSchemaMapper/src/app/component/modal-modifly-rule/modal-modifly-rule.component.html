@@ -1,0 +1,109 @@
+<h2 mat-dialog-title>Zuordnung bearbeiten</h2>
+<hr>
+<mat-dialog-content  class="mat-typography">
+
+  <form [formGroup]="form">
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
+  </form>
+
+
+
+</mat-dialog-content>
+
+<hr style="margin-top: 32px; margin-bottom: 0px;">
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="data">Ok</button>
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
+</mat-dialog-actions>
+
+
+<div  style="height: calc(100vh - 500px); overflow: auto; box-shadow: 0 1px 20px -14px rgba(0, 0, 0, 1) inset; margin-top: 20px; border-top: 1px solid lightgray; margin-left: -25px; margin-right: -25px; padding: 25px" class="mat-typography">
+
+  <h2>Beispiele für Quelltext</h2>
+  <h3>Default Regel</h3>
+  <div><code>{{output}} {{input}}</code></div>
+
+  <h3>Zahlen</h3>
+
+  <h4>Text zu Zahl</h4>
+  <div><code>{{output}} parseInt({{input}})</code></div>
+  <div><code>{{output}} parseFloat({{input}})</code></div>
+
+  <h4>Rechnen</h4>
+
+  <div><code>{{output}} {{input}} * 2</code></div>
+  <div><code>{{output}} {{input}} + 2</code></div>
+  <div><code>{{output}} {{input}}</code></div>
+
+  <h3>String manipulationenen</h3>
+
+  <h4>Hinzufügen von Text</h4>
+  <div><code>{{output}} {{input}} + 'textEnde'</code></div>
+  <div><code>{{output}} 'textVorne' + {{input}}</code></div>
+  <div><code>{{output}} 'textVorne' + {{input}} + 'textEnde'</code></div>
+
+  <h4>Splitting von Text</h4>
+  <div><code>{{output}} {{input}}.split('.')[0]</code></div>
+
+  <h4>Ersetzen von Text</h4>
+  <div><code>{{output}} {{input}}.replace('old','new')</code></div>
+
+  <h3>Datum und Zeiten</h3>
+  <h4>LocalDateTime</h4>
+  <div><code>{{output}} parseLocalDateTime({{input}}, 'dd.MM.yyyy HH:mm')</code></div>
+  <div><code>{{output}} fromMillisecondsLocalDateTime({{input}})</code></div>
+  <div><code>{{output}} fromMillisecondsLocalDateTime({{input}}.replace('/Date(','').replace(')/',''))</code></div>
+
+  <h4>Duration</h4>
+  <div><code>{{output}} fromMillisecondsDuration({{input}})</code></div>
+  <div><code>{{output}} fromSecondsDuration({{input}})</code></div>
+
+  <h3>Logging</h3>
+  <div><code>{{output}} logging({{input}})</code></div>
+
+  <h3>Mehrere Zeilen und Variablen</h3>
+  <div><code>var localVariable = {{input}}</code></div>
+  <div><code>logging(localVariable)</code></div>
+  <div><code>{{output}} localVariable</code></div>
+
+  <h3>Unit Objekt mit Daten befüllen</h3>
+  <div><code>output.auxiliaryMaterials.unit.unit = 'kg'</code></div>
+  <div><code>output.auxiliaryMaterials.unit.amount = 124</code></div>
+  <p>Als Standartwert wird "0 stk" verwendet, normalerweisse müssen unit und value überschrieben werden.</p>
+
+  <h4>Mögliche unit.unit</h4>
+  <div><code>kg Kilogramm</code></div>
+  <div><code>g Gramm</code></div>
+  <div><code>m Meter</code></div>
+  <div><code>cm Centimeter</code></div>
+  <div><code>mm Millimeter</code></div>
+  <div><code>qm Kubikmeter </code></div>
+  <div><code>qcm Kubikcentimeter</code></div>
+  <div><code>qmm Kubikmillimeter</code></div>
+  <div><code>stk Stück</code></div>
+
+  <h3>Ersetzungstabelle</h3>
+
+  <div>
+    <div><code>var mapping =  {{ "{" }}</code></div>
+    <div><code>    'Kilogramm': 'kg',</code></div>
+    <div><code>    'EA': 'stk'</code></div>
+    <div><code>}</code></div>
+    <code>{{output}} mapping[{{input}}]</code>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

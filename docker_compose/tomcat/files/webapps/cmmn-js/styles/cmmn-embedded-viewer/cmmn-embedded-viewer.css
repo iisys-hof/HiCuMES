@@ -1,0 +1,151 @@
+#viewer-overlay-box {
+    z-index: 1010;
+    position: absolute;
+    width: 96%;
+    left: 2%;
+    height: 96%;
+    top: 2%;
+    border-radius: 5px;
+    background-color: #FFF;
+    box-shadow: 1px 1px 2px rgba(0,0,0, 0.50);
+    overflow-x: auto;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+#viewer-overlay-box-close {
+    z-index: 1001;
+    position: absolute;
+    right: 10px; top: 10px;
+}
+#viewer-overlay-box-close span {
+    font-size: 24px;
+    color: rgba(0,0,0, 0.50);
+    cursor: pointer;
+}
+#viewer-overlay-box-close span:hover {
+    color: rgba(0,0,0, 1);
+}
+
+#viewer-overlay-box-canvas{
+    width:100%;
+    height:92%;
+    border: 1px solid #ccc;
+}
+
+#viewer-overlay-box-background{
+    width:100%;
+    height:100%;
+}
+
+#viewer-overlay-box-heading{
+    font-weight: bold;
+    font-size: 22pt;
+}
+
+#viewer-overlay-box-link {
+    color: #3e9b52;
+    cursor: pointer;
+    font-size: 40pt;
+}
+
+#viewer-overlay-box-link:hover {
+    color: rgba(0,0,0,0.5);
+}
+
+   .viewer-indicator {position:absolute;margin-left:-40px;
+       background: #CCC;
+       padding: 5px;
+       border-radius: 5px;
+   }
+
+.viewer-indicator.expanded {
+    z-index: 100;
+    position: absolute; /* for z-index to work */
+}
+
+.viewer-indicator .toggle {
+    white-space: nowrap;
+    cursor:pointer;
+}
+
+.viewer-indicator.expanded .viewer-count,
+.viewer-indicator .content {
+    display: none;
+}
+
+.viewer-indicator .viewer-count {
+    display: inline;
+}
+
+.viewer-indicator.expanded .content {
+    display: block;
+}
+
+.viewer-indicator .viewer {
+    border-top: dotted 1px #666;
+    margin-top: 4px;
+    padding-top: 4px;
+    white-space: pre-wrap;
+
+    position: relative;
+}
+
+.viewer-indicator .viewer .delete {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+
+    text-decoration: none;
+
+    display: none;
+}
+
+.viewer-indicator .viewer:hover .delete {
+    display: block;
+}
+
+.viewer-indicator .edit {
+
+}
+
+.viewer-indicator {
+    background: #b40300;
+    font-size: 12px;
+
+    color: white;
+    display: none;
+}
+
+.selected .viewer-indicator,
+.viewer-indicator.with-viewers {
+    display: block;
+}
+
+.viewer-indicator .edit {
+    margin: 2px 0 0 0;
+    padding-top: 2px;
+}
+
+.viewer-indicator .edit textarea {
+    border: none;
+    margin: 0;
+}
+
+.viewer-indicator .icon-viewer:hover {
+    color: #EEE;
+}
+
+.viewer-indicator .viewer {
+    border-top-color: white;
+}
+
+
+.viewer-indicator .icon-viewer {
+    margin-right: 2px;
+}
+
+.viewer-indicator .icon-delete {
+    color: white;
+    background-color: #ff4949;
+}

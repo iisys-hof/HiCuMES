@@ -1,0 +1,22 @@
+@import "styles_functions";
+
+/* ********************************************************************************************************************/
+/* *********** Gerneral CSS Color Definitions */
+
+:root {
+  --hc-blue-dark-color: #019b04;
+  --hc-blue-mid-color: #61b94d;
+  --hc-blue-light-color: #85cd80;
+  --hc-blue-lighter-color: #e6f3e1;
+
+  --navbar: var(--hc-blue-dark-color);
+
+  --spd-red: #d05656;
+  --spd-orange: #ecb341;
+  --spd-yellow: #e3e34f;
+  --spd-green: #40a040;
+  --spd-blue: #5e97e3;
+  --spd-violett: #886bc1;
+  --spd-pink: #bf7dba;
+
+}

@@ -1,0 +1,20 @@
+<div  class="popup-info-button">
+  <div>
+    <div [style.margin-left.px]="popupMarginLeft" [style.width.px]="popupWidth" @animateFade *ngIf="showPopup" style="animation: fadeIn 1s;" class="btn-pgs">
+      <span class="popup-text" @animateFadeFast *ngIf="!buttonPressedFinished" >{{popupText}}</span>
+      <svg class="popup-icon" @animateFadeFast *ngIf="buttonPressedFinished"  viewBox="-4 2 32 32" ><path fill="#fff" clip-rule="evenodd" d="M21.652,3.211c-0.293-0.295-0.77-0.295-1.061,0L9.41,14.34  c-0.293,0.297-0.771,0.297-1.062,0L3.449,9.351C3.304,9.203,3.114,9.13,2.923,9.129C2.73,9.128,2.534,9.201,2.387,9.351  l-2.165,1.946C0.078,11.445,0,11.63,0,11.823c0,0.194,0.078,0.397,0.223,0.544l4.94,5.184c0.292,0.296,0.771,0.776,1.062,1.07  l2.124,2.141c0.292,0.293,0.769,0.293,1.062,0l14.366-14.34c0.293-0.294,0.293-0.777,0-1.071L21.652,3.211z" fill-rule="evenodd"/></svg>
+      <mat-progress-bar class="popup-info-button-progress-bar" mode="determinate"   (animationEnd)="end($event)"  [value]="buttonPressProgressValue"></mat-progress-bar>
+
+      <svg width="24" height="18">
+        <polygon points="0,3, 24,3 , 12,18" style="fill:#99b4c9;stroke:#6179ad;stroke-width:1" />
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    </div>
+
+    <button mat-stroked-button [class.spinner]="showLoading" [disabled]="showLoading" animationEnd ="end($event)" (touchstart)="handleTouchStart($event)" (mousedown)="handleMouseDown($event)" (mouseup)="handleMouseUp()" (mouseleave)="handleMouseLeave()" class="start_button" color="primary"  >
+      <mat-icon *ngIf="icon.length>0">{{icon}}</mat-icon>
+      {{buttonText}}
+    </button>
+  </div>
+</div>
+

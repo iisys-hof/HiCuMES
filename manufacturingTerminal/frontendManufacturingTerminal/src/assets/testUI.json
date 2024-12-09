@@ -1,0 +1,42 @@
+{
+    "areas": [
+        {
+            "heading": "area1",
+            "rows": [
+                {
+                    "columns": [
+                        {
+                            "col": 0,
+                            "colSpan": 1,
+                            "colStart": 0,
+                            "item": {
+                                "type": "simple",
+                                "payload": {
+                                    "id": 0,
+                                    "name": "Titel",
+                                    "variable": "glossary.title"
+                                }
+                            }
+                        },
+                        {
+                            "col": 1,
+                            "colSpan": 1,
+                            "colStart": 0,
+                            "item": {
+                                "type": "simple",
+                                "payload": {
+                                    "id": 12,
+                                    "name": "DIV Titel",
+                                    "variable": "glossary.GlossDiv.title"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "heading": "area2"
+        }
+    ]
+}

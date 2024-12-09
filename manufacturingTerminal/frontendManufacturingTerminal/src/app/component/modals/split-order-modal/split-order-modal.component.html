@@ -1,0 +1,70 @@
+<div mat-dialog-content>
+  <mat-stepper orientation="horizontal">
+    <mat-step>
+      <ng-template matStepLabel>Auftrag auswählen</ng-template>
+      <ng-template matStepContent>
+
+        <div class="card">
+          <p  class="card-header" style="margin: 0px">Wählen Sie den Auftrag aus, den Sie aufteilen möchten:</p>
+          <div class="card-body">
+            <app-advanced-data-filter class="filter-form" [fields]="tableLayout" [model]="model" [(filteredModel)]="filteredModel" *ngIf="tableLayout && model"></app-advanced-data-filter>
+
+            <span class="example-spacer"></span>
+            <formly-form [fields]="tableLayout" [form]="tableForm" [model]="filteredModel"></formly-form>
+          </div>
+        </div>
+        <div class="stepper-buttons">
+          <button color="primary" mat-raised-button matStepperNext [disabled]="!getSelected()" (click)="nextStep()">Weiter</button>
+        </div>
+      </ng-template>
+    </mat-step>
+    <mat-step [stepControl]="secondStepperFormGroup">
+      <form [formGroup]="secondStepperFormGroup">
+        <ng-template matStepLabel>Aufteilung wählen</ng-template>
+        <ng-template matStepContent>
+            <p>BA-Nr.: {{this.getSelected()?.machineOccupation?.productionOrder?.name}}, Artikel: {{this.getSelected()?.machineOccupation?.productionOrder?.product?.name}}, Menge: {{this.getSelected()?.machineOccupation?.productionOrder?.measurement?.amount}}</p>
+            <!-- TODO Get this working with formly table-->
+            <!--<formly-form [fields]="detailLayout" [form]="detailForm" [model]="getModelClone(selected)"></formly-form>-->
+
+              <div formArrayName="orderSplits">
+                <div *ngFor="let split of orderSplits().controls; let i = index" [formGroupName]="i">
+                  <mat-form-field appearance="outline">
+                    <input type="number" [min]="1" matInput formControlName="split" (keyup)="updateValue($event, this.getSelected(), i)">
+                  </mat-form-field>
+                  <button mat-stroked-button (click)="removeSplit(i)" style="margin-left: 10px">Teilung entfernen</button>
+                </div>
+                <button mat-stroked-button (click)="addSplit()">Teilung hinzufügen</button>
+              </div>
+              <div style="margin: 10px 0px"><span>Restmenge: {{this.getSelected()['amountLeft']}}</span></div>
+
+          <div class="stepper-buttons">
+            <button mat-stroked-button matStepperPrevious>Zurück</button>
+            <button color="primary" mat-raised-button matStepperNext (click)="nextStep(this.getSelected())">Weiter</button>
+          </div>
+        </ng-template>
+      </form>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Bestätigung</ng-template>
+      <p>Soll der Auftrag wie folgt aufgeteilt werden?</p>
+      <div>
+        <mat-list>
+          <mat-list-item><strong>Zu teilender Auftrag: </strong> {{ this.getSelected()?.machineOccupation?.productionOrder?.name}}-{{this.getSelected()?.machineOccupation?.name}}</mat-list-item>
+          <mat-list-item><strong>Aufteilung:</strong>
+            <ul>
+              <li *ngFor="let split of this.secondStepperFormGroup.value?.orderSplits; let indexIfelement=index">
+                Teilauftrag {{indexIfelement+1}}: {{split.split}}
+              </li>
+            </ul>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div class="stepper-buttons">
+        <button mat-stroked-button matStepperPrevious>Zurück</button>
+        <button color="primary" mat-raised-button mat-dialog-close="" (click)="submit()">Abschicken</button>
+      </div>
+    </mat-step>
+
+  </mat-stepper>
+</div>

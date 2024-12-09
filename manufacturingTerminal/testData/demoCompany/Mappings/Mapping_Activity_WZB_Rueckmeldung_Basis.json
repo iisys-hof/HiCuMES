@@ -1,0 +1,33 @@
+{
+    "readerResult": {
+        "result": "{\"processVariables\":{\"varSubProductionStepId\":\"Beispiel Eingabetext\",\"varTotalOK\":\"Beispiel Eingabetext\",\"varTotalNOK\":\"Beispiel Eingabetext\"},\"info_TotalOK\":\"${machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}\",\"info_TotalNOK\":\"${machineOccupation.totalProductionNumbers.rejectedMeasurement.amount}\",\"info_RemainingParts\":\"${machineOccupation.productionOrder.measurement.amount - machineOccupation.totalProductionNumbers.acceptedMeasurement.amount}\",\"ff_Note\":\"Beispiel Eingabetext\",\"ff_PartsOK\":1234,\"ff_PartsNOK\":1234,\"ff_ContinueWithLess\":false,\"ff_ManufacturingProblem\":\"7\",\"info_Drawing\":\"Beispiel Eingabetext\"}"
+    },
+    "id": 467196,
+    "name": "Demo_Company > Generische MGR Produktion > Basis AG Rückmelden > Einfache Rückmeldung",
+    "externalId": "Activity_WZB_Rueckmeldung_Basis",
+    "dataReader": {
+        "readerID": "local-Camunda",
+        "parserID": "parserPlugin-JSON"
+    },
+    "dataWriter": {
+        "writerID": "outputPlugin-DatabaseWriter",
+        "writerKeyValueConfigs": [
+            {
+                "configKey": "DATABASE_NAME",
+                "configValue": "hicumes"
+            },
+            {
+                "configKey": "ENTITY_FILTER",
+                "configValue": "de.iisys.sysint.hicumes.core.entities"
+            }
+        ]
+    },
+    "mappingConfiguration": {
+        "id": 1378,
+        "mappings": [],
+        "loops": [],
+        "inputSelector": null,
+        "outputSelector": null,
+        "xsltRules": "<xsl:stylesheet version=\"2.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <xsl:template match=\"/\">\n    <output>\n        <subProductionStep>\n          <productionNumbers>\n            <acceptedMeasurement>\n              <amount>\n                  <xsl:value-of select=\"ObjectNode/ff_PartsOK\" />\n              </amount>\n            </acceptedMeasurement>\n            <rejectedMeasurement>\n              <amount>\n                  <xsl:value-of select=\"ObjectNode/ff_PartsNOK\" />\n              </amount>\n            </rejectedMeasurement>\n          </productionNumbers>\n        </subProductionStep>\n    </output>\n  </xsl:template>\n</xsl:stylesheet>"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "readerResult": {
+        "result": "{\"processVariables\":{\"varSubProdStepId\":\"Beispiel Eingabetext\"},\"info_WorkorderText\":\"x:120, y:10, ...\",\"ff_Checked\":false,\"ff_Note_1_1\":\"Beispiel Eingabetext\"}"
+    },
+    "id": 478819,
+    "name": "Demo_Company > Generische MGR Produktion > Basis AG Rückmelden > Maschine Rüsten",
+    "externalId": "Activity_0279ebn",
+    "dataReader": {
+        "readerID": "local-Camunda",
+        "parserID": "parserPlugin-JSON"
+    },
+    "dataWriter": {
+        "writerID": "outputPlugin-DatabaseWriter",
+        "writerKeyValueConfigs": [
+            {
+                "configKey": "DATABASE_NAME",
+                "configValue": "hicumes"
+            },
+            {
+                "configKey": "ENTITY_FILTER",
+                "configValue": "de.iisys.sysint.hicumes.core.entities"
+            }
+        ]
+    },
+    "mappingConfiguration": {
+        "id": 2061,
+        "mappings": [],
+        "loops": [],
+        "inputSelector": null,
+        "outputSelector": null,
+        "xsltRules": "<xsl:stylesheet version=\"2.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">\n  <xsl:template match=\"/\">\n    <output>\n        <subProductionStep>\n          <note>\n            <xsl:value-of select=\"ObjectNode/ff_Note_1_1\" />\n          </note>\n        </subProductionStep>\n    </output>\n  </xsl:template>\n</xsl:stylesheet>"
+    }
+}

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Auftrag unterbrechen</h1>
+<div mat-dialog-content>
+  <p>Bitte wählen Sie den Unterbrechungsgrund aus:</p>
+  <mat-form-field style="width: 100%">
+  <mat-label>Unterbrechungsgrund</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option *ngFor="let suspensionType of suspensionTypes" [value]="suspensionType.value">
+      {{suspensionType.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button color="primary" mat-raised-button (click)="onSubmit()">Bestätigen</button>
+  <button color="secondary" mat-stroked-button (click)="onClose()">Abbrechen</button>
+</div>

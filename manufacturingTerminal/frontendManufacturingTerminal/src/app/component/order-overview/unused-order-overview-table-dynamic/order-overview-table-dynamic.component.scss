@@ -1,0 +1,173 @@
+
+::ng-deep .no-padding{
+  border-top-width: 0px !important;
+  padding: 0px !important;
+}
+
+::ng-deep .table-buttons{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 5px;
+}
+
+::ng-deep .table-filter{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 5px;
+}
+
+::ng-deep .table-footer-outer{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+::ng-deep .table-footer-inner {
+  display: flex;
+  width: auto;
+  height: fit-content;
+  padding: 15px;
+
+  * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+//Definition of layout via classes defined in layout.json file
+.order-overview{
+  ::ng-deep .order-overview-table td:first-child {
+    padding-left: 42px;
+  }
+::ng-deep .order-overview-table-inner {
+
+  .mat-table {
+    border-top: 1px solid rgba(0, 0, 0, 0.17);
+      background: #F1F1F1 !important;
+
+    td {
+      border-bottom: none;
+    }
+
+    tr {
+      height: 46px;
+    }
+
+    tr.mat-header-row {
+      height: 42px !important;
+    }
+  }
+
+  td:first-child {
+    padding-left: 24px !important;
+  }
+
+  .mat-row:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  .mat-row:nth-child(odd) {
+    background-color: #f8f8f8;
+  }
+
+
+  ng::ng-deep.Table_row {
+
+    mat-icon {
+      vertical-align: middle;
+      font-size: 24px;
+    }
+
+    span {
+      vertical-align: middle;
+      margin-left: 10px;
+      font-size: 14px;
+    }
+  }
+
+
+  ::ng-deep.Table_row_SelectOrderTask {
+    //background-color: lighten(var(--spd-blue), 35%) !important;
+
+    mat-icon {
+      color: var(--spd-blue) !important;
+    }
+
+    td:first-child {
+      border-left: 10px solid var(--spd-blue);
+    }
+
+  }
+
+  ::ng-deep.Table_row_AddSuppliesTask {
+    //background-color: lighten(var(--spd-violett), 35%) !important;
+
+    mat-icon {
+      color: var(--spd-violett) !important;
+    }
+
+    td:first-child {
+      border-left: 10px solid var(--spd-violett);
+    }
+  }
+
+  ::ng-deep.Table_row_SetParameterTask {
+    //background-color: lighten(var(--spd-yellow), 40%) !important;
+
+    mat-icon {
+      color: var(--spd-yellow) !important;
+    }
+
+    td:first-child {
+      border-left: 10px solid var(--spd-yellow);
+
+    }
+  }
+
+  ::ng-deep.Table_row_ConfirmProductionTask {
+    //background-color: lighten(var(--spd-green), 40%) !important;
+
+    mat-icon {
+      color: var(--spd-green) !important;
+    }
+
+    td:first-child {
+      border-left: 10px solid var(--spd-green);
+    }
+  }
+
+  ::ng-deep.Table_row_CheckQualityTask {
+    //background-color: lighten(var(--spd-orange), 35%) !important;
+
+    mat-icon {
+      color: var(--spd-orange) !important;
+    }
+
+    td:first-child {
+      border-left: 10px solid var(--spd-orange);
+    }
+  }
+
+  ::ng-deep.Table_row_ReworkTask {
+    //background-color: lighten(var(--spd-red), 35%) !important;
+
+    mat-icon {
+      color: var(--spd-red) !important;
+    }
+
+    td:first-child {
+      border-left: 10px solid var(--spd-red);
+    }
+  }
+}
+}

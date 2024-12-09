@@ -1,0 +1,17 @@
+mat-form-field {
+  width: 100%;
+}
+
+mat-card {
+  padding-bottom: 24px;
+  z-index: 9;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.add-entry {
+  position: absolute;
+  z-index: 99;
+  right: 6px;
+  margin-top: -31px;
+}

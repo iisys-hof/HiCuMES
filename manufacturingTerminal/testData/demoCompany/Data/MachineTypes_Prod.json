@@ -1,0 +1,114 @@
+[
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "001",
+        "name": "Spritzgießen",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "002",
+        "name": "Wickeln",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "003",
+        "name": "Tiefziehen",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "004",
+        "name": "Handmontage",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "005",
+        "name": "Endmontage",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "006",
+        "name": "QS Prüfung",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "007",
+        "name": "Verpackung",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  },
+  {
+    "eventType": "NEW",
+    "eventContent": {
+      "eventClass": "CD_MachineType",
+      "classContent": {
+        "id": 0,
+        "externalId": "008",
+        "name": "Versand",
+        "machines": [],
+        "productionSteps": [],
+        "toolSettingParameters": []
+      }
+    }
+  }
+  ]

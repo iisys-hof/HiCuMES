@@ -1,0 +1,84 @@
+[
+  {
+    "key": "machineOccupations",
+    "type": "key-value-list",
+    "className": "detailBtnRight",
+    "props": {
+      "columns": [
+        { "name": "Artikel", "id": "article"},
+        { "name": "Auftragsnummer", "id": "orderNumber"},
+        { "name": "Menge", "id": "amount"},
+        { "name": "Qualität", "id": "quality"},
+        { "name": "yHand", "id": "hand"},
+        { "name": "Fertigungsmenge", "id": "amount"}
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "id": "article",
+          "key": "machineOccupation.productionOrder.product.name"
+        },
+        {
+          "type": "simple",
+          "id": "orderNumber",
+          "key": "machineOccupation.productionOrder.customerOrder.externalId"
+        },
+        {
+          "type": "simple",
+          "id": "amount",
+          "key": "machineOccupation.productionOrder.measurement.amount"
+        },
+        {
+          "type": "simple",
+          "key": "product.ysm1",
+          "resetOnHide": false
+        },
+        {
+          "type": "simple",
+          "key": "product.ykorn1",
+          "resetOnHide": false
+        },
+        {
+          "type": "simple",
+          "key": "product.yhart1",
+          "resetOnHide": false
+        },
+        {
+          "type": "simple",
+          "key": "product.ygef1",
+          "resetOnHide": false
+        },
+        {
+          "type": "simple",
+          "key": "product.ybind1",
+          "resetOnHide": false
+        },
+        {
+          "type": "simple",
+          "key": "product.ybind2",
+          "resetOnHide": false
+        },
+        {
+          "type": "simple",
+          "id": "quality",
+          "key": "machineOccupation.productionOrder.product",
+          "props": {
+            "concat": ["ysm1", "ykorn1", "yhart1", "ygef1", "ybind1", "ybind2"]
+          }
+        },
+        {
+          "type": "simple",
+          "id": "hand",
+          "key": "machineOccupation.productionOrder.product.ymgamma"
+        },
+        {
+          "type": "simple",
+          "id": "amount",
+          "key": "machineOccupation.productionOrder.productionValue"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:collaboration id="Collaboration_Test">
+    <bpmn2:participant id="Maschine_Brennofen" name="Brennofen (300)" processRef="Process_Brennofen" />
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_Brennofen" name="Prozess Brennofen" isExecutable="true">
+    <bpmn2:endEvent id="Event_17ciwnx">
+      <bpmn2:incoming>Flow_16r2rwt</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:subProcess id="Activity_0nn1mkn" name="Scheiben brennen">
+      <bpmn2:incoming>Flow_1te4nek</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_16r2rwt</bpmn2:outgoing>
+      <bpmn2:startEvent id="Event_0e2twmv">
+        <bpmn2:outgoing>Flow_1amu5sc</bpmn2:outgoing>
+      </bpmn2:startEvent>
+      <bpmn2:sequenceFlow id="Flow_1amu5sc" sourceRef="Event_0e2twmv" targetRef="Activity_0uue4h5" />
+      <bpmn2:endEvent id="Event_0qyim41">
+        <bpmn2:incoming>Flow_0n3sali</bpmn2:incoming>
+        <bpmn2:messageEventDefinition id="MessageEventDefinition_10sfxvj" />
+      </bpmn2:endEvent>
+      <bpmn2:sequenceFlow id="Flow_0n3sali" sourceRef="Activity_0uue4h5" targetRef="Event_0qyim41" />
+      <bpmn2:userTask id="Activity_0uue4h5" name="Auftrag auswählen (Sammelauftrag)" camunda:formKey="SelectOrderTask">
+        <bpmn2:extensionElements>
+          <camunda:formData>
+            <camunda:formField id="testString" type="string" />
+            <camunda:formField id="testBool" type="boolean" />
+            <camunda:formField id="testLong" type="long" />
+            <camunda:formField id="testDate" type="date" />
+            <camunda:formField id="testEnum" type="enum" />
+            <camunda:formField id="testDefaultString" type="string" defaultValue="defaultTestValue" />
+          </camunda:formData>
+        </bpmn2:extensionElements>
+        <bpmn2:incoming>Flow_1amu5sc</bpmn2:incoming>
+        <bpmn2:outgoing>Flow_0n3sali</bpmn2:outgoing>
+      </bpmn2:userTask>
+    </bpmn2:subProcess>
+    <bpmn2:sequenceFlow id="Flow_16r2rwt" sourceRef="Activity_0nn1mkn" targetRef="Event_17ciwnx" />
+    <bpmn2:startEvent id="Event_04vz026">
+      <bpmn2:outgoing>Flow_1te4nek</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:sequenceFlow id="Flow_1te4nek" sourceRef="Event_04vz026" targetRef="Activity_0nn1mkn" />
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_Test">
+      <bpmndi:BPMNShape id="Participant_1fydab0_di" bpmnElement="Maschine_Brennofen" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1020" height="330" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_16r2rwt_di" bpmnElement="Flow_16r2rwt">
+        <di:waypoint x="920" y="190" />
+        <di:waypoint x="1122" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1te4nek_di" bpmnElement="Flow_1te4nek">
+        <di:waypoint x="238" y="220" />
+        <di:waypoint x="260" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_17ciwnx_di" bpmnElement="Event_17ciwnx">
+        <dc:Bounds x="1122" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_04vz026_di" bpmnElement="Event_04vz026">
+        <dc:Bounds x="202" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nn1mkn_di" bpmnElement="Activity_0nn1mkn" isExpanded="true">
+        <dc:Bounds x="260" y="150" width="660" height="140" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0n3sali_di" bpmnElement="Flow_0n3sali">
+        <di:waypoint x="602" y="220" />
+        <di:waypoint x="842" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1amu5sc_di" bpmnElement="Flow_1amu5sc">
+        <di:waypoint x="336" y="220" />
+        <di:waypoint x="502" y="220" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0e2twmv_di" bpmnElement="Event_0e2twmv">
+        <dc:Bounds x="300" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_13g9e25_di" bpmnElement="Event_0qyim41">
+        <dc:Bounds x="842" y="202" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0xks3pa_di" bpmnElement="Activity_0uue4h5" bioc:fill="#ccebff">
+        <dc:Bounds x="502" y="180" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

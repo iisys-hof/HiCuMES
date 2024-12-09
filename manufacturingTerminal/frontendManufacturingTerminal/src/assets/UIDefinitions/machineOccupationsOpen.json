@@ -1,0 +1,114 @@
+[
+  {
+    "key": "machineOccupations",
+    "type": "datatable",
+    "className": "order-overview-table-inner",
+    "props": {
+      "columns": [
+        {
+          "name": "BA-Nr.",
+          "id": "banr"
+        },
+        {
+          "name": "Verwendung",
+          "id": "usage"
+        },
+        {
+          "name": "Bezeichnung",
+          "id": "name"
+        },
+        {
+          "name": "Text",
+          "id": "text"
+        },
+        {
+          "name": "Startzeit",
+          "id": "startDateTime"
+        },
+        {
+          "name": "Bemerkung",
+          "id": "note"
+        },
+        {
+          "name": "Aktion",
+          "id": "button"
+        }
+      ]
+    },
+    "fieldArray": {
+      "fieldGroup": [
+        {
+          "type": "simple",
+          "key": "machineOccupation.name"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.name"
+        },
+        {
+          "type": "simple",
+          "key": "machineOccupation.status"
+        },
+        {
+          "type": "simple",
+          "id": "banr",
+          "key": "machineOccupation",
+          "props": {
+            "concat": [
+              "productionOrder.name",
+              "name"
+            ],
+            "concatSpacer": "-"
+          }
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "usage",
+          "key": "machineOccupation.productionOrder.customerOrder.name"
+        },
+        {
+          "className": "table-large",
+          "type": "simple",
+          "id": "name",
+          "key": "activeProductionStep.name"
+        },
+        {
+          "className": "table-medium",
+          "type": "simple",
+          "id": "text",
+          "key": "overheadCostCenter.text"
+        },
+        {
+          "type": "simple",
+          "key": "camundaSubProductionSteps[0].subProductionStep.timeRecords[0].startDateTime",
+          "id": "startDateTime",
+          "props": {
+            "type": "date",
+            "dateFormat": "DD.MM.YY HH:mm"
+          }
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.notes[0].noteString",
+          "id": "note"
+        },
+        {
+          "className": "table-short",
+          "type": "simple",
+          "key": "machineOccupation.productionOrder.notes[last()].noteString",
+          "id": "note"
+        },
+        {
+          "type": "machineoccupationaction",
+          "key": "",
+          "id": "button",
+          "props": {
+            "label": "Zur Maske"
+          }
+        }
+      ]
+    }
+  }
+]
