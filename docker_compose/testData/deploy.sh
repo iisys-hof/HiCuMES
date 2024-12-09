@@ -1,2 +1,2 @@
 #!/bin/sh
-java -cp /opt/app/testData.jar "de.iisys.sysint.hicumes.manufaturingTerminal.testData.scripts.DockerDeployment" "/opt/testdata/Deployment" "hicumes_demo" "hicumes" "http://hicumes:8080/mappingBackend/data/mappingEndpoint/saveMapping"
+java -cp /opt/app/testData.jar "de.iisys.sysint.hicumes.manufaturingTerminal.testData.scripts.DockerDeployment" "/docker_compose/testData/Deployment" "hicumes_demo" "hicumes" "http://hicumes:8080/mappingBackend/data/mappingEndpoint/saveMapping"
