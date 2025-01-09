@@ -124,22 +124,22 @@ services:
       - TZ=Europe/Berlin
     restart: always
 
-  nginx-feinplanung:
-    build:
-      context: FPFrontend
-      dockerfile: Dockerfile
-    image: hicumes.fp_frontend
-    container_name: nginx-feinplanung
-    volumes:
-      - frontend_data_feinplanung:/usr/share/nginx/html
-      - frontend_config_feinplanung:/etc/nginx/conf.d
-    command: bash -c "nginx -g 'daemon off;' && nginx -s reload"
-    ports:
-      - 4205:4205
-    environment:
-      - NGINX_PORT=4205
-      - TZ=Europe/Berlin
-    restart: always
+#  nginx-feinplanung:
+#    build:
+#      context: FPFrontend
+#      dockerfile: Dockerfile
+#    image: hicumes.fp_frontend
+#    container_name: nginx-feinplanung
+#    volumes:
+#      - frontend_data_feinplanung:/usr/share/nginx/html
+#      - frontend_config_feinplanung:/etc/nginx/conf.d
+#    command: bash -c "nginx -g 'daemon off;' && nginx -s reload"
+#    ports:
+#      - 4205:4205
+#    environment:
+#      - NGINX_PORT=4205
+#      - TZ=Europe/Berlin
+#    restart: always
 
   hazel-management:
       image: hazelcast/management-center:5.3.2
@@ -151,19 +151,19 @@ services:
       volumes:
       - hazel_management_data:/data
 
-  hicumes-feinplanung:
-    build:
-      context: feinplanung
-      dockerfile: Dockerfile
-    image: hicumes.feinplanung
-    container_name: feinplanung
-    ports: 
-      - 5010:5010
-    environment:
-      Kestrel__Endpoints__Http__Url: "http://0.0.0.0:5010"
-      ConnectionStrings__DefaultConnection: "Server=mysql;port=3306;Database=hicumesFP;Uid=hicumes;Pwd=hc_pwd;"
-
-    restart: always
+#  hicumes-feinplanung:
+#    build:
+#      context: feinplanung
+#      dockerfile: Dockerfile
+#    image: hicumes.feinplanung
+#    container_name: feinplanung
+#    ports:
+#      - 5010:5010
+#    environment:
+#      Kestrel__Endpoints__Http__Url: "http://0.0.0.0:5010"
+#      ConnectionStrings__DefaultConnection: "Server=mysql;port=3306;Database=hicumesFP;Uid=hicumes;Pwd=hc_pwd;"
+#
+#    restart: always
 
 volumes:
   hicumes_mysql:

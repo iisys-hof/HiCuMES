@@ -1,3 +1,108 @@
+# Configure Nexus
+* Linux/macOS: add this to the file home/.m2/settings.xml
+* Windows: add this to the file C:/Users/username/.m2/settings.xml
+```xml
+<settings>
+    <mirrors>
+        <mirror>
+            <id>nexus-iisys-sysint</id>
+            <mirrorOf>*</mirrorOf>
+            <url>http://nexus.iisys.de/repository/sysint-maven-public/</url>
+        </mirror>
+        <mirror>
+            <id>nexus-iisys</id>
+            <mirrorOf>*</mirrorOf>
+            <url>http://nexus.iisys.de/repository/maven-public/</url>
+        </mirror>
+    </mirrors>
+
+    <servers>
+        <server>
+            <id>nexus-iisys-sysint</id>
+            <username>IISYS_USER</username>
+            <password>IISYS_PASSWORD</password>
+        </server>
+        <server>
+            <id>nexus-iisys</id>
+            <username>IISYS_USER</username>
+            <password>IISYS_PASSWORD</password>
+        </server>
+
+    </servers>
+
+    <profiles>
+
+
+        <profile>
+            <id>nexus-iisys-sysint</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+
+        <profile>
+            <id>nexus-iisys</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://central</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>nexus-iisys-sysint</activeProfile>
+    </activeProfiles>
+</settings>
+```
+# Compilation
+The project can be compiled with maven. The build target for the frontends is defined in the corresponding pom.xml. There should be a line
+<arguments>run build-local</arguments>. The target build-local is defined in the package.json from the frontend.
+The frontends use git to get the hash of the current branch that is added on the page (for version info). Therefore, git must be installed on the machine.
+Alternatively the replace.build.js script can be changed.
+
 # Usage with docker-compose
 The folder docker_compose contains a compose file and additional docker-files to set up a docker stack with HiCuMES. To populate the missing folders the script package_hicumes.bat can be used. The paths inside the script have to be changed to the correct paths. It will build the necessary components and copy them inside the folder docker_compose_build. It has the same folder structure as the docker_compose folder. It can be copied completely or just selectively.
 
