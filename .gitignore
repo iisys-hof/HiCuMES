@@ -66,3 +66,5 @@ node/
 /docker_compose/wildfly/wildfly-plugins/
 docker_compose/testData/process-engine.mv.db_booked
 /docker_compose_build/
+
+!docker_compose/tomcat/**/*.jar
