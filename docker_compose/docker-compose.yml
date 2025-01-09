@@ -1,3 +1,4 @@
+name: docker-hicumes
 services:
   hicumes:
     build:
@@ -12,7 +13,7 @@ services:
     environment:
       #JAVA_TOOL_OPTIONS: "${JAVA_TOOL_OPTIONS} -Dfile.encoding=UTF-8 -Dmp.jwt.verify.publickey.location='http://keycloak:8080/realms/hicumes/protocol/openid-connect/certs' -Dmp.jwt.verify.issuer='http://localhost:8181/realms/hicumes'"
       JAVA_TOOL_OPTIONS: "${JAVA_TOOL_OPTIONS} -Dfile.encoding=UTF-8 -Djboss.bind.address=0.0.0.0"
-      MP_JWT_VERIFY_PUBLICKEY_LOCATION: http://localhost:8181/realms/hicumes/protocol/openid-connect/certs
+      MP_JWT_VERIFY_PUBLICKEY_LOCATION: http://keycloak:8080/realms/hicumes/protocol/openid-connect/certs
       MP_JWT_VERIFY_ISSUER: http://localhost:8181/realms/hicumes
       TZ: Europe/Berlin
     container_name: hicumes
