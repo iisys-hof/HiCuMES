@@ -2,12 +2,8 @@ package de.iisys.sysint.hicumes.mappingBackend.models.frontendFieldExtension;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
 
 @Entity
 @Data
@@ -26,12 +22,12 @@ public class MemberExtension {
         private String name;
         private String type;
 
-        private Boolean unique = null;
+        private Boolean uniqueAttribute = null;
         private Boolean nullable = null;
         private Boolean insertable = null;
         private Boolean updatable = null;
         private Integer length = null;
-        private Integer precision = null;
+        private Integer precisionAttribute = null;
         private Integer scale = null;
 
         private boolean isCustomerField;

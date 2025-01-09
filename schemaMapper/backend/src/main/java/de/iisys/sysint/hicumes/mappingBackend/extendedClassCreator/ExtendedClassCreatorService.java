@@ -113,18 +113,18 @@ public class ExtendedClassCreatorService {
     }
 
     private AnnotationDescription generateColumnAnnotation(MemberExtension memberExtension, DynamicType.Builder.FieldDefinition.Optional.Valuable<?> field) {
-        if( memberExtension.getUnique() != null ||
+        if( memberExtension.getUniqueAttribute() != null ||
             memberExtension.getNullable() != null ||
             memberExtension.getInsertable() != null ||
             memberExtension.getUpdatable() != null ||
             memberExtension.getLength() != null ||
-            memberExtension.getPrecision() != null ||
+            memberExtension.getPrecisionAttribute() != null ||
             memberExtension.getScale() != null)
         {
             var columnAnnotationBuilder = AnnotationDescription.Builder.ofType(Column.class);
-            if(memberExtension.getUnique() != null)
+            if(memberExtension.getUniqueAttribute() != null)
             {
-                columnAnnotationBuilder = columnAnnotationBuilder.define("unique", memberExtension.getUnique());
+                columnAnnotationBuilder = columnAnnotationBuilder.define("unique", memberExtension.getUniqueAttribute());
             }
             if(memberExtension.getNullable() != null)
             {
@@ -142,9 +142,9 @@ public class ExtendedClassCreatorService {
             {
                 columnAnnotationBuilder = columnAnnotationBuilder.define("length", memberExtension.getLength());
             }
-            if(memberExtension.getPrecision() != null)
+            if(memberExtension.getPrecisionAttribute() != null)
             {
-                columnAnnotationBuilder = columnAnnotationBuilder.define("precision", memberExtension.getPrecision());
+                columnAnnotationBuilder = columnAnnotationBuilder.define("precision", memberExtension.getPrecisionAttribute());
             }
             if(memberExtension.getScale() != null)
             {
