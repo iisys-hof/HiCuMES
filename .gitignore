@@ -68,4 +68,5 @@ docker_compose/testData/process-engine.mv.db_booked
 /docker_compose_build/
 
 !docker_compose/tomcat/**/*.jar
+!docker_compose/testData/**/*.jar
 /docker_compose/AAA_Backend_Logs/
