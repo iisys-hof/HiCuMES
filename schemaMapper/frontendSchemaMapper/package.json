@@ -4,12 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4202",
-    "build": "ng build --configuration production --base-href=/frontendSchemaMapper/",
-    "build-vl": "ng build --configuration vl --base-href=/frontendSchemaMapper/",
-    "build-local": "ng build --configuration local --base-href=/frontendSchemaMapper/",
-    "deploy-vl": "npm run build-vl; bash deploy.sh 10.90.41.30",
-    "build-staging": "ng build --configuration staging --base-href=/frontendSchemaMapper/",
-    "deploy-staging": "npm run build-staging; bash deploy.sh 10.90.41.35",
+    "build": "ng build --configuration production ",
+    "build-local": "ng build --configuration local ",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
